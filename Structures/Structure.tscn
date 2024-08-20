@@ -1,0 +1,285 @@
+[gd_scene load_steps=19 format=3 uid="uid://cldq2ytrikigr"]
+
+[ext_resource type="Texture2D" uid="uid://duldscapb1o7d" path="res://Assets/UI/ActivityUnder.png" id="1_8jkkh"]
+[ext_resource type="Script" path="res://Structures/ActivityProgress.gd" id="1_8ssxn"]
+[ext_resource type="Texture2D" uid="uid://doe0htnnf740p" path="res://Assets/Structures/FX.png" id="1_h30hg"]
+[ext_resource type="Texture2D" uid="uid://ddji3g3kxhyho" path="res://Assets/UI/ActivityProgress.png" id="2_fhfrh"]
+[ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="2_nmr83"]
+[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="5_oot2b"]
+[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="6_y8dc6"]
+[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="7_mrci6"]
+[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="8_e7ysw"]
+[ext_resource type="Script" path="res://Structures/EntranceIndicator.gd" id="10_n33h6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8am3o"]
+
+[sub_resource type="Animation" id="Animation_bhdoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_am5nt"]
+resource_name = "earn_stars"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xrmvo"]
+resource_name = "earn_snacks"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_saxla"]
+resource_name = "earn_tricks"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_ri4mm"]
+resource_name = "earn_naps"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_243q1"]
+_data = {
+"RESET": SubResource("Animation_bhdoi"),
+"earn_naps": SubResource("Animation_ri4mm"),
+"earn_snacks": SubResource("Animation_xrmvo"),
+"earn_stars": SubResource("Animation_am5nt"),
+"earn_tricks": SubResource("Animation_saxla")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7627"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_oot2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y8dc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mrci6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e7ysw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Structure" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="FX" type="Sprite2D" parent="Sprite2D"]
+visible = false
+texture = ExtResource("1_h30hg")
+hframes = 4
+frame = 2
+
+[node name="FXLabel" type="Label" parent="Sprite2D/FX"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -39.0
+offset_right = 119.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nmr83")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8am3o")
+text = "stars earned"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ActivityProgress" type="TextureProgressBar" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("1_8jkkh")
+texture_progress = ExtResource("2_fhfrh")
+script = ExtResource("1_8ssxn")
+
+[node name="Timer" type="Timer" parent="ActivityProgress"]
+
+[node name="FXAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_243q1")
+}
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EntranceIndicator" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n7627")
+script = ExtResource("10_n33h6")
+
+[connection signal="timeout" from="ActivityProgress/Timer" to="ActivityProgress" method="_on_timer_timeout"]

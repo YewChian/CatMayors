@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cr46aguri5yqg"]
+
+[ext_resource type="Texture2D" uid="uid://bjskyn1ahr72n" path="res://Assets/UI/PurpleBox.png" id="1_11ax3"]
+[ext_resource type="FontFile" uid="uid://c014vt3rydv1q" path="res://Styles/CatCafe.ttf" id="1_x66wr"]
+[ext_resource type="Texture2D" uid="uid://cya0gwsfipq5l" path="res://Assets/UI/PurpleButtonNormal.png" id="2_ej5uf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3j6ut"]
+texture = ExtResource("2_ej5uf")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtxkj"]
+texture = ExtResource("2_ej5uf")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lytyg"]
+texture = ExtResource("1_11ax3")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[resource]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_x66wr")
+Button/styles/hover = SubResource("StyleBoxTexture_3j6ut")
+Button/styles/normal = SubResource("StyleBoxTexture_gtxkj")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_x66wr")
+Label/styles/normal = SubResource("StyleBoxTexture_lytyg")

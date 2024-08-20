@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://c264ufgqk1j2u"]
+
+[ext_resource type="PackedScene" uid="uid://cldq2ytrikigr" path="res://Structures/Structure.tscn" id="1_g1h2s"]
+[ext_resource type="Script" path="res://Structures/CatnipAlley.gd" id="2_1pl74"]
+[ext_resource type="Texture2D" uid="uid://ca25e733qmc6t" path="res://Assets/Structures/CatnipAlley.png" id="3_6v8j0"]
+
+[sub_resource type="Animation" id="Animation_gs0vc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bh1rl"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tn1h"]
+_data = {
+"RESET": SubResource("Animation_gs0vc"),
+"idle": SubResource("Animation_bh1rl")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sq3v"]
+atlas = ExtResource("3_6v8j0")
+region = Rect2(0, 0, 128, 128)
+
+[node name="CatnipAlley" instance=ExtResource("1_g1h2s")]
+script = ExtResource("2_1pl74")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_6v8j0")
+offset = Vector2(32, 32)
+hframes = 2
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_1tn1h")
+}
+
+[node name="Button" parent="." index="4"]
+icon = SubResource("AtlasTexture_3sq3v")

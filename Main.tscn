@@ -1,0 +1,662 @@
+[gd_scene load_steps=29 format=3 uid="uid://cwqmm1rc4fy0s"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_boo15"]
+[ext_resource type="Script" path="res://UI/IdleUI.gd" id="2_0u3m0"]
+[ext_resource type="Script" path="res://UI/CreateFishingHut.gd" id="2_e3vyw"]
+[ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="2_jxgaj"]
+[ext_resource type="Script" path="res://UI/DraftButton.gd" id="3_4hy1x"]
+[ext_resource type="Script" path="res://UI/ChooseLocationUI.gd" id="3_4ltef"]
+[ext_resource type="Script" path="res://MainCamera.gd" id="3_nxkky"]
+[ext_resource type="Script" path="res://UI/CreateLumbercatYard.gd" id="4_mg0f1"]
+[ext_resource type="Script" path="res://CreateFountain.gd" id="5_uadu4"]
+[ext_resource type="Script" path="res://UI/TurnButton.gd" id="6_86f7r"]
+[ext_resource type="Script" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
+[ext_resource type="Texture2D" uid="uid://c7j4nas34n2h1" path="res://Assets/UI/BlackCatStarIcon.png" id="6_giubr"]
+[ext_resource type="Script" path="res://UI/BlackScore.gd" id="7_2kt63"]
+[ext_resource type="Texture2D" uid="uid://do02a2q5cl6bf" path="res://Assets/UI/WhiteCatStarIcon.png" id="7_mq5lf"]
+[ext_resource type="Script" path="res://UI/WhiteScore.gd" id="8_5kguq"]
+[ext_resource type="Script" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
+[ext_resource type="Script" path="res://UI/DraftUI.gd" id="14_486mp"]
+[ext_resource type="Script" path="res://UI/Hand.gd" id="17_43ggv"]
+[ext_resource type="Script" path="res://UI/Timeline.gd" id="19_6a7bp"]
+[ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
+[ext_resource type="Script" path="res://UI/TimeLeft.gd" id="21_fg20p"]
+[ext_resource type="Script" path="res://UI/Skip.gd" id="22_jpy4h"]
+[ext_resource type="Script" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
+[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="23_bqvjb"]
+[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="24_qjy5s"]
+[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="25_r63lr"]
+[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8e5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_bqvjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_qjy5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_r63lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ocq7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_boo15")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("2_jxgaj")
+
+[node name="IdleUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("2_0u3m0")
+
+[node name="DebugButtons" type="VBoxContainer" parent="UI/IdleUI"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_right = 132.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="GenerateMap" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "Generate Map"
+
+[node name="DraftButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "Start Structure Draft"
+script = ExtResource("3_4hy1x")
+
+[node name="CreateFishingHut" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+text = "Fishing Hut"
+script = ExtResource("2_e3vyw")
+
+[node name="CreateLumbercatYard" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+text = "Lumbercat Yard"
+script = ExtResource("4_mg0f1")
+
+[node name="CreateFountain" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+text = "Fountain"
+script = ExtResource("5_uadu4")
+
+[node name="CreateWhiteTileButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+text = "WhiteTile"
+script = ExtResource("6_dv3dy")
+
+[node name="TurnButton" type="OptionButton" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "black"
+popup/item_0/id = 0
+popup/item_1/text = "white"
+popup/item_1/id = 1
+script = ExtResource("6_86f7r")
+
+[node name="Scoreboard" type="PanelContainer" parent="UI/IdleUI"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = 47.0
+offset_right = 66.0
+offset_bottom = 87.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/IdleUI/Scoreboard"]
+layout_mode = 2
+
+[node name="BlackCatTexture" type="TextureRect" parent="UI/IdleUI/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_giubr")
+
+[node name="BlackScore" type="Label" parent="UI/IdleUI/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+script = ExtResource("7_2kt63")
+
+[node name="Container" type="Container" parent="UI/IdleUI/Scoreboard/VBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WhiteScore" type="Label" parent="UI/IdleUI/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+script = ExtResource("8_5kguq")
+
+[node name="WhiteCatTexture" type="TextureRect" parent="UI/IdleUI/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_mq5lf")
+
+[node name="CatBuildingInfo" type="PanelContainer" parent="UI/IdleUI"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -272.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo"]
+layout_mode = 2
+
+[node name="CatHeader" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+text = "Cat Information"
+
+[node name="CatTexture" type="TextureRect" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="CatStats" type="HBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Name"]
+layout_mode = 2
+text = "Name
+"
+
+[node name="NameLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Name"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Curiosity" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Curiosity"]
+layout_mode = 2
+text = "Curiosity
+"
+
+[node name="CuriosityLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Curiosity"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Snacks" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Snacks"]
+layout_mode = 2
+text = "Snacks"
+
+[node name="SnacksLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Snacks"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Tricks" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Tricks"]
+layout_mode = 2
+text = "Tricks"
+
+[node name="TricksLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Tricks"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Naps" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Naps"]
+layout_mode = 2
+text = "Naps"
+
+[node name="NapsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/CatStats/Naps"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BuildingHeader" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+text = "Buidling Information"
+
+[node name="BuildingTexture" type="TextureRect" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="BuildingStats" type="HBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Name"]
+layout_mode = 2
+text = "Name
+"
+
+[node name="BuildingNameLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Name"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Tiles" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Tiles"]
+layout_mode = 2
+text = "Tiles"
+
+[node name="TilesLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Tiles"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Cats" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Cats"]
+layout_mode = 2
+text = "Cats"
+
+[node name="CatsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Cats"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Snacks" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Snacks"]
+layout_mode = 2
+text = "Snacks"
+
+[node name="BuildingSnacksLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Snacks"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Tricks" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Tricks"]
+layout_mode = 2
+text = "Tricks"
+
+[node name="BuildingTricksLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Tricks"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Naps" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Naps"]
+layout_mode = 2
+text = "Naps"
+
+[node name="BuildingNapsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/Naps"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SnackStars" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/SnackStars"]
+layout_mode = 2
+text = "Snack Stars"
+
+[node name="SnackStarsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/SnackStars"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TrickStars" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/TrickStars"]
+layout_mode = 2
+text = "Trick Stars"
+
+[node name="TrickStarsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/TrickStars"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NapStars" type="VBoxContainer" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/NapStars"]
+layout_mode = 2
+text = "Nap Stars"
+
+[node name="NapStarsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/NapStars"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChooseLocationUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("3_4ltef")
+
+[node name="TipBox" type="VBoxContainer" parent="UI/ChooseLocationUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -114.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+
+[node name="TurnLabel" type="Label" parent="UI/ChooseLocationUI/TipBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Tip" type="Label" parent="UI/ChooseLocationUI/TipBox"]
+layout_mode = 2
+
+[node name="AcceptContainer" type="HBoxContainer" parent="UI/ChooseLocationUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="Pass" type="Button" parent="UI/ChooseLocationUI/AcceptContainer"]
+layout_mode = 2
+text = "Pass"
+
+[node name="Hand" type="PanelContainer" parent="UI/ChooseLocationUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_right = 140.0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+script = ExtResource("17_43ggv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ChooseLocationUI/Hand"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/ChooseLocationUI/Hand/VBoxContainer"]
+layout_mode = 2
+text = "Drafted Cards"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ChooseLocationUI/Hand/VBoxContainer"]
+layout_mode = 2
+
+[node name="StructureInfo" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo2" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo3" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo4" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="ChooseTileLocationUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("13_81w2g")
+
+[node name="TipPanelContainer" type="PanelContainer" parent="UI/ChooseTileLocationUI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tip" type="Label" parent="UI/ChooseTileLocationUI/TipPanelContainer"]
+layout_mode = 2
+
+[node name="AcceptContainer" type="HBoxContainer" parent="UI/ChooseTileLocationUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="Confirm" type="Button" parent="UI/ChooseTileLocationUI/AcceptContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="Cancel" type="Button" parent="UI/ChooseTileLocationUI/AcceptContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="DraftUI" type="CanvasLayer" parent="UI"]
+script = ExtResource("14_486mp")
+
+[node name="CatBuildingInfo" type="PanelContainer" parent="UI/DraftUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -535.0
+offset_top = -116.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DraftUI/CatBuildingInfo"]
+layout_mode = 2
+
+[node name="DraftTipBox" type="VBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="TurnLabel" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Tip" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
+layout_mode = 2
+
+[node name="StructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/StructureButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/StructureButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="Hand" type="PanelContainer" parent="UI/DraftUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 44.0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+script = ExtResource("17_43ggv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DraftUI/Hand"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/DraftUI/Hand/VBoxContainer"]
+layout_mode = 2
+text = "Drafted Cards"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/DraftUI/Hand/VBoxContainer"]
+layout_mode = 2
+
+[node name="StructureInfo" parent="UI/DraftUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo2" parent="UI/DraftUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo3" parent="UI/DraftUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo4" parent="UI/DraftUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="CommonUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CommonUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="Timeline" type="PanelContainer" parent="CommonUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("19_6a7bp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer/Timeline"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Scoreboard" type="PanelContainer" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BlackCatTexture" type="TextureRect" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_giubr")
+stretch_mode = 5
+
+[node name="BlackScore" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 1
+text = "0"
+script = ExtResource("7_2kt63")
+
+[node name="Container" type="Container" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="WhiteScore" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 1
+text = "0"
+script = ExtResource("8_5kguq")
+
+[node name="WhiteCatTexture" type="TextureRect" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_mq5lf")
+stretch_mode = 5
+
+[node name="TimeLeft" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("21_fg20p")
+
+[node name="TurnTimer" type="Timer" parent="CommonUI/VBoxContainer/HBoxContainer/TimeLeft"]
+unique_name_in_owner = true
+wait_time = 20.0
+
+[node name="Skip" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Skip"
+script = ExtResource("22_jpy4h")
+
+[node name="VictoryLabel" type="Label" parent="CommonUI/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="NextPlayerReady" type="Button" parent="CommonUI"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 7
+theme = ExtResource("2_jxgaj")
+text = "Click when ready."
+script = ExtResource("23_5m5oo")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Structures" type="Node2D" parent="."]
+
+[node name="NewStructureMarker" type="Sprite2D" parent="."]
+visible = false
+hframes = 2
+
+[node name="EntranceIndicator" type="AnimatedSprite2D" parent="NewStructureMarker"]
+sprite_frames = SubResource("SpriteFrames_h8e5t")
+
+[node name="NewTileMarker" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_nxkky")
+pan_speed = 2.0
+
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GenerateMap" to="." method="_on_generate_map_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/DraftButton" to="UI/IdleUI/DebugButtons/DraftButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFishingHut" to="UI/IdleUI/DebugButtons/CreateFishingHut" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateLumbercatYard" to="UI/IdleUI/DebugButtons/CreateLumbercatYard" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFountain" to="UI/IdleUI/DebugButtons/CreateFountain" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateWhiteTileButton" to="UI/IdleUI/DebugButtons/CreateWhiteTileButton" method="_on_pressed"]
+[connection signal="item_selected" from="UI/IdleUI/DebugButtons/TurnButton" to="UI/IdleUI/DebugButtons/TurnButton" method="_on_item_selected"]
+[connection signal="pressed" from="UI/ChooseLocationUI/AcceptContainer/Pass" to="UI/ChooseLocationUI" method="_on_pass_pressed"]
+[connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Confirm" to="UI/ChooseTileLocationUI" method="_on_confirm_pressed"]
+[connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Cancel" to="UI/ChooseTileLocationUI" method="_on_cancel_pressed"]
+[connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/Skip" to="CommonUI/VBoxContainer/HBoxContainer/Skip" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/NextPlayerReady" to="CommonUI/NextPlayerReady" method="_on_pressed"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn6fovrh5ba8f"]
+
+[ext_resource type="Texture2D" uid="uid://bvnm3ax13et4j" path="res://Assets/UI/TileCursor.png" id="1_epbbd"]
+
+[node name="TileCursor" type="Sprite2D"]
+texture = ExtResource("1_epbbd")
