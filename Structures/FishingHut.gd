@@ -16,7 +16,7 @@ func initialize_stats():
 	entrance_coordinate = Vector2(1,0)
 	activity_duration = 2
 	snacks = 2
-	tricks = 1
+	tricks = 0
 	naps = 1
 	snack_stars = 0
 	trick_stars = 0

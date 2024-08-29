@@ -46,7 +46,7 @@ func create_map(size : int, expansion_probability : float):
 
 	# create hills
 	print("hills")
-	var max_num_red_tiles : int = max_num_green_tiles / 10
+	var max_num_red_tiles : int = max_num_green_tiles / 2
 	var num_red_tiles = 0
 	var green_tile_coordinates : Array[Vector2] = []
 	var red_tile_coordinates : Array[Vector2] = []

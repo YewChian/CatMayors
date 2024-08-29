@@ -105,10 +105,9 @@ script = ExtResource("6_dv3dy")
 [node name="TurnButton" type="OptionButton" parent="UI/IdleUI/DebugButtons"]
 visible = false
 layout_mode = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "black"
-popup/item_0/id = 0
 popup/item_1/text = "white"
 popup/item_1/id = 1
 script = ExtResource("6_86f7r")
