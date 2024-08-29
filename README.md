@@ -18,7 +18,7 @@ Tommy only has 2 blueprints on sale everyday. If you can catch him in the mornin
 
 ### Meet Bobcat the Builder!
 
-Bobcat turns your blueprints into reality! Just tell him where to place it. Different blueprints can only be built in specific kinds of terrain. For example, the "Rock" blueprint can only be built on __Red__ hilly tiles.
+Bobcat turns your **Blueprints** into **Structures**! Just tell him where to place it. Different blueprints can only be built in specific kinds of terrain. For example, the "Rock" blueprint can only be built on __Red__ hilly tiles.
 
 #### Bobcat's quite a lazy fella...
 
@@ -39,7 +39,7 @@ However many blueprints you have, Bobcat always refuses to build the last one. W
 
 - Cat Beds: When cats visit the Cat Beds, the cat's clan gains stars based on his __Naps__ stat.
 - Fountain: When cats visit the Fountain, the cat's clan gains stars based on his __Snacks__ stat.
-- Tower Tree: When cats visit the Tower Tree, the cat's clan gains stars based on his __Tricks stat.
+- Tower Tree: When cats visit the Tower Tree, the cat's clan gains stars based on his __Tricks__ stat.
 
 Cats with stats that resonate well with the star structure they visit will produce more stars for their clan.
 
