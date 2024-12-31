@@ -1,10 +1,10 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://snaixfnew7ko"]
 
-[ext_resource type="Texture2D" uid="uid://bgj2rjn7uqymf" path="res://Assets/UI/EmptyButtonSelected.png" id="1_68hes"]
+[ext_resource type="Texture2D" uid="uid://dce612dk4gg1" path="res://Assets/UI/BlueButtonSelectedEmpty.png" id="1_dui3k"]
 
 [resource]
-texture = ExtResource("1_68hes")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
+texture = ExtResource("1_dui3k")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0

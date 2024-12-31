@@ -11,10 +11,10 @@ func initialize_stats():
 		Vector2(1,1),
 	]
 	num_cats = 1
-	entrance_coordinate = Vector2(0,1)
+	entrance_coordinate = Vector2(1,0)
 	activity_duration = 2
 	snacks = 0
-	tricks = 1
+	tricks = 2
 	naps = 1
 	snack_stars = 0
 	trick_stars = 0

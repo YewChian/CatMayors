@@ -1,15 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://cldq2ytrikigr"]
+[gd_scene load_steps=20 format=3 uid="uid://cldq2ytrikigr"]
 
 [ext_resource type="Texture2D" uid="uid://duldscapb1o7d" path="res://Assets/UI/ActivityUnder.png" id="1_8jkkh"]
 [ext_resource type="Script" path="res://Structures/ActivityProgress.gd" id="1_8ssxn"]
 [ext_resource type="Texture2D" uid="uid://doe0htnnf740p" path="res://Assets/Structures/FX.png" id="1_h30hg"]
+[ext_resource type="Script" path="res://Structures/Structure.gd" id="1_vnxqa"]
 [ext_resource type="Texture2D" uid="uid://ddji3g3kxhyho" path="res://Assets/UI/ActivityProgress.png" id="2_fhfrh"]
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="2_nmr83"]
-[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="5_oot2b"]
-[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="6_y8dc6"]
-[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="7_mrci6"]
-[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="8_e7ysw"]
+[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="7_oty4d"]
+[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="8_spbvr"]
+[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="9_uejeh"]
 [ext_resource type="Script" path="res://Structures/EntranceIndicator.gd" id="10_n33h6"]
+[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="10_svgks"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8am3o"]
 
@@ -38,126 +39,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_am5nt"]
-resource_name = "earn_stars"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/FX:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/FX:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/FX:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_xrmvo"]
-resource_name = "earn_snacks"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/FX:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/FX:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/FX:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_saxla"]
-resource_name = "earn_tricks"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/FX:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/FX:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/FX:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_ri4mm"]
@@ -200,6 +81,126 @@ tracks/2/keys = {
 "values": [3]
 }
 
+[sub_resource type="Animation" id="Animation_xrmvo"]
+resource_name = "earn_snacks"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_am5nt"]
+resource_name = "earn_stars"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_saxla"]
+resource_name = "earn_tricks"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FX:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FX:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FX:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_243q1"]
 _data = {
 "RESET": SubResource("Animation_bhdoi"),
@@ -209,20 +210,20 @@ _data = {
 "earn_tricks": SubResource("Animation_saxla")
 }
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_n7627"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0b4a"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_oot2b")
+"texture": ExtResource("7_oty4d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_y8dc6")
+"texture": ExtResource("8_spbvr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_mrci6")
+"texture": ExtResource("9_uejeh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_e7ysw")
+"texture": ExtResource("10_svgks")
 }],
 "loop": true,
 "name": &"default",
@@ -230,6 +231,7 @@ animations = [{
 }]
 
 [node name="Structure" type="Area2D"]
+script = ExtResource("1_vnxqa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -260,8 +262,9 @@ text = "stars earned"
 
 [node name="ActivityProgress" type="TextureProgressBar" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 128.0
+offset_bottom = 64.0
+scale = Vector2(0.5, 0.25)
 texture_under = ExtResource("1_8jkkh")
 texture_progress = ExtResource("2_fhfrh")
 script = ExtResource("1_8ssxn")
@@ -279,7 +282,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="EntranceIndicator" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_n7627")
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_i0b4a")
 script = ExtResource("10_n33h6")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="ActivityProgress/Timer" to="ActivityProgress" method="_on_timer_timeout"]

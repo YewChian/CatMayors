@@ -2,19 +2,20 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://3jmvbtfjwgxi"
-path="res://.godot/imported/Tomcat.ttf-8a89226e8b2a0a365f54417d8817f9d0.fontdata"
+uid="uid://bhogr2ro37bp0"
+path="res://.godot/imported/CoffeeSodaHeader.ttf-86a5232150fbf3c162b0e2b68bcfa46b.fontdata"
 
 [deps]
 
-source_file="res://Styles/Tomcat.ttf"
-dest_files=["res://.godot/imported/Tomcat.ttf-8a89226e8b2a0a365f54417d8817f9d0.fontdata"]
+source_file="res://Styles/CoffeeSodaHeader.ttf"
+dest_files=["res://.godot/imported/CoffeeSodaHeader.ttf-86a5232150fbf3c162b0e2b68bcfa46b.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

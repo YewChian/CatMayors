@@ -10,6 +10,8 @@ var tricks : int
 var naps : int
 var max_curiosity : int
 var curiosity : int
+var earned_stars: int = 0
+var visited_structure_entrances: Array = []
 
 func set_color(new_color : String):
 	color = new_color
@@ -59,13 +61,15 @@ func update_size():
 			$Legs.frame = 4
 
 func decide_destination():
-	var possible_destinations : Array[Vector2]
+	var possible_destinations = []
 	for structure in StructureMan.structures.values():
 		var entrance = structure.entrance_coordinate + structure.coordinate
 		if entrance == StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate(): 
 			continue	# skip home structure
 		if entrance == get_coordinate(): 
 			continue	# skip current_structure
+		if entrance in visited_structure_entrances:
+			continue	# skip visited structures
 		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance))) > curiosity:
 			continue	# skip faraway structures
 		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance))) == 0:
@@ -73,9 +77,26 @@ func decide_destination():
 		possible_destinations.push_back(entrance)
 	
 	if len(possible_destinations) > 0:
-		randomize()
-		possible_destinations.shuffle()
-		return possible_destinations.pop_front()
+		var shortest_distance = 999999	# arbitrary large number
+		var	nearest_destinations = []
+		for destination_coord in possible_destinations:
+			var distance = destination_coord.distance_to(get_coordinate())
+			if distance == shortest_distance:
+				nearest_destinations.append(destination_coord)
+				continue
+			if distance < shortest_distance:
+				shortest_distance = distance
+				nearest_destinations = []
+				nearest_destinations.append(destination_coord)
+				continue
+		assert(shortest_distance != 999999)
+		
+		if len(nearest_destinations) == 1:
+			return nearest_destinations[0]
+		if len(nearest_destinations) > 1:
+			randomize()
+			nearest_destinations.shuffle()
+			return nearest_destinations.pop_front()
 	
 	else:
 		return StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate()
@@ -171,6 +192,7 @@ func enter_state(new_state : String):
 				enter_state("wander")
 				
 			else:
+				CatMan.has_moving_cats = true
 				await go_to_coordinate(new_destination)
 		
 		"interact_structure":
@@ -197,4 +219,4 @@ func enter_state(new_state : String):
 			enter_state("interact_structure")
 
 func _physics_process(delta):
-	$Stats.text = str("snk/trk/nap\n" + str(snacks) + "/" + str(tricks) + "/" + str(naps))
+	$Stats.text = str(str(snacks) + "S " + str(tricks) + "T " + str(naps) + "N")

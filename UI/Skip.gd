@@ -3,4 +3,7 @@ extends Button
 
 func _on_pressed():
 	%TurnTimer.emit_signal("timeout")
-	%TurnTimer.start(20)
+	%TurnTimer.start(Settings.TURN_DURATION)
+	#if CatMan.has_moving_cats:
+		#disabled = true
+		#text = "Turn ends automatically"

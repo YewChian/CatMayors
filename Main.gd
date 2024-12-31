@@ -1,5 +1,9 @@
 extends Node2D
 
+func _ready():
+	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
+	
+
 func create_map(size : int, expansion_probability : float):
 	await TileMan.initialize_tile_dictionary(size)
 	var max_num_green_tiles : int = size * 0.3

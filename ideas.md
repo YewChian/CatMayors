@@ -17,6 +17,13 @@ Each turn takes 20 seconds
 Highest Score Wins
 
 
+## Where do you place a structure?
+1. Colors matter of course. colors limit where you can place them.
+2. Nature type structures should be as near houses as possible
+### potential ideas influencing structure placement
+1. structures open at the same time of the day work well together
+2. structures targeting specific types of cats work well together (e.g. candyshop and dentist)
+
 ## Scoring
 Residents will interact with your structures automatically.
 Each resident has the following needs:
@@ -131,7 +138,10 @@ mechanics: these buildings make your future plays have more constraints, but the
 13. Recycling Bin Complex
     _Comically large bins for scavenging. Really popular
 
-14. 
+14. Wee Cottage
+    _A small cottage that'll be great near nature_
+    +2 cats
+    Cats living here have +10 curiosity
 
 	
 ## Tiles
@@ -165,3 +175,43 @@ penalty for overcrowding? why wouldnt cats all hang out in the city?
 2. cats hunt mice
 3. cats stalk birds
 4. cats are territorial
+
+
+## MONTH 2 Playtesting review
+
+The most common feedback is that the players don't know where the cats will go,
+so they can't decide what buildings to get
+
+### IDEA: make buildings even more specific
+### ALSO IDEA: make cat walking rules very obvious
+
+We want to get the players to be more attached to the buildings they produce.
+Hence, give them more incentive to improve each building.
+1. House: houses give varying numbers of cats. Houses have specific types of cats. E.g. cottages have shy cats.
+2. Nature: When cats visit nature, they gain the ability to visit the next nearest building. 
+3. Road: When an entrance is linked to another entrance by a road, cats that visit one building will always wisit the connected one.
+4. Shop: the first x cats to visit a shop becomes hired. A hired cat never leaves the shop. Shops earn you money when cats visit. 
+
+Cats only visit the nearest building, always. Cats gain a star everytime they visit a building.
+
+### Structure brainstorming:
+simulate the movement of cats in a realistic, yet simple to understand way.
+
+structures in a city:
+houses - gives varying number of cats.
+restaurants - the next structure a cat visits gives double the stars
+shops - consumes 2 curiosity if possible to give double the stars
+services(hospital/firestation/police) - 
+schools - 
+religious - 
+offices
+parks - if this is the nearest structure, cats with 0 curiosity can still visit it.
+roads
+industrial (factories, manufacturing)
+landmarks (statues, culturally important structures) - if this structure has been visited more than 50 times, cats that visit it gain twice the stars. otherwise, gain 0 stars.
+
+### NEW CAT MOVEMENT RULES:
+1. Cats will only visit the nearest structure.
+2. Cats need to go home and take a nap after visiting any structure.
+3. For every 1 curiosity, cats can visit 1 nearest structure.
+4. When a cat visits any structure, your color gains stars based on the level of the structure.

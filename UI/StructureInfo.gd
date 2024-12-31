@@ -3,6 +3,7 @@ extends Control
 var structure_path : String
 @onready var draft_ui = get_tree().current_scene.get_node("UI/DraftUI")
 @onready var choose_location_ui = get_tree().current_scene.get_node("UI/ChooseLocationUI")
+var button_mode: String = "Expanded"
 
 func initialize(new_structure_path):
 	structure_path = new_structure_path
@@ -10,9 +11,13 @@ func initialize(new_structure_path):
 	new_structure_node.initialize_stats()
 	%StructureName.text = new_structure_node.structure_name
 	%StructureTexture.texture = new_structure_node.get_node("Button").icon
+	%InfoEntranceIndicator.position = new_structure_node.entrance_coordinate * Settings.TILE_LENGTH
+	%Color.visible = false
 	%Cats.visible = false
 	%StatGains.visible = false
 	%Stars.visible = false
+	
+	%Color.text = str(new_structure_node.color) + " structure"
 	
 	if new_structure_node.num_cats > 0:
 		%Cats.visible = true
@@ -42,6 +47,7 @@ func initialize(new_structure_path):
 
 func highlight_button(target_button):
 	target_button.add_theme_stylebox_override("normal", load("res://Styles/HighlightedButton.tres"))
+	
 
 func unhighlight_button(target_button):
 	target_button.add_theme_stylebox_override("normal", load("res://Styles/UnhighlightedButton.tres"))
@@ -53,6 +59,7 @@ func disable_button():
 	
 func enable_button():
 	get_node("Button").set_deferred("disabled", false)
+	
 
 func _on_button_pressed():
 	if UIMan.mode == "DraftUI":
@@ -67,3 +74,4 @@ func _on_button_pressed():
 	if UIMan.mode == "ChooseLocationUI":
 		choose_location_ui.new_structure = load(structure_path)
 		choose_location_ui.choose_location()
+		choose_location_ui.get_node("TipBox/Hand/VBoxContainer/HBoxContainer").visible = false

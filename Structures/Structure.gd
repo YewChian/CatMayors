@@ -17,6 +17,7 @@ var naps : int
 var snack_stars : int
 var trick_stars : int
 var nap_stars : int
+var num_visits: int = 0
 
 func _ready():
 	$AnimationPlayer.play("idle")
@@ -63,6 +64,7 @@ func finish_activity():
 			$FXAnimationPlayer.play("earn_naps")
 		if snack_stars > 0:
 			var earned_stars = active_cat.snacks * snack_stars
+			active_cat.earned_stars += earned_stars
 			%FXLabel.text = "+ " + str(earned_stars)
 			var cat_color = active_cat.color
 			match cat_color:
@@ -72,7 +74,8 @@ func finish_activity():
 					PlayerMan.white_stars += earned_stars
 			$FXAnimationPlayer.play("earn_stars")
 		if trick_stars > 0:
-			var earned_stars = active_cat.snacks * trick_stars
+			var earned_stars = active_cat.tricks * trick_stars
+			active_cat.earned_stars += earned_stars
 			%FXLabel.text = "+ " + str(earned_stars)
 			var cat_color = active_cat.color
 			match cat_color:
@@ -82,7 +85,8 @@ func finish_activity():
 					PlayerMan.white_stars += earned_stars
 			$FXAnimationPlayer.play("earn_stars")
 		if nap_stars > 0:
-			var earned_stars = active_cat.snacks * nap_stars
+			var earned_stars = active_cat.naps * nap_stars
+			active_cat.earned_stars += earned_stars
 			%FXLabel.text = "+ " + str(earned_stars)
 			var cat_color = active_cat.color
 			match cat_color:
@@ -94,6 +98,20 @@ func finish_activity():
 			
 		active_cat.leave_structure()
 		cats_doing_activity.erase(active_cat)
+		num_visits += 1
+
 
 func get_global_entrance_coordinate():
 	return coordinate + entrance_coordinate
+
+
+func _on_mouse_entered() -> void:
+	print("structure detected mouse")
+	get_tree().current_scene.get_node("CommonUI/StructureInstanceInfo").visible = true
+	await get_tree().current_scene.get_node("CommonUI/StructureInstanceInfo").update_info(self)
+	
+
+func _on_mouse_exited() -> void:
+	print("mouse exited structure")
+	get_tree().current_scene.get_node("CommonUI/StructureInstanceInfo").visible = false
+	

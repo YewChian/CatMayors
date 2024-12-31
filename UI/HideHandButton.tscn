@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b32uginpqm7kl"]
+
+[ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_dufhl"]
+[ext_resource type="Script" path="res://UI/HideHandButton.gd" id="2_53faq"]
+
+[node name="HideHandButton" type="Button"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_dufhl")
+text = "Hide/Show Hand"
+script = ExtResource("2_53faq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

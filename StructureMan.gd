@@ -28,9 +28,15 @@ func create_structure(structure_resource : Resource, coordinate : Vector2):
 	new_instantiated_structure.get_node("EntranceIndicator").position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
 	
 	for shifted_coordinate in new_instantiated_structure.occupied_coordinates:
-		if shifted_coordinate == new_instantiated_structure.entrance_coordinate:
-			continue
-		await TileMan.create_tile("null", coordinate + shifted_coordinate)
+		if shifted_coordinate != new_instantiated_structure.entrance_coordinate:
+			await TileMan.create_tile("null", coordinate + shifted_coordinate)
+		# create collisionshape for structure
+		var collider = CollisionShape2D.new()
+		new_instantiated_structure.add_child(collider)
+		var new_shape = RectangleShape2D.new()
+		new_shape.set_size(Vector2(Settings.TILE_LENGTH, Settings.TILE_LENGTH))
+		collider.set_shape(new_shape)
+		collider.global_position = (coordinate + shifted_coordinate) * Settings.TILE_LENGTH
 	
 	await new_instantiated_structure.initialize_cats()
 
@@ -41,9 +47,9 @@ func get_structure_by_id(id):
 		return null
 		
 		
-func get_structure_by_coordinate(new_coordinate):
+func get_structure_by_coordinate(new_coordinate: Vector2):
 	for structure in structures.values():
-		if new_coordinate in structure.occupied_coordinates:
+		if (new_coordinate - structure.coordinate) in structure.occupied_coordinates:
 			return structure
 	return null
 		

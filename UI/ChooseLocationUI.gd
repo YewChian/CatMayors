@@ -3,15 +3,18 @@ extends CanvasLayer
 var new_structure : Resource
 var is_placeable : bool
 @onready var new_structure_marker_node : Object = get_tree().current_scene.get_node("NewStructureMarker")
+@onready var structure_instance_info = get_tree().current_scene.get_node("CommonUI/StructureInstanceInfo")
+
 
 func initialize():
 	new_structure = null
 	new_structure_marker_node.texture = null
-	$TipBox/TurnLabel.text = str(PlayerMan.turn_color) + "'s turn."
+	$TipBox/TurnLabel.text = "CAT CONSTRUCTION"
 	$TipBox/Tip.text = "Choose 1 structure to place."
 	get_tree().current_scene.get_node("CommonUI/VBoxContainer/Timeline").update_timeline()
-	$Hand.enable_buttons()
-	$Hand.update_hand_structure_buttons()
+	$TipBox/Hand.enable_buttons()
+	$TipBox/Hand.update_hand_structure_buttons()
+	$TipBox/Hand/VBoxContainer/HBoxContainer.visible = true
 
 
 func choose_location():
@@ -28,10 +31,20 @@ func choose_location():
 	
 
 func on_touched(event):
+	var viewport_size : Vector2 = get_viewport().size
+	var event_global_position : Vector2 = (event.position-(viewport_size/2))/UIMan.camera.zoom + UIMan.camera.get_screen_center_position()
+	var event_tile_coordinate : Vector2
+	event_tile_coordinate.x = floor(float(event_global_position.x  + Settings.TILE_LENGTH/2) / Settings.TILE_LENGTH)
+	event_tile_coordinate.y = floor(float(event_global_position.y  + Settings.TILE_LENGTH/2) / Settings.TILE_LENGTH)
+	
+	#if StructureMan.get_structure_by_coordinate(event_tile_coordinate) != null:
+		#await structure_instance_info.update_info(StructureMan.get_structure_by_coordinate(event_tile_coordinate))
+	
 	if new_structure == null:
 		return
 	await set_marker_position(event.position)
 	await check_placeable()
+	
 
 
 func check_placeable():
@@ -96,7 +109,6 @@ func end_turn():
 		"white":
 			PlayerMan.white_hand.erase(new_structure.resource_path)
 	
-
 
 func _on_pass_pressed():
 	PlayerMan.go_to_next_turn()

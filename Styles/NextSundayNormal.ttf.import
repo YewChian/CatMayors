@@ -2,19 +2,20 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cq3vgig2erypa"
-path="res://.godot/imported/Pixeltype.ttf-64d0ce81b3802c692351beafaf9fa80e.fontdata"
+uid="uid://6mqc3kopb1pu"
+path="res://.godot/imported/NextSundayNormal.ttf-1bc3bb0d5655ee4e70b9df03cbb6ddfa.fontdata"
 
 [deps]
 
-source_file="res://Styles/Pixeltype.ttf"
-dest_files=["res://.godot/imported/Pixeltype.ttf-64d0ce81b3802c692351beafaf9fa80e.fontdata"]
+source_file="res://Styles/NextSundayNormal.ttf"
+dest_files=["res://.godot/imported/NextSundayNormal.ttf-1bc3bb0d5655ee4e70b9df03cbb6ddfa.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

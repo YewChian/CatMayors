@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=40 format=3 uid="uid://cwqmm1rc4fy0s"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" path="res://UI/IdleUI.gd" id="2_0u3m0"]
@@ -18,15 +18,68 @@
 [ext_resource type="Script" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
 [ext_resource type="Script" path="res://UI/DraftUI.gd" id="14_486mp"]
 [ext_resource type="Script" path="res://UI/Hand.gd" id="17_43ggv"]
+[ext_resource type="PackedScene" uid="uid://b32uginpqm7kl" path="res://UI/HideHandButton.tscn" id="17_tkh6c"]
 [ext_resource type="Script" path="res://UI/Timeline.gd" id="19_6a7bp"]
+[ext_resource type="Script" path="res://UI/ObserveUI.gd" id="19_hbekn"]
 [ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
+[ext_resource type="PackedScene" uid="uid://c3j2fpajvqrvl" path="res://UI/StructureInstanceInfo.tscn" id="20_xh85l"]
 [ext_resource type="Script" path="res://UI/TimeLeft.gd" id="21_fg20p"]
+[ext_resource type="PackedScene" uid="uid://bhdqi8vkxgqu1" path="res://UI/PauseMenu.tscn" id="21_whh0n"]
 [ext_resource type="Script" path="res://UI/Skip.gd" id="22_jpy4h"]
 [ext_resource type="Script" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
 [ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="23_bqvjb"]
+[ext_resource type="Script" path="res://UI/PauseButton.gd" id="24_difs8"]
 [ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="24_qjy5s"]
+[ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="24_up8a8"]
+[ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="25_581b6"]
 [ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="25_r63lr"]
 [ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
+
+[sub_resource type="Animation" id="Animation_ley0s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_41ctd"]
+resource_name = "urgent"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ljt12"]
+_data = {
+"RESET": SubResource("Animation_ley0s"),
+"urgent": SubResource("Animation_41ctd")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7h3w"]
+texture = ExtResource("25_581b6")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h8e5t"]
 animations = [{
@@ -61,17 +114,28 @@ visible = false
 script = ExtResource("2_0u3m0")
 
 [node name="DebugButtons" type="VBoxContainer" parent="UI/IdleUI"]
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -68.0
-offset_right = 132.0
-offset_bottom = 68.0
+offset_left = -107.5
+offset_top = -86.5
+offset_right = 107.5
+offset_bottom = 86.5
+grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="Title" type="Label" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+text = "CAT MAYORS"
+horizontal_alignment = 1
 
 [node name="GenerateMap" type="Button" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
-text = "Generate Map"
+text = "REROLL MAP"
 
 [node name="DraftButton" type="Button" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
@@ -354,71 +418,50 @@ visible = false
 script = ExtResource("3_4ltef")
 
 [node name="TipBox" type="VBoxContainer" parent="UI/ChooseLocationUI"]
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -114.0
-grow_horizontal = 0
+offset_top = -205.0
+offset_right = 208.0
 grow_vertical = 0
 theme = ExtResource("2_jxgaj")
 
 [node name="TurnLabel" type="Label" parent="UI/ChooseLocationUI/TipBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"BigLabel"
+horizontal_alignment = 1
 
 [node name="Tip" type="Label" parent="UI/ChooseLocationUI/TipBox"]
 layout_mode = 2
+horizontal_alignment = 1
 
-[node name="AcceptContainer" type="HBoxContainer" parent="UI/ChooseLocationUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -135.0
-offset_bottom = 40.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-
-[node name="Pass" type="Button" parent="UI/ChooseLocationUI/AcceptContainer"]
+[node name="Hand" type="PanelContainer" parent="UI/ChooseLocationUI/TipBox"]
 layout_mode = 2
-text = "Pass"
-
-[node name="Hand" type="PanelContainer" parent="UI/ChooseLocationUI"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -59.0
-offset_right = 140.0
-grow_vertical = 0
 theme = ExtResource("2_jxgaj")
 script = ExtResource("17_43ggv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/ChooseLocationUI/Hand"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ChooseLocationUI/TipBox/Hand"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/ChooseLocationUI/Hand/VBoxContainer"]
-layout_mode = 2
-text = "Drafted Cards"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/ChooseLocationUI/Hand/VBoxContainer"]
+[node name="HideHandButton" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer" instance=ExtResource("17_tkh6c")]
 layout_mode = 2
 
-[node name="StructureInfo" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer"]
+layout_mode = 2
+
+[node name="StructureInfo" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
 
-[node name="StructureInfo2" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+[node name="StructureInfo2" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
 
-[node name="StructureInfo3" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+[node name="StructureInfo3" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
 
-[node name="StructureInfo4" parent="UI/ChooseLocationUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+[node name="StructureInfo4" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
 
@@ -432,6 +475,7 @@ offset_bottom = 40.0
 
 [node name="Tip" type="Label" parent="UI/ChooseTileLocationUI/TipPanelContainer"]
 layout_mode = 2
+horizontal_alignment = 1
 
 [node name="AcceptContainer" type="HBoxContainer" parent="UI/ChooseTileLocationUI"]
 anchors_preset = 1
@@ -477,7 +521,8 @@ theme = ExtResource("2_jxgaj")
 
 [node name="TurnLabel" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"BigLabel"
+horizontal_alignment = 1
 
 [node name="Tip" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
 layout_mode = 2
@@ -512,6 +557,9 @@ layout_mode = 2
 text = "Drafted Cards"
 horizontal_alignment = 1
 
+[node name="HideHandButton" parent="UI/DraftUI/Hand/VBoxContainer" instance=ExtResource("17_tkh6c")]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/DraftUI/Hand/VBoxContainer"]
 layout_mode = 2
 
@@ -531,17 +579,55 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="ObserveUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("19_hbekn")
+
+[node name="CatBuildingInfo" type="PanelContainer" parent="UI/ObserveUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -535.0
+offset_top = -116.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ObserveUI/CatBuildingInfo"]
+layout_mode = 2
+
+[node name="ObserveTipBox" type="VBoxContainer" parent="UI/ObserveUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="Tip" type="Label" parent="UI/ObserveUI/CatBuildingInfo/VBoxContainer/ObserveTipBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Take some time to admire your creation."
+
 [node name="CommonUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 2
+visible = false
+
+[node name="PauseMenu" parent="CommonUI" instance=ExtResource("21_whh0n")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CommonUI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -66.0
-offset_right = 66.0
-offset_bottom = 40.0
-grow_horizontal = 2
+offset_right = 308.0
+offset_bottom = 59.0
 theme = ExtResource("2_jxgaj")
 
 [node name="Timeline" type="PanelContainer" parent="CommonUI/VBoxContainer"]
@@ -551,23 +637,47 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("19_6a7bp")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer/Timeline"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CommonUI/VBoxContainer/Timeline"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="RoundLabel" type="Button" parent="CommonUI/VBoxContainer/Timeline/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 5
+tooltip_text = "Click to toggle timeline visibilty"
+theme_type_variation = &"BigButton"
+
+[node name="TimelineHBox" type="HBoxContainer" parent="CommonUI/VBoxContainer/Timeline/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="Skip" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "End Turn"
+script = ExtResource("22_jpy4h")
+
+[node name="PauseButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause/Help"
+script = ExtResource("24_difs8")
 
 [node name="Scoreboard" type="PanelContainer" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard"]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="BlackCatTexture" type="TextureRect" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 texture = ExtResource("6_giubr")
 stretch_mode = 5
 
@@ -576,39 +686,51 @@ layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 1
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("7_2kt63")
 
 [node name="Container" type="Container" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 
 [node name="WhiteScore" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 1
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("8_5kguq")
 
 [node name="WhiteCatTexture" type="TextureRect" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 texture = ExtResource("7_mq5lf")
 stretch_mode = 5
 
 [node name="TimeLeft" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("24_up8a8")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("21_fg20p")
 
 [node name="TurnTimer" type="Timer" parent="CommonUI/VBoxContainer/HBoxContainer/TimeLeft"]
 unique_name_in_owner = true
-wait_time = 20.0
 
-[node name="Skip" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Skip"
-script = ExtResource("22_jpy4h")
+[node name="TimerAnimationPlayer" type="AnimationPlayer" parent="CommonUI/VBoxContainer/HBoxContainer/TimeLeft"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ljt12")
+}
 
 [node name="VictoryLabel" type="Label" parent="CommonUI/VBoxContainer"]
 visible = false
@@ -625,8 +747,20 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 7
 theme = ExtResource("2_jxgaj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_x7h3w")
 text = "Click when ready."
 script = ExtResource("23_5m5oo")
+
+[node name="StructureInstanceInfo" parent="CommonUI" instance=ExtResource("20_xh85l")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_right = 0.0
+offset_bottom = 82.0
+grow_horizontal = 0
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -653,9 +787,10 @@ pan_speed = 2.0
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFountain" to="UI/IdleUI/DebugButtons/CreateFountain" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateWhiteTileButton" to="UI/IdleUI/DebugButtons/CreateWhiteTileButton" method="_on_pressed"]
 [connection signal="item_selected" from="UI/IdleUI/DebugButtons/TurnButton" to="UI/IdleUI/DebugButtons/TurnButton" method="_on_item_selected"]
-[connection signal="pressed" from="UI/ChooseLocationUI/AcceptContainer/Pass" to="UI/ChooseLocationUI" method="_on_pass_pressed"]
 [connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Confirm" to="UI/ChooseTileLocationUI" method="_on_confirm_pressed"]
 [connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Cancel" to="UI/ChooseTileLocationUI" method="_on_cancel_pressed"]
-[connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/Timeline/VBoxContainer/RoundLabel" to="CommonUI/VBoxContainer/Timeline" method="_on_round_label_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/Skip" to="CommonUI/VBoxContainer/HBoxContainer/Skip" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/PauseButton" to="CommonUI/VBoxContainer/HBoxContainer/PauseButton" method="_on_pressed"]
+[connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="CommonUI/NextPlayerReady" to="CommonUI/NextPlayerReady" method="_on_pressed"]

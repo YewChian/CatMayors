@@ -1,14 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://4ct82h8vsc13"]
+[gd_scene load_steps=11 format=3 uid="uid://4ct82h8vsc13"]
 
+[ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_tkwlr"]
 [ext_resource type="Script" path="res://UI/StructureInfo.gd" id="1_xoyyw"]
+[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="2_lh3no"]
 [ext_resource type="StyleBox" uid="uid://csfyndq5jikdl" path="res://Styles/UnhighlightedButton.tres" id="2_m6pfh"]
 [ext_resource type="StyleBox" uid="uid://snaixfnew7ko" path="res://Styles/HighlightedButton.tres" id="3_gvv8m"]
+[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="3_gw7a8"]
+[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="4_1x1lt"]
+[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="5_y6ft0"]
+[ext_resource type="Script" path="res://Structures/EntranceIndicator.gd" id="6_hc506"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4oqu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lh3no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gw7a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1x1lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y6ft0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="StructureInfo" type="PanelContainer"]
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_tkwlr")
 script = ExtResource("1_xoyyw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -27,29 +54,51 @@ layout_mode = 2
 text = "Hello"
 horizontal_alignment = 1
 
-[node name="StructureTexture" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StructureTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 stretch_mode = 5
 
-[node name="Cats" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="InfoEntranceIndicator" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/CenterContainer/StructureTexture"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_4oqu3")
+centered = false
+script = ExtResource("6_hc506")
+
+[node name="CardText" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CardText"]
+layout_mode = 2
+
+[node name="Color" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="StatGains" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Cats" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Stars" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="StatGains" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Stars" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("2_m6pfh")
 theme_override_styles/hover = ExtResource("3_gvv8m")
+theme_override_styles/normal = ExtResource("2_m6pfh")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

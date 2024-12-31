@@ -5,8 +5,8 @@ var target_structure_path : String
 
 func initialize():
 	await %Timeline.update_timeline()
-	%DraftTipBox/TurnLabel.text = str(PlayerMan.turn_color) + "'s turn."
-	%DraftTipBox/Tip.text = "Choose one structure. The other will go to your opponent."
+	%DraftTipBox/TurnLabel.text = "BLUEPRINT SHOP"
+	%DraftTipBox/Tip.text = "Buy a structure. The other will go to your opponent."
 	$Hand.update_hand_structure_buttons()
 	$Hand.disable_buttons()
 	await initialize_draftable_structures()
