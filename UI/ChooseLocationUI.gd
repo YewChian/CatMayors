@@ -44,9 +44,9 @@ func on_touched(event):
 		return
 	await set_marker_position(event.position)
 	await check_placeable()
+	#await highlight_reachable_tiles()
 	
-
-
+	
 func check_placeable():
 	is_placeable = true
 	await check_color_match()
@@ -112,3 +112,16 @@ func end_turn():
 
 func _on_pass_pressed():
 	PlayerMan.go_to_next_turn()
+
+
+# implement when polishing
+func highlight_reachable_tiles():
+	var temp_structure = new_structure.instantiate()
+	temp_structure.initialize_stats()
+	
+	var origin_coord = temp_structure.entrance_coordinate + (get_marker_position() / Settings.TILE_LENGTH)
+	var dummy_rock = load("res://Structures/Rock.tscn").instantiate()
+	get_tree().current_scene.add_child(dummy_rock)
+	dummy_rock.global_position = origin_coord * Settings.TILE_LENGTH
+	
+	temp_structure.queue_free()

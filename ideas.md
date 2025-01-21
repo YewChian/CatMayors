@@ -18,8 +18,9 @@ Highest Score Wins
 
 
 ## Where do you place a structure?
-1. Colors matter of course. colors limit where you can place them.
+1. Colors limit where you can place them.
 2. Nature type structures should be as near houses as possible
+
 ### potential ideas influencing structure placement
 1. structures open at the same time of the day work well together
 2. structures targeting specific types of cats work well together (e.g. candyshop and dentist)
@@ -147,7 +148,7 @@ mechanics: these buildings make your future plays have more constraints, but the
 ## Tiles
 Strutures are placed on tiles that measure 64x64. Each tile determines the kind of structure that can be placed on it.
 1. Green (Neutral)
-	Green tiles are the best. Build anything on it!. Green tiles turn brown over time when cats
+	Green tiles are the best. Build anything on it! Green tiles turn brown over time when cats
 	walk on them.
 2. Red (Rugged)
 	Red tiles symbolise an uneven or hilly terrain. *Bustle* can't be built here.
@@ -210,8 +211,13 @@ roads
 industrial (factories, manufacturing)
 landmarks (statues, culturally important structures) - if this structure has been visited more than 50 times, cats that visit it gain twice the stars. otherwise, gain 0 stars.
 
+## 2025 Plan
+
 ### NEW CAT MOVEMENT RULES:
 1. Cats will only visit the nearest structure.
 2. Cats need to go home and take a nap after visiting any structure.
 3. For every 1 curiosity, cats can visit 1 nearest structure.
 4. When a cat visits any structure, your color gains stars based on the level of the structure.
+
+### NO TILES ALLOWED
+1. To keep things simple, you may only build buildings (duh)

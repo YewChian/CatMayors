@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=41 format=3 uid="uid://cwqmm1rc4fy0s"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" path="res://UI/IdleUI.gd" id="2_0u3m0"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://UI/Timeline.gd" id="19_6a7bp"]
 [ext_resource type="Script" path="res://UI/ObserveUI.gd" id="19_hbekn"]
 [ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
+[ext_resource type="Script" path="res://UI/DecorShopUI.gd" id="20_o7req"]
 [ext_resource type="PackedScene" uid="uid://c3j2fpajvqrvl" path="res://UI/StructureInstanceInfo.tscn" id="20_xh85l"]
 [ext_resource type="Script" path="res://UI/TimeLeft.gd" id="21_fg20p"]
 [ext_resource type="PackedScene" uid="uid://bhdqi8vkxgqu1" path="res://UI/PauseMenu.tscn" id="21_whh0n"]
@@ -576,6 +577,87 @@ visible = false
 layout_mode = 2
 
 [node name="StructureInfo4" parent="UI/DraftUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="DecorShopUI" type="CanvasLayer" parent="UI"]
+script = ExtResource("20_o7req")
+
+[node name="DecorInfo" type="PanelContainer" parent="UI/DecorShopUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -535.0
+offset_top = -116.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DecorShopUI/DecorInfo"]
+layout_mode = 2
+
+[node name="DecorShopTipBox" type="VBoxContainer" parent="UI/DecorShopUI/DecorInfo/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_jxgaj")
+
+[node name="TurnLabel" type="Label" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorShopTipBox"]
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+horizontal_alignment = 1
+
+[node name="Tip" type="Label" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorShopTipBox"]
+layout_mode = 2
+
+[node name="DecorButtons" type="HBoxContainer" parent="UI/DecorShopUI/DecorInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="DecorInfo" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="DecorInfo2" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="Hand" type="PanelContainer" parent="UI/DecorShopUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 44.0
+grow_vertical = 0
+theme = ExtResource("2_jxgaj")
+script = ExtResource("17_43ggv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DecorShopUI/Hand"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/DecorShopUI/Hand/VBoxContainer"]
+layout_mode = 2
+text = "Drafted Cards"
+horizontal_alignment = 1
+
+[node name="HideHandButton" parent="UI/DecorShopUI/Hand/VBoxContainer" instance=ExtResource("17_tkh6c")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/DecorShopUI/Hand/VBoxContainer"]
+layout_mode = 2
+
+[node name="StructureInfo" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo2" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo3" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="StructureInfo4" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
 
