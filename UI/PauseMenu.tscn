@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhdqi8vkxgqu1"]
 
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_h423w"]
-[ext_resource type="Script" path="res://UI/Rules.gd" id="1_xarry"]
+[ext_resource type="Script" uid="uid://cqjnoc2cga50k" path="res://UI/Rules.gd" id="1_xarry"]
 
 [node name="PauseMenu" type="MarginContainer"]
 process_mode = 3

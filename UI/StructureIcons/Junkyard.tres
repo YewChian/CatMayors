@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dgbnp5avo56no"]
+
+[ext_resource type="Texture2D" uid="uid://b5j1dbuqwg15e" path="res://Assets/Structures/Junkyard.png" id="1_ywbjc"]
+
+[resource]
+atlas = ExtResource("1_ywbjc")
+region = Rect2(0, 0, 128, 128)

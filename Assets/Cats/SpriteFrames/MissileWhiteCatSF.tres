@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://chbab3yfic4aa"]
+
+[ext_resource type="Texture2D" uid="uid://d37hfx4e3lhbd" path="res://Assets/Cats/MissileWhiteCat/MissileWhiteCat1.png" id="1_vms5p"]
+[ext_resource type="Texture2D" uid="uid://dne35cs62ehe8" path="res://Assets/Cats/MissileWhiteCat/MissileWhiteCat2.png" id="2_8icf7"]
+[ext_resource type="Texture2D" uid="uid://dmdua0y5gaflg" path="res://Assets/Cats/MissileWhiteCat/MissileWhiteCat3.png" id="3_e51s5"]
+[ext_resource type="Texture2D" uid="uid://cu4thqkjrqd28" path="res://Assets/Cats/MissileWhiteCat/MissileWhiteCat4.png" id="4_67cvt"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vms5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8icf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e51s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_67cvt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

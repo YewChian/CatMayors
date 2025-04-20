@@ -6,4 +6,7 @@ const SIZE : int = 2000
 const GREEN_EXPANSION_PROBABILITY : float = 0.5
 const RED_EXPANSION_PROBABILITY : float = 0.2
 const TURN_DURATION: float = 30.0
-const MAX_ROUNDS: int = 3
+const MAX_ROUNDS: int = 4
+const BASE_CURIOSITY: int = 5
+
+var REST_DURATION_MULTIPLIER: int = 1

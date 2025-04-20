@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://df6si7mhadv0b"]
+
+[ext_resource type="Texture2D" uid="uid://d4au4s2cuecdv" path="res://Assets/Structures/PileOfCleanLaundry.png" id="1_ggxep"]
+
+[resource]
+atlas = ExtResource("1_ggxep")
+region = Rect2(0, 0, 64, 64)

@@ -1,10 +1,16 @@
 extends TextureProgressBar
 @onready var structure = get_parent()
 
-func show_activity_progress():
+func show_activity_progress(is_cat_spooked: bool):
 	visible = true
-	max_value = structure.activity_duration
-	$Timer.start(structure.activity_duration)
+	var duration: float
+	if is_cat_spooked:
+		duration = 1.0
+	else:
+		duration = structure.activity_duration
+		
+	max_value = duration
+	$Timer.start(duration)
 	value = max_value - $Timer.time_left
 
 

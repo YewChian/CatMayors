@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://sckimgngl6gh"]
+
+[ext_resource type="Texture2D" uid="uid://ca25e733qmc6t" path="res://Assets/Structures/CatnipAlley.png" id="1_wo8fe"]
+
+[resource]
+atlas = ExtResource("1_wo8fe")
+region = Rect2(0, 0, 128, 128)

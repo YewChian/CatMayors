@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://0lsmpb2rcsc7"]
+
+[ext_resource type="PackedScene" uid="uid://dwowkshxcinu7" path="res://Tiles/Tile.tscn" id="1_yu7te"]
+[ext_resource type="Texture2D" uid="uid://bu5kqpooqvwb8" path="res://Assets/PurpleTile.png" id="2_yu7te"]
+
+[node name="PurpleTile" instance=ExtResource("1_yu7te")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_yu7te")

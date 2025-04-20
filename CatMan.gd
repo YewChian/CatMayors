@@ -65,28 +65,42 @@ var personalities = {
 	}
 }
 
-func create_cat(color : String, home_id : int):
+var equipment_data = {
+	"none": {},
+	"tincan": {
+		"zoomies": 1.5,
+	},
+	"skate": {
+		"zoomies": 2.0,
+	},
+	"missile": {
+		"zoomies": 2.5,
+	},
+
+}
+
+func create_cat(color : String):
 	randomize()
 	var new_cat = cat_resource.instantiate()
 	all_names.shuffle()
 	var new_id = all_names.pop_front()
 	set_cat(new_id, new_cat)
 	new_cat.id = new_id
-	await new_cat.set_color(color)
-	new_cat.home_id = home_id
-	new_cat.max_curiosity = 6
-	new_cat.curiosity = 6
+	new_cat.color = color
+	new_cat.max_curiosity = Settings.BASE_CURIOSITY
+	new_cat.curiosity = Settings.BASE_CURIOSITY
 	new_cat.snacks = randi_range(1,5)
 	new_cat.tricks = randi_range(1,5)
 	new_cat.naps = randi_range(1,5)
-	await new_cat.update_size()
+	new_cat.num_ingredients = 0
+	new_cat.num_cooked_ingredients = 0
+	new_cat.rest_duration_stat = 5 # respresents the amount of time in secoonds a cat needs to rest
+	new_cat.aura = "neutral"
+	await new_cat.set_sprite(color, "walking")
 	get_tree().current_scene.add_child(new_cat)
-	var home_structure = StructureMan.get_structure_by_id(home_id)
-	new_cat.global_position = (home_structure.entrance_coordinate + home_structure.coordinate) * Settings.TILE_LENGTH
-	home_structure.cats.append(new_cat)
 	new_cat.add_to_group(color)
 	
-	new_cat.enter_state("wander")
+	return new_cat
 
 
 func set_cat(id : String, cat : Object):

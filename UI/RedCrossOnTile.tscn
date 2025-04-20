@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo04ysvmqnacc"]
+
+[ext_resource type="Texture2D" uid="uid://b85kaq8p6s6ny" path="res://Assets/UI/RedCrossOnTile.png" id="1_2b76t"]
+
+[node name="RedCrossOnTile" type="Sprite2D"]
+texture = ExtResource("1_2b76t")

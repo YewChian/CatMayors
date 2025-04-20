@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dnll7u8xqi73i"]
+
+[ext_resource type="Texture2D" uid="uid://b6pgkxhw2gtt0" path="res://Assets/Structures/HostelGoodNeet.png" id="1_secgu"]
+
+[resource]
+atlas = ExtResource("1_secgu")
+region = Rect2(0, 0, 128, 128)

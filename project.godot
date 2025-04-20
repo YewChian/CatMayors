@@ -12,7 +12,7 @@ config_version=5
 
 config/name="CatBirdCity"
 run/main_scene="res://Main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="res://Assets/GameIcon.png"
 config/icon="res://icon.svg"
 
@@ -24,6 +24,8 @@ UIMan="*res://UIMan.gd"
 CatMan="*res://CatMan.gd"
 StructureMan="*res://StructureMan.gd"
 PlayerMan="*res://PlayerMan.gd"
+StructureData="*res://StructureData.gd"
+KittenBot="*res://KittenBot.gd"
 
 [input_devices]
 

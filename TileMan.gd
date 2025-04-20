@@ -10,7 +10,8 @@ const TILE_SCENES : Dictionary = {
 	"red" : preload("res://Tiles/RedTile.tscn"),
 	#"grey" : preload("res://Tiles/GreyTile.tscn"),
 	"null" : preload("res://Tiles/NullTile.tscn"),
-	"white" : preload("res://Tiles/WhiteTile.tscn")
+	"white" : preload("res://Tiles/WhiteTile.tscn"),
+	"purple": preload("res://Tiles/PurpleTile.tscn")
 }
 
 
@@ -36,7 +37,10 @@ func create_tile(color : String, coordinate : Vector2):
 			astar.add_point(current_id, coordinate, 1)
 			current_id += 1
 		"red":
-			astar.add_point(current_id, coordinate, 2)
+			astar.add_point(current_id, coordinate, 1)
+			current_id += 1
+		"purple":
+			astar.add_point(current_id, coordinate, 1)
 			current_id += 1
 		"blue":
 			astar.add_point(current_id, coordinate, 1)

@@ -25,22 +25,18 @@ func _ready() -> void:
 	 be built at the end of the turn automatically.
 	4. Structures cannot be built on any tile adjacent to
 	 any entrance of existing structures.
-	
+	5. When built, the tile belonging to the structure's entrance becomes a green tile.
+
 	Structures:
-	1. When built, structures that 'Gain X cats' will
-	 create X cats on the belonging to the player
-	2. When visited by a cat, structures that
-	 'Gain stars' will give the player owning the cat stars
-	3. When visited by a cat, structures that 'Gain tricks/snacks/naps' 
-	will permanently increase the respective stats of the cat
-	4. The 'entrance' of a structure is indicated by a golden outline.
-	5. Structures cannot be walked on, except their entrances.
-	6. Structures can only be visited by one cat at a time.
+	1. The 'entrance' of a structure is indicated by a golden outline.
+	2. Structures cannot be walked on, except their entrances.
+	3. Structures can only be visited by one cat at a time.
 	
 	Cats:
-	1. When cats walk 1 tile, they lose 1 curiosity.
-	2. Cats will visit the nearest structure first.
-	3. Cats will not visit the same structure again, until they return home.
-	2. When cats run out of curiosity, they return to their
+	1. Cats gain stars equivalent to the structure's level each time they visit that structure.
+	2. When cats walk 1 tile, they lose 1 curiosity.
+	3. Cats will visit the nearest structure first.
+	4. Cats will not visit the same structure again, until they return home.
+	5. When cats run out of curiosity, they return to their
 	 home structure to rest for a certain duration.
 	"

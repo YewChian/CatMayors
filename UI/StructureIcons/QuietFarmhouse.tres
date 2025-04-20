@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://biuhl62rtuswy"]
+
+[ext_resource type="Texture2D" uid="uid://bj0c6k8nnpyqh" path="res://Assets/Structures/QuietFarmhouse.png" id="1_g7dno"]
+
+[resource]
+atlas = ExtResource("1_g7dno")
+region = Rect2(0, 0, 128, 128)

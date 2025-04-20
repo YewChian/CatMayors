@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dva81jcrwhplu"]
+
+[ext_resource type="Texture2D" uid="uid://brkqupvsetwxn" path="res://Assets/Structures/Flowerbed.png" id="1_ictib"]
+
+[resource]
+atlas = ExtResource("1_ictib")
+region = Rect2(0, 0, 64, 64)

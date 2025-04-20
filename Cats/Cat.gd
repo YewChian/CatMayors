@@ -10,105 +10,135 @@ var tricks : int
 var naps : int
 var max_curiosity : int
 var curiosity : int
+var num_ingredients: int
+var num_cooked_ingredients: int
+var rest_duration_stat: int
 var earned_stars: int = 0
 var visited_structure_entrances: Array = []
-
-func set_color(new_color : String):
-	color = new_color
-	match new_color:
-		"black":
-			$Bodies.texture = load("res://Assets/Cats/BlackCatBodies.png")
-			$Legs.texture = load("res://Assets/Cats/BlackCatLegs.png")
-			$Tails.texture = load("res://Assets/Cats/BlackCatTails.png")
-		"white":
-			$Bodies.texture = load("res://Assets/Cats/WhiteCatBodies.png")
-			$Legs.texture = load("res://Assets/Cats/WhiteCatLegs.png")
-			$Tails.texture = load("res://Assets/Cats/WhiteCatTails.png")
+var aura: String = "neutral"
+var aura_duration: int = 0
+var move_speed: float = 1
+var equipment: String = "none"
 
 
-func update_size():
-	if snacks <= 5:
-			$Bodies.frame = 0
-	elif snacks <= 15:
-			$Bodies.frame = 1
-	elif snacks <= 30:
-			$Bodies.frame = 2
-	elif snacks <= 60:
-			$Bodies.frame = 3
-	elif snacks > 60:
-			$Bodies.frame = 4
-		
-	if tricks <= 5:
-			$Tails.frame = 0
-	elif tricks <= 15:
-			$Tails.frame = 1
-	elif tricks <= 30:
-			$Tails.frame = 2
-	elif tricks <= 60:
-			$Tails.frame = 3
-	elif tricks > 60:
-			$Tails.frame = 4
+func set_sprite(new_color: String, new_vehicle: String):
+	var sprite_frames_path: String
+	var uppercase_color = new_color[0].to_upper() + new_color.substr(1,-1)
+	var uppercase_vehicle = new_vehicle[0].to_upper() + new_vehicle.substr(1,-1)
 
-	if naps <= 5:
-			$Legs.frame = 0
-	elif naps <= 15:
-			$Legs.frame = 1
-	elif naps <= 30:
-			$Legs.frame = 2
-	elif naps <= 60:
-			$Legs.frame = 3
-	elif naps > 60:
-			$Legs.frame = 4
+	sprite_frames_path = "res://Assets/Cats/SpriteFrames/" + uppercase_vehicle + uppercase_color + "CatSF.tres"
+	$AnimatedSprite2D.sprite_frames = load(sprite_frames_path)
+	$AnimatedSprite2D.play()
+	
+
 
 func decide_destination():
 	var possible_destinations = []
 	for structure in StructureMan.structures.values():
 		var entrance = structure.entrance_coordinate + structure.coordinate
 		if entrance == StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate(): 
+			# printerr(structure.structure_name, " is home, skipped by ", id)
 			continue	# skip home structure
 		if entrance == get_coordinate(): 
+			# printerr(structure.structure_name, " is current, skipped by ", id)
 			continue	# skip current_structure
 		if entrance in visited_structure_entrances:
+			# printerr(structure.structure_name, " is visited, skipped by ", id)
 			continue	# skip visited structures
-		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance))) > curiosity:
+		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance)))-1 > curiosity:
+			# printerr(structure.structure_name, " is faraway, skipped by ", id)
 			continue	# skip faraway structures
 		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance))) == 0:
+			# printerr(structure.structure_name, " is blocked, skipped by ", id)
 			continue	# if path is blocked
 		possible_destinations.push_back(entrance)
 	
-	if len(possible_destinations) > 0:
-		var shortest_distance = 999999	# arbitrary large number
-		var	nearest_destinations = []
-		for destination_coord in possible_destinations:
-			var distance = destination_coord.distance_to(get_coordinate())
-			if distance == shortest_distance:
-				nearest_destinations.append(destination_coord)
-				continue
-			if distance < shortest_distance:
-				shortest_distance = distance
-				nearest_destinations = []
-				nearest_destinations.append(destination_coord)
-				continue
-		assert(shortest_distance != 999999)
-		
-		if len(nearest_destinations) == 1:
-			return nearest_destinations[0]
-		if len(nearest_destinations) > 1:
-			randomize()
-			nearest_destinations.shuffle()
-			return nearest_destinations.pop_front()
-	
-	else:
-		return StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate()
+	match aura:
+		"adventurous": # skips the nearest destination
+			if len(possible_destinations) <= 0:
+				return StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate()
+				#print(id, " can reach these places: ",  possible_destinations)
+			var shortest_distance = 999999	# arbitrary large number
+			var	nearest_destinations = []
+			for destination_coord in possible_destinations:
+				var distance = destination_coord.distance_to(get_coordinate())
+				if distance == shortest_distance:
+					nearest_destinations.append(destination_coord)
+					continue
+				if distance < shortest_distance:
+					shortest_distance = distance
+					nearest_destinations = []
+					nearest_destinations.append(destination_coord)
+					continue
 
+			assert(shortest_distance != 999999)
+			for destination in nearest_destinations:
+				possible_destinations.erase(destination)
+
+			if len(possible_destinations) <= 0:
+				return StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate()
+				#print(id, " can reach these places: ",  possible_destinations)
+			# look for nearest_destinations again
+			shortest_distance = 999999	# arbitrary large number
+			nearest_destinations = []
+			for destination_coord in possible_destinations:
+				var distance = destination_coord.distance_to(get_coordinate())
+				if distance == shortest_distance:
+					nearest_destinations.append(destination_coord)
+					continue
+				if distance < shortest_distance:
+					shortest_distance = distance
+					nearest_destinations = []
+					nearest_destinations.append(destination_coord)
+					continue
+
+			if len(nearest_destinations) == 1:
+				return nearest_destinations[0]
+			if len(nearest_destinations) > 1:
+				randomize()
+				nearest_destinations.shuffle()
+				return nearest_destinations.pop_front()
+		
+		_:
+			if len(possible_destinations) <= 0:
+				return StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate()
+				#print(id, " can reach these places: ",  possible_destinations)
+			# look for nearest_destinations again
+			var shortest_distance = 999999	# arbitrary large number
+			var	nearest_destinations = []
+			for destination_coord in possible_destinations:
+				var distance = destination_coord.distance_to(get_coordinate())
+				if distance == shortest_distance:
+					nearest_destinations.append(destination_coord)
+					continue
+				if distance < shortest_distance:
+					shortest_distance = distance
+					nearest_destinations = []
+					nearest_destinations.append(destination_coord)
+					continue
+
+			if len(nearest_destinations) == 1:
+				return nearest_destinations[0]
+			if len(nearest_destinations) > 1:
+				randomize()
+				nearest_destinations.shuffle()
+				return nearest_destinations.pop_front()
 
 		
 func go_to_coordinate(target_coordinate : Vector2):
+	visited_structure_entrances.append(target_coordinate)
+
 	var path = (TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(target_coordinate)))
 	for coordinate in path:
+		if coordinate == get_coordinate():
+			continue
 		curiosity = max(0, curiosity - 1)
+
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", coordinate*Settings.TILE_LENGTH, 1)
+		var move_duration = 1 / move_speed
+		if CatMan.equipment_data[equipment].has("zoomies"): 
+			move_duration *= (1/CatMan.equipment_data[equipment]["zoomies"])
+		tween.tween_property(self, "global_position", coordinate*Settings.TILE_LENGTH, move_duration)
 		await tween.finished
 		tween.kill()
 
@@ -148,37 +178,92 @@ func interact_structure():
 	if can_enter == false:
 		enter_state("queue")
 		return
+	print("start entering structure")
 	$AnimationPlayer.play("enter_structure")
 	await $AnimationPlayer.animation_finished
+	print("end entering structure")
 	interactable_structure.start_activity(self)
 
 
 func leave_structure():
 	$AnimationPlayer.play("leave_structure")
 	await $AnimationPlayer.animation_finished
-	await update_size()
 	enter_state("wander")
 	
 
 func gain_snacks(number : int):
 	snacks += number
-	print("got some snacks: ", number)
 	
 
 func gain_tricks(number : int):
 	tricks += number
-	print("got some tricks: ", number)
 
 
 func gain_naps(number : int):
 	naps += number
-	print("got some naps: ", number)
 	
 
 func gain_curiosity(number : int):
 	curiosity += number
-	print("got some curiosity: ", number)
 
+
+func gain_max_curiosity(number : int):
+	max_curiosity += number
+
+
+func gain_ingredients(number : int):
+	num_ingredients += number
+
+
+func gain_cooked_ingredients(number : int):
+	num_cooked_ingredients += number
+
+
+func gain_stars(number : int):
+	for i in range(number):
+		earned_stars += 1
+		match color:
+			"black":
+				PlayerMan.black_stars += 1
+			"white":
+				PlayerMan.white_stars += 1
+				
+		play_stars_animation(color)
+		await get_tree().create_timer(0.2).timeout
+	
+
+func play_stars_animation(star_color):
+	var rotating_frames = load("res://Assets/UI/RotatingStarFrames.tres")
+	var tween = get_tree().create_tween()
+	var new_fx = AnimatedSprite2D.new()
+	%StarFX.add_child(new_fx)
+	new_fx.sprite_frames = load("res://Assets/UI/RotatingStarFrames.tres")
+	
+	match color:
+		"black":
+			new_fx.animation = "black"
+		"white":
+			new_fx.animation = "white"
+
+	new_fx.play()
+	tween.tween_property(new_fx, "global_position", new_fx.global_position+Vector2(0, -128), 1.2).set_trans(Tween.TRANS_SPRING)
+	
+
+func gain_aura(aura_type: String, num_of_visits_duration: int):
+	aura = aura_type
+	aura_duration = num_of_visits_duration
+
+
+func gain_equipment(equipment_type: String):
+	equipment = equipment_type
+	await set_sprite(color, equipment_type)
+	
+
+func decrement_aura_duration():
+	aura_duration -= 1
+	if aura_duration == 0:
+		aura = "neutral"
+		
 	
 func enter_state(new_state : String):
 	var previous_state = state
@@ -187,9 +272,12 @@ func enter_state(new_state : String):
 		"wander":
 			var new_destination = decide_destination()
 			if new_destination == get_coordinate():
-				print("Cat is already home")
-				await get_tree().create_timer(5).timeout
-				enter_state("wander")
+				if curiosity < max_curiosity:
+					enter_state("rest")
+
+				elif curiosity == max_curiosity:
+					await get_tree().create_timer(5).timeout
+					enter_state("wander")
 				
 			else:
 				CatMan.has_moving_cats = true
@@ -199,24 +287,51 @@ func enter_state(new_state : String):
 			await interact_structure()
 		
 		"rest":
-			if previous_state != "rest":
-				$AnimationPlayer.play("enter_structure")
-				await $AnimationPlayer.animation_finished
-				$AnimationPlayer.play("start_rest")
-			await get_tree().create_timer(1).timeout
-			curiosity += 1
-			if curiosity < max_curiosity:
-				enter_state("rest")
-			else:
-				$AnimationPlayer.play("stop_rest")
-				await $AnimationPlayer.animation_finished
-				$AnimationPlayer.play("leave_structure")
-				await $AnimationPlayer.animation_finished
-				enter_state("wander")
+			$AnimationPlayer.play("enter_structure")
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("start_rest")
+			await get_tree().create_timer(rest_duration_stat * Settings.REST_DURATION_MULTIPLIER).timeout
+			curiosity = max_curiosity
+			$AnimationPlayer.play("stop_rest")
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("leave_structure")
+			await $AnimationPlayer.animation_finished
+			visited_structure_entrances = []
+			enter_state("wander")
 				
 		"queue":
 			await get_tree().create_timer(1).timeout
 			enter_state("interact_structure")
 
+
+
+func consume_ingredients():
+	curiosity += num_ingredients
+	var new_log: String = id + " ate his ingredients! It gained " + str(num_ingredients) + " curiosity temporarily"
+	print(new_log)
+	await get_tree().current_scene.add_to_log(new_log)
+	num_ingredients = 0 
+	
+
+
 func _physics_process(delta):
-	$Stats.text = str(str(snacks) + "S " + str(tricks) + "T " + str(naps) + "N")
+	$Stats.text = str(curiosity) + " curio"
+	$Stats.text += "\n"
+	$Stats.text += str(num_ingredients) + " ingrd"
+	$Stats.text += "\n"
+	$Stats.text += str(num_cooked_ingredients) + " c ingrd"
+	$Stats.text += "\n"
+	$Stats.text += aura
+	
+
+func _on_mouse_entered() -> void:
+	var cat_instance_info_node = get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer2/CatInstanceInfo")
+	cat_instance_info_node.visible = true
+	await cat_instance_info_node.update_info()
+	# maybe highlight the speciic cat's info?
+	# or maybe, we shouldnt bring up the menu. we shold just show the cat's name
+	
+
+func _on_mouse_exited() -> void:
+	var cat_instance_info_node = get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer2/CatInstanceInfo")
+	cat_instance_info_node.visible = false

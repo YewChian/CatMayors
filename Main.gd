@@ -3,6 +3,11 @@ extends Node2D
 func _ready():
 	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
 	
+func disable_player_input():
+	await set_process_input(false)
+
+func add_to_log(new_line: String):
+	%Log.text = new_line
 
 func create_map(size : int, expansion_probability : float):
 	await TileMan.initialize_tile_dictionary(size)
@@ -11,6 +16,7 @@ func create_map(size : int, expansion_probability : float):
 	var min_num_green_tiles : int = 10
 	var num_green_tiles : int = 0
 	var num_blue_tiles : int = 0
+	var num_purple_tiles: int = 0
 	
 	# Create grass tiles to fill the area specified
 	print("grass")
@@ -58,6 +64,8 @@ func create_map(size : int, expansion_probability : float):
 		if tile.color == "green":
 			green_tile_coordinates.push_back(tile.coordinate)
 	
+
+	
 	var num_origin_red_tiles : int = max_num_red_tiles / 10
 	for i in num_origin_red_tiles:
 		var random_index = randi_range(0, len(green_tile_coordinates)-1)
@@ -78,8 +86,28 @@ func create_map(size : int, expansion_probability : float):
 		num_red_tiles += 1
 		for direction in Settings.DIRECTIONS:
 			red_tile_coordinates.push_back(coordinate + direction)
+			
+	print("swamps?")
+	var max_num_purple_tiles : int = max_num_green_tiles / 8
+	var red_and_green_tiles = red_tile_coordinates.duplicate(true)
+	red_and_green_tiles.append_array(green_tile_coordinates)
+	randomize()
+	red_and_green_tiles.shuffle()
+	for coord in red_and_green_tiles.slice(0, max_num_purple_tiles):
+		await TileMan.create_tile("purple", coord)
+		
 	
 	await TileMan.connect_tiles(TileMan.tiles.keys())
 
 func _on_generate_map_pressed():
 	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
+
+
+func _on_godcat_mode_button_toggled(toggled_on: bool) -> void:
+	match toggled_on:
+		true:
+			Settings.CAT_MOVE_DURATION = 0.1
+			Settings.REST_DURATION_MULTIPLIER = 0.2
+		false:
+			Settings.CAT_MOVE_DURATION = 1
+			Settings.REST_DURATION_MULTIPLIER = 1

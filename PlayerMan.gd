@@ -1,21 +1,29 @@
 extends Node
 
+var mode: String
+
 var black_stars : int = 0
 var white_stars : int = 0
-
 
 var black_hand : Array = []
 var white_hand : Array = []
 
-var phases = ["DraftUI", "DraftUI", "ChooseLocationUI", "ChooseLocationUI", "ChooseLocationUI", "ObserveUI"]
+var phases = ["DraftUI", "DraftUI", "ChooseLocationUI", "ChooseLocationUI", "ChooseLocationUI", "ObserveUI", "EventUI"]
 var phase_index : int = 0
 var turn_color : String = "black"
 var turn_color_order = ["black", "white"]
 var turn_index : int = 0
 var round : int = 0
+var total_turns: int = 0
 	
+
+func add_initial_structures_to_hand():
+	black_hand.append("Rock")
+	white_hand.append("Rock")
+
 	
 func go_to_next_turn():
+	total_turns += 1
 	turn_index = (turn_index + 1) % len(turn_color_order)
 	if turn_index == 0:
 		phase_index = (phase_index + 1) % len(phases)
@@ -29,7 +37,10 @@ func go_to_next_turn():
 		end_game()
 	else:
 		await UIMan.enter_mode(phases[phase_index])
-		await get_tree().current_scene.get_node("CommonUI/NextPlayerReady").show_next_player_button()
+		if mode == "KittenBot" and turn_color == "white":
+			return	# don't show the next player button
+		else:
+			await get_tree().current_scene.get_node("CommonUI/NextPlayerReady").show_next_player_button()
 
 
 func end_game():
