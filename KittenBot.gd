@@ -121,5 +121,10 @@ func get_tile_ring_of_x_depth(origin_coord, x):
 
 	return tile_ring
 
-
-		
+func choose_purple_tile_replacements():
+	print("kittenbot looking for replacements")
+	var event_ui = get_tree().current_scene.get_node("UI/EventUI")
+	await show_thinking(1)
+	var tile_buttons = event_ui.get_node("EventPanelContainer/VBoxContainer/EventOptions").get_children()
+	tile_buttons.shuffle()
+	await tile_buttons[0].emit_signal("pressed")

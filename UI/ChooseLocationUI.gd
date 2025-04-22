@@ -117,7 +117,7 @@ func end_turn():
 		return
 	
 	var new_coordinate = get_marker_position()/Settings.TILE_LENGTH
-	await StructureMan.create_structure(new_structure, new_coordinate)
+	await StructureMan.create_structure(new_structure, new_coordinate, PlayerMan.turn_color)
 	match PlayerMan.turn_color:
 		"black":
 			PlayerMan.black_hand.erase(new_structure)

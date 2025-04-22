@@ -4,6 +4,9 @@ func initialize():
 	await %Timeline.update_timeline()
 	get_node("EventPanelContainer").visible = true
 
+	if PlayerMan.mode == "KittenBot" and PlayerMan.turn_color == "white":
+		await get_tree().current_scene.disable_player_input()
+		await KittenBot.choose_purple_tile_replacements()
 
 func transform_purple_tiles_into(new_color: String):
 	var num_tiles = 5 
@@ -24,7 +27,6 @@ func transform_tile_into(color: String, coord: Vector2):
 	cross.global_position = coord * Settings.TILE_LENGTH
 	var num_flashes = 3
 	for i in range(num_flashes):
-		print("flashing")
 		cross.visible = false
 		await get_tree().create_timer(1).timeout
 		cross.visible = true
@@ -41,7 +43,6 @@ func on_touched(event):
 func _on_green_tiles_button_pressed() -> void:
 	get_node("EventPanelContainer").visible = false
 	await transform_purple_tiles_into("green")
-	
 
 
 func _on_red_tiles_button_pressed() -> void:

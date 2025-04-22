@@ -702,7 +702,6 @@ visible = false
 script = ExtResource("19_hbekn")
 
 [node name="CatBuildingInfo" type="PanelContainer" parent="UI/ObserveUI"]
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -724,14 +723,14 @@ theme = ExtResource("2_jxgaj")
 [node name="Tip" type="Label" parent="UI/ObserveUI/CatBuildingInfo/VBoxContainer/ObserveTipBox"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Take some time to admire your creation."
+text = "Observation Phase for 30 seconds"
 
 [node name="EventUI" type="CanvasLayer" parent="UI"]
 visible = false
 script = ExtResource("23_v8qla")
 
 [node name="EventPanelContainer" type="PanelContainer" parent="UI/EventUI"]
-custom_minimum_size = Vector2(480, 240)
+custom_minimum_size = Vector2(480, 80)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -743,10 +742,12 @@ offset_right = 240.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
 theme = ExtResource("2_jxgaj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/EventUI/EventPanelContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="EventTip" type="Label" parent="UI/EventUI/EventPanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -763,16 +764,19 @@ size_flags_stretch_ratio = 4.0
 [node name="GreenTilesButton" type="Button" parent="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "Green Tiles"
 
 [node name="RedTilesButton" type="Button" parent="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "Red Tiles"
 
 [node name="BlueTilesButton" type="Button" parent="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "Blue Tiles"
 
 [node name="CommonUI" type="CanvasLayer" parent="."]
@@ -841,7 +845,7 @@ script = ExtResource("26_jt61w")
 [node name="SkipButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "SKIP (FOR DEBUG)"
+text = "DEBUG USE ONLY"
 script = ExtResource("22_jpy4h")
 
 [node name="Scoreboard" type="PanelContainer" parent="CommonUI/VBoxContainer/HBoxContainer"]

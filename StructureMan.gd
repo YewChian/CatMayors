@@ -4,7 +4,7 @@ var structures : Dictionary
 var current_id = 0
 @onready var structure_resource = preload("res://Structures/Structure.tscn")
 
-func create_structure(structure_name: String, coordinate : Vector2):
+func create_structure(structure_name: String, coordinate: Vector2, team_color: String):
 	var new_instantiated_structure = structure_resource.instantiate()
 	get_tree().current_scene.get_node("Structures").add_child(new_instantiated_structure)
 	new_instantiated_structure.global_position = coordinate * Settings.TILE_LENGTH
@@ -13,8 +13,20 @@ func create_structure(structure_name: String, coordinate : Vector2):
 	structures[current_id] = new_instantiated_structure
 	current_id += 1
 	
-	await new_instantiated_structure.initialize_stats(structure_name)
+	await new_instantiated_structure.initialize_stats(structure_name, team_color)
 	new_instantiated_structure.get_node("EntranceIndicator").position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
+	var flag_node: Object
+	match team_color:
+		"black":
+			flag_node = new_instantiated_structure.get_node("BlackFlag")
+		"white":
+			flag_node = new_instantiated_structure.get_node("WhiteFlag")
+		"_":
+			printerr("why is the team color wrong")
+	flag_node.position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
+	flag_node.visible = true
+	flag_node.play("Flag1")
+
 	
 	for shifted_coordinate in new_instantiated_structure.occupied_coordinates:
 		if shifted_coordinate != new_instantiated_structure.entrance_coordinate:

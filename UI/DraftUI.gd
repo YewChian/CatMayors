@@ -82,21 +82,21 @@ func update_draftable_structure_buttons():
 	for button in %CommonStructureButtons.get_children():
 		var new_structure_name = common_draftable_structures[i]
 		var temp_structure_node = structure_node_resource.instantiate()
-		await temp_structure_node.initialize_stats(new_structure_name)
+		await temp_structure_node.initialize_stats(new_structure_name, PlayerMan.turn_color)
 		await button.initialize("json", temp_structure_node)
 		i += 1
 	i = 0
 	for button in %RareStructureButtons.get_children():
 		var new_structure_name = rare_draftable_structures[i]
 		var temp_structure_node = structure_node_resource.instantiate()
-		await temp_structure_node.initialize_stats(new_structure_name)
+		await temp_structure_node.initialize_stats(new_structure_name, PlayerMan.turn_color)
 		await button.initialize("json", temp_structure_node)
 		i += 1
 	i = 0
 	for button in %EpicStructureButtons.get_children():
 		var new_structure_name = epic_draftable_structures[i]
 		var temp_structure_node = structure_node_resource.instantiate()
-		await temp_structure_node.initialize_stats(new_structure_name)
+		await temp_structure_node.initialize_stats(new_structure_name, PlayerMan.turn_color)
 		await button.initialize("json", temp_structure_node)
 		i += 1
 

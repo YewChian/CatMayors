@@ -17,7 +17,7 @@ func update_hand_structure_buttons():
 			continue
 		var new_structure_name = current_hand[i]
 		var temp_structure_node = structure_node_resource.instantiate()
-		await temp_structure_node.initialize_stats(new_structure_name)
+		await temp_structure_node.initialize_stats(new_structure_name, PlayerMan.turn_color)
 		card.initialize("json", temp_structure_node)
 		i += 1
 

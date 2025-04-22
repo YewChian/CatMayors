@@ -2,6 +2,8 @@ extends Area2D
 class_name Structure
 
 var structure_name : String
+var team_color: String
+var flags: int
 var color : String
 var occupied_coordinates : Array
 var coordinate : Vector2
@@ -14,6 +16,7 @@ var activity_duration : float
 var structure_stars: int
 var flavor: String
 var effects: Dictionary
+var earned_stars_here: int
 
 var visited_cats = []
 var num_visits: int = 0
@@ -25,7 +28,7 @@ func _ready():
 	$AnimationPlayer.play("idle")
 	
 
-func initialize_stats(new_structure_name: String):
+func initialize_stats(new_structure_name: String, new_team_color: String):
 	structure_name = new_structure_name
 	color = StructureData.structures[structure_name]["color"]
 	%StructureSprite.texture = load(StructureData.structures[structure_name]["sprite"])
@@ -37,6 +40,9 @@ func initialize_stats(new_structure_name: String):
 	structure_stars = StructureData.structures[structure_name]["structure_stars"]
 	flavor = StructureData.structures[structure_name]["flavor"]
 	effects = StructureData.structures[structure_name]["effects"]
+	flags = 1
+	earned_stars_here = 0
+	team_color = new_team_color
 
 	
 func home_cats(num_cats: int):
@@ -195,6 +201,17 @@ func finish_activity():
 		var earned_stars = structure_stars * lazy_stars_multiplier * dutiful_stars_multiplier * satisfied_stars_multiplier
 
 		await active_cat.gain_stars(earned_stars)
+		earned_stars_here += earned_stars
+		if earned_stars_here >= 200:
+			flags = 5
+		elif earned_stars_here >= 100:
+			flags = 4
+		elif earned_stars_here >= 50:
+			flags = 3
+		elif earned_stars_here >= 20:
+			flags = 2
+			
+		await update_flag_sprite()
 		
 		get_tree().current_scene.add_to_log(str(active_cat.id) + " earned " + str(earned_stars) + " stars from " + structure_name)
 
@@ -203,6 +220,21 @@ func finish_activity():
 		num_visits += 1
 		visited_cats.append(active_cat.id)
 
+
+func update_flag_sprite():
+	var flag_sprite: Object
+	
+	match team_color:
+		"black": flag_sprite = get_node("BlackFlag")
+		"white": flag_sprite = get_node("WhiteFlag")
+		
+	match flags:
+		1: flag_sprite.animation = "Flag1"
+		2: flag_sprite.animation = "Flag2"
+		3: flag_sprite.animation = "Flag3"
+		4: flag_sprite.animation = "Flag4"
+		5: flag_sprite.animation = "Flag5"
+		
 
 func give_aura_to(aura_data, target_cat):
 	target_cat.gain_aura(aura_data["type"], aura_data["duration"])

@@ -87,7 +87,7 @@ func create_map(size : int, expansion_probability : float):
 		for direction in Settings.DIRECTIONS:
 			red_tile_coordinates.push_back(coordinate + direction)
 			
-	print("swamps?")
+	print("fishbones")
 	var max_num_purple_tiles : int = max_num_green_tiles / 8
 	var red_and_green_tiles = red_tile_coordinates.duplicate(true)
 	red_and_green_tiles.append_array(green_tile_coordinates)
