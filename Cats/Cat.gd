@@ -136,7 +136,7 @@ func go_to_coordinate(target_coordinate : Vector2):
 		curiosity = max(0, curiosity - 1)
 
 		var tween = get_tree().create_tween()
-		var move_duration = 1 / move_speed
+		var move_duration = 1 / (move_speed * Settings.game_speed)
 		if CatMan.equipment_data[equipment].has("zoomies"): 
 			move_duration *= (1/CatMan.equipment_data[equipment]["zoomies"])
 		tween.tween_property(self, "global_position", coordinate*Settings.TILE_LENGTH, move_duration)
@@ -289,7 +289,7 @@ func enter_state(new_state : String):
 			$AnimationPlayer.play("enter_structure")
 			await $AnimationPlayer.animation_finished
 			$AnimationPlayer.play("start_rest")
-			await get_tree().create_timer(rest_duration_stat * Settings.REST_DURATION_MULTIPLIER).timeout
+			await get_tree().create_timer(rest_duration_stat / Settings.game_speed).timeout
 			curiosity = max_curiosity
 			$AnimationPlayer.play("stop_rest")
 			await $AnimationPlayer.animation_finished

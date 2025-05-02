@@ -9,4 +9,4 @@ const TURN_DURATION: float = 30.0
 const MAX_ROUNDS: int = 4
 const BASE_CURIOSITY: int = 5
 
-var REST_DURATION_MULTIPLIER: int = 1
+var game_speed: float = 1

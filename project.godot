@@ -26,6 +26,9 @@ StructureMan="*res://StructureMan.gd"
 PlayerMan="*res://PlayerMan.gd"
 StructureData="*res://StructureData.gd"
 KittenBot="*res://KittenBot.gd"
+MouseketeerBot="*res://MouseketeerBot.gd"
+Common="*res://Common.gd"
+GreywhiskersBot="*res://GreywhiskersBot.gd"
 
 [input_devices]
 

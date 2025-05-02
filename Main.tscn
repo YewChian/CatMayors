@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=54 format=3 uid="uid://cwqmm1rc4fy0s"]
 
 [ext_resource type="Script" uid="uid://dvus54yyeulp4" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" uid="uid://pckh6jhv1v0j" path="res://UI/IdleUI.gd" id="2_0u3m0"]
@@ -13,7 +13,9 @@
 [ext_resource type="Script" uid="uid://bitxpmrbdep72" path="res://UI/TurnButton.gd" id="6_86f7r"]
 [ext_resource type="Script" uid="uid://b741erol1xkoi" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
 [ext_resource type="Texture2D" uid="uid://c7j4nas34n2h1" path="res://Assets/UI/BlackCatStarIcon.png" id="6_giubr"]
+[ext_resource type="Script" uid="uid://b4dypdri54lv3" path="res://DuelingBotsStartButton.gd" id="6_y1tbi"]
 [ext_resource type="Script" uid="uid://d2he3bc1vw4x6" path="res://UI/BlackScore.gd" id="7_2kt63"]
+[ext_resource type="Script" uid="uid://dfm5tdfc0xrxj" path="res://UI/GameSpeedEdit.gd" id="7_f4ese"]
 [ext_resource type="Texture2D" uid="uid://do02a2q5cl6bf" path="res://Assets/UI/WhiteCatStarIcon.png" id="7_mq5lf"]
 [ext_resource type="Script" uid="uid://bg4kovq3nrm0n" path="res://UI/WhiteScore.gd" id="8_5kguq"]
 [ext_resource type="Script" uid="uid://bpdebhdo5t56" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
@@ -38,6 +40,7 @@
 [ext_resource type="Script" uid="uid://bwplf5qukpmfd" path="res://ResourcesLabel.gd" id="25_tv7x8"]
 [ext_resource type="Script" uid="uid://o8dmeq1ngom7" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
 [ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
+[ext_resource type="Script" uid="uid://dkvc2oj1lnuiy" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
 [ext_resource type="Texture2D" uid="uid://qkdv48hthh2i" path="res://Assets/UI/ThinkingCat/ThinkingCat1.png" id="31_1w2xm"]
 [ext_resource type="Script" uid="uid://bik6jf3qxsrm1" path="res://UI/Thinking.gd" id="31_5mkgo"]
 [ext_resource type="Texture2D" uid="uid://d4cxmxwsvqup7" path="res://Assets/UI/ThinkingCat/ThinkingCat2.png" id="32_gngx1"]
@@ -166,6 +169,20 @@ script = ExtResource("3_4hy1x")
 layout_mode = 2
 text = "KITTEN BOT"
 script = ExtResource("5_vi5kq")
+
+[node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "DUELINGBOT"
+script = ExtResource("6_y1tbi")
+
+[node name="GameSpeedEdit" type="TextEdit" parent="UI/IdleUI/DebugButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+text = "1"
+placeholder_text = "Game Speed"
+script = ExtResource("7_f4ese")
 
 [node name="CreateFishingHut" type="Button" parent="UI/IdleUI/DebugButtons"]
 visible = false
@@ -438,6 +455,10 @@ text = "Nap Stars"
 [node name="NapStarsLabel" type="Label" parent="UI/IdleUI/CatBuildingInfo/VBoxContainer/BuildingStats/NapStars"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="EndUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("2_0u3m0")
 
 [node name="ChooseLocationUI" type="CanvasLayer" parent="UI"]
 visible = false
@@ -848,6 +869,11 @@ size_flags_vertical = 3
 text = "DEBUG USE ONLY"
 script = ExtResource("22_jpy4h")
 
+[node name="SaveMouseketeerData" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SAVE"
+script = ExtResource("29_c2s76")
+
 [node name="Scoreboard" type="PanelContainer" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
@@ -994,6 +1020,8 @@ pan_speed = 2.0
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GenerateMap" to="." method="_on_generate_map_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/VSStartButton" to="UI/IdleUI/DebugButtons/VSStartButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/KittenBotStartButton" to="UI/IdleUI/DebugButtons/KittenBotStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/DuelingBotsStartButton" to="UI/IdleUI/DebugButtons/DuelingBotsStartButton" method="_on_pressed"]
+[connection signal="text_changed" from="UI/IdleUI/DebugButtons/GameSpeedEdit" to="UI/IdleUI/DebugButtons/GameSpeedEdit" method="_on_text_changed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFishingHut" to="UI/IdleUI/DebugButtons/CreateFishingHut" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateLumbercatYard" to="UI/IdleUI/DebugButtons/CreateLumbercatYard" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFountain" to="UI/IdleUI/DebugButtons/CreateFountain" method="_on_pressed"]
@@ -1011,5 +1039,6 @@ pan_speed = 2.0
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/PauseButton" to="CommonUI/VBoxContainer/HBoxContainer/PauseButton" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" to="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SkipButton" to="CommonUI/VBoxContainer/HBoxContainer/SkipButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" to="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" method="_on_pressed"]
 [connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="CommonUI/NextPlayerReady" to="CommonUI/NextPlayerReady" method="_on_pressed"]

@@ -95,19 +95,8 @@ func create_map(size : int, expansion_probability : float):
 	red_and_green_tiles.shuffle()
 	for coord in red_and_green_tiles.slice(0, max_num_purple_tiles):
 		await TileMan.create_tile("purple", coord)
-		
 	
 	await TileMan.connect_tiles(TileMan.tiles.keys())
 
 func _on_generate_map_pressed():
 	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
-
-
-func _on_godcat_mode_button_toggled(toggled_on: bool) -> void:
-	match toggled_on:
-		true:
-			Settings.CAT_MOVE_DURATION = 0.1
-			Settings.REST_DURATION_MULTIPLIER = 0.2
-		false:
-			Settings.CAT_MOVE_DURATION = 1
-			Settings.REST_DURATION_MULTIPLIER = 1

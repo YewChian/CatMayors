@@ -75,6 +75,22 @@ func set_tile(coordinate : Vector2, tile : Object, new_id : int):
 	coordinate_to_id[coordinate] = new_id
 
 
+func get_num_tiles_per_color():
+	# only gets red and green tiles for now
+	var num_tiles_per_color = {
+		"green":0,
+		"red":0,
+	}
+	for id in tiles:
+		if tiles[id].color == "green":
+			num_tiles_per_color["green"] += 1
+			continue
+		if tiles[id].color == "red":
+			num_tiles_per_color["red"] += 1
+			continue
+	return num_tiles_per_color
+
+
 func get_neighbor_tiles(current_tile : Object):
 	# returns dictionary of neighboring tiles
 	var neighbor_tiles : Dictionary

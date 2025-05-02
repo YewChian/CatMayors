@@ -8,6 +8,9 @@ var white_stars : int = 0
 var black_hand : Array = []
 var white_hand : Array = []
 
+var black_structures: Array = []
+var white_structures: Array = []
+
 var phases = ["DraftUI", "DraftUI", "ChooseLocationUI", "ChooseLocationUI", "ChooseLocationUI", "ObserveUI", "EventUI"]
 var phase_index : int = 0
 var turn_color : String = "black"
@@ -38,6 +41,8 @@ func go_to_next_turn():
 	else:
 		await UIMan.enter_mode(phases[phase_index])
 		if mode == "KittenBot" and turn_color == "white":
+			return	# don't show the next player button
+		if mode == "DuelingBot":
 			return	# don't show the next player button
 		else:
 			await get_tree().current_scene.get_node("CommonUI/NextPlayerReady").show_next_player_button()

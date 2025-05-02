@@ -8,6 +8,14 @@ func initialize():
 		await get_tree().current_scene.disable_player_input()
 		await KittenBot.choose_purple_tile_replacements()
 
+	if PlayerMan.mode == "DuelingBot" and PlayerMan.turn_color == "white":
+		await get_tree().current_scene.disable_player_input()
+		await MouseketeerBot.choose_purple_tile_replacements()
+
+	if PlayerMan.mode == "DuelingBot" and PlayerMan.turn_color == "black":
+		await get_tree().current_scene.disable_player_input()
+		await GreywhiskersBot.choose_purple_tile_replacements()
+
 func transform_purple_tiles_into(new_color: String):
 	var num_tiles = 5 
 	var purple_tile_coordinates = []
@@ -28,9 +36,9 @@ func transform_tile_into(color: String, coord: Vector2):
 	var num_flashes = 3
 	for i in range(num_flashes):
 		cross.visible = false
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1/Settings.game_speed).timeout
 		cross.visible = true
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1/Settings.game_speed).timeout
 	cross.queue_free()
 	TileMan.create_tile(color, coord)
 

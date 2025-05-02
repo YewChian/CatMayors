@@ -5,9 +5,9 @@ func show_activity_progress(is_cat_spooked: bool):
 	visible = true
 	var duration: float
 	if is_cat_spooked:
-		duration = 1.0
+		duration = 1.0 / Settings.game_speed
 	else:
-		duration = structure.activity_duration
+		duration = structure.activity_duration / Settings.game_speed
 		
 	max_value = duration
 	$Timer.start(duration)

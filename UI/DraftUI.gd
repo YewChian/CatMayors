@@ -7,6 +7,7 @@ var target_structure: String
 var rarity: String
 
 func initialize():
+	print("initializing draft at turn: ", PlayerMan.total_turns)
 	await %Timeline.update_timeline()
 	%DraftTipBox/TurnLabel.text = "BLUEPRINT SHOP"
 	%DraftTipBox/DraftInfoBox/Tip.text = "Buy a structure. The other will go to your opponent."
@@ -14,10 +15,6 @@ func initialize():
 	$Hand.disable_buttons()
 	rarity = "common"
 	%ShopRarityLabel.text = rarity + " shop"
-	if PlayerMan.total_turns % (len(PlayerMan.phases)*2) == 2 or PlayerMan.total_turns % (len(PlayerMan.phases)*2) == 3:
-		%UpgradeButton.set_deferred("disabled", false)
-	else:
-		%UpgradeButton.set_deferred("disabled", true)
 	
 	%CommonStructureButtons.visible = true
 	%RareStructureButtons.visible = false
@@ -32,8 +29,6 @@ func initialize():
 	var second_button = %CommonStructureButtons.get_child(1)
 	await second_button.unhighlight_button(second_button.get_node("Button"))
 	
-	
-	
 	if PlayerMan.turn_color == "white" and PlayerMan.mode == "KittenBot":
 		var target_button = KittenBot.get_draft_pick_from_buttons(%CommonStructureButtons.get_children())
 		await KittenBot.show_thinking(1)
@@ -42,6 +37,19 @@ func initialize():
 		await target_button._on_button_pressed()
 		await KittenBot.show_thinking(0.2)
 		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton")._on_pressed()
+		return
+
+	if PlayerMan.turn_color == "white" and PlayerMan.mode == "DuelingBot":
+		await MouseketeerBot.pick_from_buttons(%CommonStructureButtons.get_children())
+		await MouseketeerBot.show_thinking(1)
+		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton")._on_pressed()
+		return
+
+	if PlayerMan.turn_color == "black" and PlayerMan.mode == "DuelingBot":
+		await GreywhiskersBot.pick_from_buttons(%CommonStructureButtons.get_children())
+		await GreywhiskersBot.show_thinking(1)
+		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton")._on_pressed()
+		return
 
 	
 func on_touched(event):

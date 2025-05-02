@@ -125,9 +125,11 @@ func finish_activity():
 			"inspiring":
 				await active_cat.decrement_aura_duration()
 				if effects.has("catffeinate"):
-					effects["catffeinate"] *= 2
+					effects["catffeinate"]["value"] *= 2
 				else:
-					effects["catffeinate"] = 3
+					effects["catffeinate"] = {}
+					effects["catffeinate"]["conditions"] = {"visit": 1}
+					effects["catffeinate"]["value"] = 3
 				var new_log: String = active_cat.id + " was feeling lazy at " + structure_name
 				print(new_log)
 				await get_tree().current_scene.add_to_log(new_log)
@@ -186,7 +188,7 @@ func finish_activity():
 		if effects.has("gain_stars") and StructureMan.fulfils_effect_conditions(effects["gain_stars"]["conditions"], "finish_activity", self, active_cat):
 			await active_cat.gain_stars(effects["gain_stars"]["num_stars"])
 
-		if effects.has("double_structure_stars") and StructureMan.fulfils_effect_conditions(effects["gain_stars"]["conditions"], "finish_activity", self, active_cat):
+		if effects.has("double_structure_stars") and StructureMan.fulfils_effect_conditions(effects["double_structure_stars"]["conditions"], "finish_activity", self, active_cat):
 			structure_stars *= 2
 
 		if effects.has("cook_ingredients") and StructureMan.fulfils_effect_conditions(effects["cook_ingredients"]["conditions"], "finish_activity", self, active_cat):

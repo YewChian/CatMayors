@@ -5,4 +5,4 @@ func _on_pressed():
 	%CommonUI.visible = true
 	await PlayerMan.add_initial_structures_to_hand()
 	UIMan.enter_mode("DraftUI")
-	%TurnTimer.start(Settings.TURN_DURATION)
+	%TurnTimer.start(Settings.TURN_DURATION/Settings.game_speed)

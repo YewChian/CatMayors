@@ -2,6 +2,7 @@ extends Node
 
 var structures : Dictionary
 var current_id = 0
+var name2static_id: Dictionary = {}
 @onready var structure_resource = preload("res://Structures/Structure.tscn")
 
 func create_structure(structure_name: String, coordinate: Vector2, team_color: String):
@@ -19,8 +20,10 @@ func create_structure(structure_name: String, coordinate: Vector2, team_color: S
 	match team_color:
 		"black":
 			flag_node = new_instantiated_structure.get_node("BlackFlag")
+			PlayerMan.black_structures.append(new_instantiated_structure.id)
 		"white":
 			flag_node = new_instantiated_structure.get_node("WhiteFlag")
+			PlayerMan.white_structures.append(new_instantiated_structure.id)
 		"_":
 			printerr("why is the team color wrong")
 	flag_node.position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
@@ -48,6 +51,14 @@ func create_structure(structure_name: String, coordinate: Vector2, team_color: S
 		if effect == "home" and fulfils_effect_conditions(structure_data["effects"]["home"]["conditions"], "create_structure", new_instantiated_structure, null):
 			var num_cats: int = structure_data["effects"]["home"]["num_cats"]
 			await new_instantiated_structure.home_cats(num_cats)
+
+
+func set_name2staticid():
+	var static_id = 0
+	for key in StructureData.structures:
+		name2static_id[key] = static_id
+		static_id += 1
+	print(name2static_id)
 
 
 func fulfils_effect_conditions(conditions_data: Dictionary, timing: String, structure: Object, cat: Object):

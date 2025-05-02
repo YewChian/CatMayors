@@ -21,6 +21,17 @@ func initialize():
 	if PlayerMan.mode == "KittenBot" and PlayerMan.turn_color == "white":
 		await get_tree().current_scene.disable_player_input()
 		await KittenBot.build_structure()
+		return
+
+	if PlayerMan.mode == "DuelingBot" and PlayerMan.turn_color == "white":
+		await get_tree().current_scene.disable_player_input()
+		await MouseketeerBot.build_structure()
+		return
+
+	if PlayerMan.mode == "DuelingBot" and PlayerMan.turn_color == "black":
+		await get_tree().current_scene.disable_player_input()
+		await GreywhiskersBot.build_structure()
+		return
 
 
 func choose_location():
