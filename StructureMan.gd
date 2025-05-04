@@ -36,7 +36,7 @@ func create_structure(structure_name: String, coordinate: Vector2, team_color: S
 			await TileMan.create_tile("null", coordinate + shifted_coordinate)
 			await TileMan.connect_tiles([coordinate + shifted_coordinate])
 		elif shifted_coordinate == new_instantiated_structure.entrance_coordinate:
-			await TileMan.create_tile("green", coordinate + shifted_coordinate)
+			await TileMan.create_tile("gold", coordinate + shifted_coordinate)
 			await TileMan.connect_tiles([coordinate + shifted_coordinate])
 		# create collisionshape for structure
 		var collider = CollisionShape2D.new()

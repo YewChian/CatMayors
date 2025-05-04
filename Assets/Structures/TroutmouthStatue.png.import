@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bum5snqg4r85a"
-path="res://.godot/imported/ThinkingCat4.png-e6a815dcb212c45c3cae610cb169cb0f.ctex"
+uid="uid://blgk6bleeq6uy"
+path="res://.godot/imported/TroutmouthStatue.png-b4158fcf4982fb70c855a3ad5eeecdb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/ThinkingCat/ThinkingCat4.png"
-dest_files=["res://.godot/imported/ThinkingCat4.png-e6a815dcb212c45c3cae610cb169cb0f.ctex"]
+source_file="res://Assets/Structures/TroutmouthStatue.png"
+dest_files=["res://.godot/imported/TroutmouthStatue.png-b4158fcf4982fb70c855a3ad5eeecdb1.ctex"]
 
 [params]
 

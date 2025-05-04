@@ -180,11 +180,13 @@ func interact_structure():
 		enter_state("queue")
 		return
 	interactable_structure.start_activity(self)
+	$AnimationPlayer.speed_scale = Settings.game_speed
 	$AnimationPlayer.play("enter_structure")
 	await $AnimationPlayer.animation_finished
 
 
 func leave_structure():
+	$AnimationPlayer.speed_scale = Settings.game_speed
 	$AnimationPlayer.play("leave_structure")
 	await $AnimationPlayer.animation_finished
 	enter_state("wander")
@@ -228,7 +230,7 @@ func gain_stars(number : int):
 				PlayerMan.white_stars += 1
 				
 		play_stars_animation(color)
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.2/Settings.game_speed).timeout
 	
 
 func play_stars_animation(star_color):
@@ -245,7 +247,7 @@ func play_stars_animation(star_color):
 			new_fx.animation = "white"
 
 	new_fx.play()
-	tween.tween_property(new_fx, "global_position", new_fx.global_position+Vector2(0, -128), 1.2).set_trans(Tween.TRANS_SPRING)
+	tween.tween_property(new_fx, "global_position", new_fx.global_position+Vector2(0, -128), 1.2/Settings.game_speed).set_trans(Tween.TRANS_SPRING)
 	
 
 func gain_aura(aura_type: String, num_of_visits_duration: int):
@@ -275,7 +277,7 @@ func enter_state(new_state : String):
 					enter_state("rest")
 
 				elif curiosity == max_curiosity:
-					await get_tree().create_timer(5).timeout
+					await get_tree().create_timer(5/Settings.game_speed).timeout
 					enter_state("wander")
 				
 			else:
@@ -286,20 +288,23 @@ func enter_state(new_state : String):
 			await interact_structure()
 		
 		"rest":
+			$AnimationPlayer.speed_scale = Settings.game_speed
 			$AnimationPlayer.play("enter_structure")
 			await $AnimationPlayer.animation_finished
 			$AnimationPlayer.play("start_rest")
 			await get_tree().create_timer(rest_duration_stat / Settings.game_speed).timeout
 			curiosity = max_curiosity
+			$AnimationPlayer.speed_scale = Settings.game_speed
 			$AnimationPlayer.play("stop_rest")
 			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.speed_scale = Settings.game_speed
 			$AnimationPlayer.play("leave_structure")
 			await $AnimationPlayer.animation_finished
 			visited_structure_entrances = []
 			enter_state("wander")
 				
 		"queue":
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(1/Settings.game_speed).timeout
 			enter_state("interact_structure")
 
 

@@ -122,6 +122,7 @@ func pick_from_buttons(common_buttons: Array):
 		await update_q_table(state_name)
 		await save_q_table()
 	var sorted_buttons = get_sorted_buttons(common_buttons)
+	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/GreywhiskersThinking.tres")
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
 
 	var action_string = ""
@@ -266,6 +267,7 @@ func get_state_name(buttons: Array):
 
 
 func show_thinking(duration: int):
+	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/GreywhiskersThinking.tres")
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
 	await get_tree().create_timer(duration/Settings.game_speed).timeout
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = false
@@ -274,6 +276,7 @@ func show_thinking(duration: int):
 func build_structure():
 	print("greywhiskers building structure")
 	var choose_location_ui = get_tree().current_scene.get_node("UI/ChooseLocationUI")
+	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/GreywhiskersThinking.tres")
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
 
 	var important_coords: Array = get_entrances_with_bot_cats()

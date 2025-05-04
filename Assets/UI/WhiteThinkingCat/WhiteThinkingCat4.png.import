@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4cxmxwsvqup7"
-path="res://.godot/imported/ThinkingCat2.png-3a56e6964cae5dc56c0f26a9d1686f0c.ctex"
+uid="uid://bhaxvjqqtog3w"
+path="res://.godot/imported/WhiteThinkingCat4.png-629f55485f6095b4f6a986e58cb178d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/ThinkingCat/ThinkingCat2.png"
-dest_files=["res://.godot/imported/ThinkingCat2.png-3a56e6964cae5dc56c0f26a9d1686f0c.ctex"]
+source_file="res://Assets/UI/WhiteThinkingCat/WhiteThinkingCat4.png"
+dest_files=["res://.godot/imported/WhiteThinkingCat4.png-629f55485f6095b4f6a986e58cb178d7.ctex"]
 
 [params]
 

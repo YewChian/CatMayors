@@ -31,7 +31,3 @@ func _unhandled_input(event):
 	elif event is InputEventScreenTouch:
 		if event.pressed:
 			UI.get_node(mode).on_touched(event)
-		
-		
-
-		

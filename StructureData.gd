@@ -407,7 +407,14 @@ var structures : Dictionary = {
 					"build": -1,
 				},
 				"num_cats": 4,
-			}
+			},
+			"gain_aura": {
+				"conditions": {
+					"discovery": 1,
+				},
+				"type": "prankster",
+				"duration": 1,
+			},
 		},
 	},
 	"Little Red House" : {	# invasion
@@ -561,7 +568,7 @@ var structures : Dictionary = {
 		},
 	},
 	"Hydrant" : {
-		"rarity": "common",	# kingdom
+		"rarity": "rare",	# kingdom
 		"path": "res://Structures/Hydrant.tscn",
 		"icon": "res://UI/StructureIcons/Hydrant.tres",
 		"sprite": "res://Assets/Structures/Hydrant.png",
@@ -572,7 +579,7 @@ var structures : Dictionary = {
 		],
 		"entrance_coordinate": Vector2(0, 0),
 		"activity_duration": 1,
-		"structure_stars": 0,
+		"structure_stars": 1,
 		"flavor": "who would build this?",
 		"effects": {
 			"gain_aura": {
@@ -915,6 +922,88 @@ var structures : Dictionary = {
 					"discovery": 1,
 				},
 				"type": "skate",
+			},
+		},
+	},
+	"Sushi Hut" : {	# merchant, kingdom
+		"rarity": "rare",
+		"path": "res://Structures/SushiHut.tscn",
+		"icon": "res://UI/StructureIcons/SushiHut.tres",
+		"sprite": "res://Assets/Structures/SushiHut.png",
+		"sprite_offset": Vector2(32,0),
+		"color": "red",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+		],
+		"entrance_coordinate": Vector2(1, 0),
+		"activity_duration": 6,
+		"structure_stars": 2,
+		"flavor": "nice date spot",
+		"effects": {
+			"serve_ingredients": {
+				"conditions": {
+					"visit": -1,
+					"has_cooked_ingredients": 1,
+				},
+				"num_stars_per_cooked_ingredient": 1,
+			},
+		},
+	},
+	"Troutmouth Statue" : {	# invasion, kingdom
+		"rarity": "rare",
+		"path": "res://Structures/TroutmouthStatue.tscn",
+		"icon": "res://UI/StructureIcons/TroutmouthStatue.tres",
+		"sprite": "res://Assets/Structures/TroutmouthStatue.png",
+		"sprite_offset": Vector2(0,0),
+		"color": "red",
+		"occupied_coordinates": [
+			Vector2(0,0),
+		],
+		"entrance_coordinate": Vector2(0, 0),
+		"activity_duration": 2,
+		"structure_stars": 0,
+		"flavor": "A statue of the legendary explorer, Captain Troutmouth",
+		"effects": {
+			"catffeinate": { 
+				"conditions": {
+					"visit": -1,
+				},
+				"value": 5,
+			},
+			"gain_aura": {
+				"conditions": {
+					"visit": -1,
+				},
+				"type": "nosy",
+				"duration": 2,
+			},
+		},
+	},
+	"Pirate Library" : {	# invasion
+		"rarity": "common",
+		"path": "res://Structures/PirateLibrary.tscn",
+		"icon": "res://UI/StructureIcons/PirateLibraryIcon.tres",
+		"sprite": "res://Assets/Structures/PirateLibrary.png",
+		"sprite_offset": Vector2(96, 64),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+			Vector2(2,0),
+			Vector2(0,1),
+			Vector2(1,1),
+		],
+		"entrance_coordinate": Vector2(1, 1),
+		"activity_duration": 6,
+		"structure_stars": 0,
+		"flavor": "learn to be a pirate and buy pirate hats here",
+		"effects": {
+			"gain_max_curiosity": {
+				"conditions": {
+					"discovery": 3,
+				},
+				"num_max_curiosity": 10
 			},
 		},
 	},

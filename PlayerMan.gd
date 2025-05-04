@@ -57,6 +57,6 @@ func end_game():
 		victory_label.text = ("WHITE WINS")
 	else:
 		victory_label.text = ("TIE GAME??")
-	await UIMan.enter_mode("IdleUI")
+	await UIMan.enter_mode("EndUI")
 	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer").stop()
 	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/TimeLeft").visible = false

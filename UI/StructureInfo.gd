@@ -189,7 +189,7 @@ func print_aura_description(data):
 	if type == "spooked":
 		%Effects.text += "Gain a Spooked Aura for " + str(duration) + " visits"
 		%Effects.text += "\n"
-		%Effects.text += "(Spooked cats finish activities quickly)"
+		%Effects.text += "(Spooked cats finish activities in 1 second)"
 		%Effects.text += "\n"
 
 	if type == "greedy":
@@ -208,6 +208,18 @@ func print_aura_description(data):
 		%Effects.text += "Gain a dutiful Aura for " + str(duration) + " visits"
 		%Effects.text += "\n"
 		%Effects.text += "(Dutiful cats don't gain stars from structures of 3 stars or less)"
+		%Effects.text += "\n"
+
+	if type == "satisfied":
+		%Effects.text += "Gain a dutiful Aura for " + str(duration) + " visits"
+		%Effects.text += "\n"
+		%Effects.text += "(Satisfied cats gain double the stars at the cost of their remaining curiosity)"
+		%Effects.text += "\n"
+
+	if type == "nosy":
+		%Effects.text += "Gain a nosy Aura for " + str(duration) + " visits"
+		%Effects.text += "\n"
+		%Effects.text += "(Nosy cats gain bonus stars from opponent's structures)"
 		%Effects.text += "\n"
 
 

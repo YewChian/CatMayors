@@ -2,6 +2,7 @@ extends Node2D
 
 
 func get_draft_pick_from_buttons(buttons: Array):
+	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/MouseketeerThinking.tres")
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
 	randomize()
 	buttons.shuffle()
@@ -16,6 +17,7 @@ func get_draft_pick_from_buttons(buttons: Array):
 
 
 func show_thinking(duration: int):
+	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/MouseketeerThinking.tres")
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
 	await get_tree().create_timer(duration).timeout
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = false
@@ -24,6 +26,7 @@ func show_thinking(duration: int):
 func build_structure():
 	print("kittenbot building structure")
 	var choose_location_ui = get_tree().current_scene.get_node("UI/ChooseLocationUI")
+	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/MouseketeerThinking.tres")
 	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
 
 	var important_coords: Array = get_entrances_with_bot_cats()

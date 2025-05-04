@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=52 format=3 uid="uid://cwqmm1rc4fy0s"]
 
 [ext_resource type="Script" uid="uid://dvus54yyeulp4" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" uid="uid://pckh6jhv1v0j" path="res://UI/IdleUI.gd" id="2_0u3m0"]
@@ -17,11 +17,13 @@
 [ext_resource type="Script" uid="uid://d2he3bc1vw4x6" path="res://UI/BlackScore.gd" id="7_2kt63"]
 [ext_resource type="Script" uid="uid://dfm5tdfc0xrxj" path="res://UI/GameSpeedEdit.gd" id="7_f4ese"]
 [ext_resource type="Texture2D" uid="uid://do02a2q5cl6bf" path="res://Assets/UI/WhiteCatStarIcon.png" id="7_mq5lf"]
+[ext_resource type="Script" uid="uid://hq7g3rumg3vs" path="res://ShowQTable.gd" id="7_y1tbi"]
 [ext_resource type="Script" uid="uid://bg4kovq3nrm0n" path="res://UI/WhiteScore.gd" id="8_5kguq"]
 [ext_resource type="Script" uid="uid://bpdebhdo5t56" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
 [ext_resource type="Script" uid="uid://cwful6gix2l71" path="res://UI/DraftUI.gd" id="14_486mp"]
 [ext_resource type="Script" uid="uid://cuit7uhrnwy0w" path="res://UI/Hand.gd" id="17_43ggv"]
 [ext_resource type="PackedScene" uid="uid://b32uginpqm7kl" path="res://UI/HideHandButton.tscn" id="17_tkh6c"]
+[ext_resource type="Script" uid="uid://cs1f6ja0qk1m5" path="res://EndUI.gd" id="17_v8qla"]
 [ext_resource type="Script" uid="uid://gcxwm3iap0cm" path="res://UI/Timeline.gd" id="19_6a7bp"]
 [ext_resource type="Script" uid="uid://dqhicm36cc2sq" path="res://UI/ObserveUI.gd" id="19_hbekn"]
 [ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
@@ -41,12 +43,10 @@
 [ext_resource type="Script" uid="uid://o8dmeq1ngom7" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
 [ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
 [ext_resource type="Script" uid="uid://dkvc2oj1lnuiy" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
-[ext_resource type="Texture2D" uid="uid://qkdv48hthh2i" path="res://Assets/UI/ThinkingCat/ThinkingCat1.png" id="31_1w2xm"]
 [ext_resource type="Script" uid="uid://bik6jf3qxsrm1" path="res://UI/Thinking.gd" id="31_5mkgo"]
-[ext_resource type="Texture2D" uid="uid://d4cxmxwsvqup7" path="res://Assets/UI/ThinkingCat/ThinkingCat2.png" id="32_gngx1"]
-[ext_resource type="Texture2D" uid="uid://dohqislv75h3b" path="res://Assets/UI/ThinkingCat/ThinkingCat3.png" id="33_jt61w"]
-[ext_resource type="Texture2D" uid="uid://bum5snqg4r85a" path="res://Assets/UI/ThinkingCat/ThinkingCat4.png" id="34_v8qla"]
 [ext_resource type="PackedScene" uid="uid://ce4ien23x0uk5" path="res://UI/CatInstanceInfo.tscn" id="38_v8qla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1tbi"]
 
 [sub_resource type="Animation" id="Animation_ley0s"]
 length = 0.001
@@ -94,16 +94,6 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_vi5kq"]
-frames = 4
-frame_0/texture = ExtResource("31_1w2xm")
-frame_1/texture = ExtResource("32_gngx1")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("33_jt61w")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("34_v8qla")
-frame_3/duration = 1.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_h8e5t"]
 animations = [{
 "frames": [{
@@ -135,6 +125,38 @@ theme = ExtResource("2_jxgaj")
 [node name="IdleUI" type="CanvasLayer" parent="UI"]
 visible = false
 script = ExtResource("2_0u3m0")
+
+[node name="QTableContainer" type="VBoxContainer" parent="UI/IdleUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -107.5
+offset_right = 180.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/IdleUI/QTableContainer"]
+custom_minimum_size = Vector2(960, 180)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y1tbi")
+
+[node name="QTableLabel" type="Label" parent="UI/IdleUI/QTableContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "TESTING"
+
+[node name="HideQTable" type="Button" parent="UI/IdleUI/QTableContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CLOSE"
 
 [node name="DebugButtons" type="VBoxContainer" parent="UI/IdleUI"]
 anchors_preset = 8
@@ -174,6 +196,11 @@ script = ExtResource("5_vi5kq")
 layout_mode = 2
 text = "DUELINGBOT"
 script = ExtResource("6_y1tbi")
+
+[node name="ShowQTable" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "Show/Hide QTable"
+script = ExtResource("7_y1tbi")
 
 [node name="GameSpeedEdit" type="TextEdit" parent="UI/IdleUI/DebugButtons"]
 unique_name_in_owner = true
@@ -458,7 +485,7 @@ layout_mode = 2
 
 [node name="EndUI" type="CanvasLayer" parent="UI"]
 visible = false
-script = ExtResource("2_0u3m0")
+script = ExtResource("17_v8qla")
 
 [node name="ChooseLocationUI" type="CanvasLayer" parent="UI"]
 visible = false
@@ -995,7 +1022,6 @@ custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
 size_flags_vertical = 7
 theme = ExtResource("2_jxgaj")
-texture = SubResource("AnimatedTexture_vi5kq")
 stretch_mode = 5
 script = ExtResource("31_5mkgo")
 
@@ -1017,10 +1043,12 @@ modulate = Color(1, 1, 1, 0.392157)
 script = ExtResource("3_nxkky")
 pan_speed = 2.0
 
+[connection signal="pressed" from="UI/IdleUI/QTableContainer/HideQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_hide_q_table_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GenerateMap" to="." method="_on_generate_map_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/VSStartButton" to="UI/IdleUI/DebugButtons/VSStartButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/KittenBotStartButton" to="UI/IdleUI/DebugButtons/KittenBotStartButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/DuelingBotsStartButton" to="UI/IdleUI/DebugButtons/DuelingBotsStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/ShowQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_pressed"]
 [connection signal="text_changed" from="UI/IdleUI/DebugButtons/GameSpeedEdit" to="UI/IdleUI/DebugButtons/GameSpeedEdit" method="_on_text_changed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFishingHut" to="UI/IdleUI/DebugButtons/CreateFishingHut" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateLumbercatYard" to="UI/IdleUI/DebugButtons/CreateLumbercatYard" method="_on_pressed"]

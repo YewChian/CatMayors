@@ -25,6 +25,7 @@ var num_rehomed: int = 0
 @onready var structure_instance_info = get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer2/StructureInstanceInfo")
 
 func _ready():
+	$AnimationPlayer.speed_scale = Settings.game_speed
 	$AnimationPlayer.play("idle")
 	
 
@@ -78,18 +79,22 @@ func start_activity(cat : Object):
 		var new_log: String = cat.id + "was still spooked at" + structure_name
 		print(new_log)
 		await get_tree().current_scene.add_to_log(new_log)
-
+				
+	$AnimationPlayer.speed_scale = Settings.game_speed
 	$AnimationPlayer.play("start_activity")
 	$ActivityProgress.show_activity_progress(is_cat_spooked)
 
 
 func finish_activity():
+	$AnimationPlayer.speed_scale = Settings.game_speed
 	$AnimationPlayer.play("end_activity")
 
 	for active_cat in cats_doing_activity:
 		var lazy_stars_multiplier = 1
 		var dutiful_stars_multiplier = 1
 		var satisfied_stars_multiplier = 1
+		var bonus_stars = 0
+
 		if active_cat.aura == "lazy":
 			lazy_stars_multiplier = 0
 
@@ -144,14 +149,21 @@ func finish_activity():
 				print(new_log)
 				await get_tree().current_scene.add_to_log(new_log)
 
+			# lose all curiosity and gain double the stars
 			"satisfied":
 				await active_cat.decrement_aura_duration()
 				satisfied_stars_multiplier = 2
 				active_cat.curiosity = 0
-					
-				var new_log: String = active_cat.id + " was feeling satisfied at " + structure_name + " and lost all its curiosity in exchange for double the stars"
+
+			# gain 2 bonus stars if visited structure is of a different color
+			"nosy":
+				await active_cat.decrement_aura_duration()
+				if team_color != active_cat.team_color:
+					bonus_stars += 2					
+				var new_log: String = active_cat.id + " was feeling nosy at " + structure_name
 				print(new_log)
 				await get_tree().current_scene.add_to_log(new_log)
+					
 
 		if effects.has("rehome") and StructureMan.fulfils_effect_conditions(effects["rehome"]["conditions"], "finish_activity", self, active_cat):
 			await rehome(active_cat)
@@ -200,7 +212,7 @@ func finish_activity():
 			print(new_log)
 			await get_tree().current_scene.add_to_log(new_log)
 
-		var earned_stars = structure_stars * lazy_stars_multiplier * dutiful_stars_multiplier * satisfied_stars_multiplier
+		var earned_stars = (structure_stars * lazy_stars_multiplier * dutiful_stars_multiplier * satisfied_stars_multiplier) + bonus_stars
 
 		await active_cat.gain_stars(earned_stars)
 		earned_stars_here += earned_stars
