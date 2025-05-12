@@ -221,3 +221,5 @@ landmarks (statues, culturally important structures) - if this structure has bee
 
 ### NO TILES ALLOWED
 1. To keep things simple, you may only build buildings (duh)
+
+### There are bots now
