@@ -193,7 +193,6 @@ text = "KITTEN BOT"
 script = ExtResource("5_vi5kq")
 
 [node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
-visible = false
 layout_mode = 2
 text = "DUELINGBOT"
 script = ExtResource("6_y1tbi")
@@ -208,7 +207,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-text = "1"
+text = "10"
 placeholder_text = "Game Speed"
 script = ExtResource("7_f4ese")
 
@@ -886,21 +885,18 @@ script = ExtResource("24_difs8")
 
 [node name="ShowCatInfoButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
 process_mode = 3
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Show Cat Info"
 script = ExtResource("26_jt61w")
 
 [node name="SkipButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "DEBUG USE ONLY"
 script = ExtResource("22_jpy4h")
 
 [node name="SaveMouseketeerData" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 text = "SAVE"
 script = ExtResource("29_c2s76")

@@ -31,6 +31,7 @@ func initialize():
 	if PlayerMan.mode == "DuelingBot" and PlayerMan.turn_color == "black":
 		await get_tree().current_scene.disable_player_input()
 		await GreyHammerBot.initialize_q_table("create")
+		await GreyHammerBot.build_structure()
 		return
 
 

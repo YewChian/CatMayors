@@ -93,10 +93,10 @@ func get_x_owned_structures(x: int, own_or_opponent: String):
 	for structure in StructureMan.structures.values():
 		match own_or_opponent:
 			"own": 
-				if structure.color == color:
+				if structure.team_color == color:
 					built_structures.append([StructureMan.name2static_id[structure.structure_name], structure.id])
 			"opponent":
-				if structure.color != color:
+				if structure.team_color != color:
 					built_structures.append([StructureMan.name2static_id[structure.structure_name], structure.id])
 	randomize()
 	built_structures.shuffle()
@@ -105,7 +105,7 @@ func get_x_owned_structures(x: int, own_or_opponent: String):
 
 	for i in range(x):
 		if i >= len(built_structures):
-			x_built_structures.append(-1)
+			x_built_structures.append([-1,-1])
 			continue
 		x_built_structures.append(built_structures[i])
 	
@@ -113,8 +113,8 @@ func get_x_owned_structures(x: int, own_or_opponent: String):
 	var x_built_structures_static_ids = []
 	var x_built_structure_ids = []
 	for arr in x_built_structures:
-		x_built_structures_static_ids.append(x_built_structures[0])
-		x_built_structure_ids.append(x_built_structures[1])
+		x_built_structures_static_ids.append(arr[0])
+		x_built_structure_ids.append(arr[1])
 		
 	var x_owned_structures_commastring = Common.arr_to_commastring(x_built_structures_static_ids)
 	return [x_owned_structures_commastring, x_built_structure_ids]
