@@ -29,6 +29,7 @@ KittenBot="*res://KittenBot.gd"
 MouseketeerBot="*res://MouseketeerBot.gd"
 Common="*res://Common.gd"
 GreywhiskersBot="*res://GreywhiskersBot.gd"
+GreyHammerBot="*res://GreyHammerBot.gd"
 
 [input_devices]
 

@@ -24,3 +24,22 @@ func get_column_from_twodarr(twodarr: Array, index: int):
 	for row in twodarr:
 		column.append(row[index])
 	return column
+
+
+func arr_to_commastring(arr: Array):
+	var output: String = ""
+	for e in arr:
+		output += str(e)
+		output += ","
+	return output
+
+
+func commastring_to_arr(commastring: String):
+	var string_arr: Array = commastring.split(",")
+	print("string_arr", string_arr)
+	var output: Array = []
+	for e in string_arr:
+		if e == "":
+			continue
+		output.append(int(e))
+	return output

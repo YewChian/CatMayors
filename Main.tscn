@@ -2,30 +2,30 @@
 
 [ext_resource type="Script" uid="uid://dvus54yyeulp4" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" uid="uid://pckh6jhv1v0j" path="res://UI/IdleUI.gd" id="2_0u3m0"]
-[ext_resource type="Script" uid="uid://crcjkdrowr3la" path="res://UI/CreateFishingHut.gd" id="2_e3vyw"]
+[ext_resource type="Script" uid="uid://41nmg6eon2fj" path="res://UI/CreateFishingHut.gd" id="2_e3vyw"]
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="2_jxgaj"]
 [ext_resource type="Script" uid="uid://wda28635m8qe" path="res://UI/DraftButton.gd" id="3_4hy1x"]
 [ext_resource type="Script" uid="uid://dof60brw4dopv" path="res://UI/ChooseLocationUI.gd" id="3_4ltef"]
 [ext_resource type="Script" uid="uid://dh3j3u60vjgnw" path="res://MainCamera.gd" id="3_nxkky"]
-[ext_resource type="Script" uid="uid://bcxipo1xt36c5" path="res://UI/CreateLumbercatYard.gd" id="4_mg0f1"]
-[ext_resource type="Script" uid="uid://0m622x3w4mnc" path="res://CreateFountain.gd" id="5_uadu4"]
-[ext_resource type="Script" uid="uid://wr7l0bq0un2k" path="res://KittenBotStartButton.gd" id="5_vi5kq"]
-[ext_resource type="Script" uid="uid://bitxpmrbdep72" path="res://UI/TurnButton.gd" id="6_86f7r"]
-[ext_resource type="Script" uid="uid://b741erol1xkoi" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
+[ext_resource type="Script" uid="uid://blwfj6istbdtf" path="res://UI/CreateLumbercatYard.gd" id="4_mg0f1"]
+[ext_resource type="Script" uid="uid://oyf7qrjrqbjv" path="res://CreateFountain.gd" id="5_uadu4"]
+[ext_resource type="Script" path="res://KittenBotStartButton.gd" id="5_vi5kq"]
+[ext_resource type="Script" uid="uid://d2ehlrnflpfof" path="res://UI/TurnButton.gd" id="6_86f7r"]
+[ext_resource type="Script" uid="uid://crhhgbeq3rm0" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
 [ext_resource type="Texture2D" uid="uid://c7j4nas34n2h1" path="res://Assets/UI/BlackCatStarIcon.png" id="6_giubr"]
 [ext_resource type="Script" uid="uid://b4dypdri54lv3" path="res://DuelingBotsStartButton.gd" id="6_y1tbi"]
-[ext_resource type="Script" uid="uid://d2he3bc1vw4x6" path="res://UI/BlackScore.gd" id="7_2kt63"]
+[ext_resource type="Script" uid="uid://c0uspb2v116jc" path="res://UI/BlackScore.gd" id="7_2kt63"]
 [ext_resource type="Script" uid="uid://dfm5tdfc0xrxj" path="res://UI/GameSpeedEdit.gd" id="7_f4ese"]
 [ext_resource type="Texture2D" uid="uid://do02a2q5cl6bf" path="res://Assets/UI/WhiteCatStarIcon.png" id="7_mq5lf"]
 [ext_resource type="Script" uid="uid://hq7g3rumg3vs" path="res://ShowQTable.gd" id="7_y1tbi"]
-[ext_resource type="Script" uid="uid://bg4kovq3nrm0n" path="res://UI/WhiteScore.gd" id="8_5kguq"]
-[ext_resource type="Script" uid="uid://bpdebhdo5t56" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
+[ext_resource type="Script" uid="uid://b8fevr71y1pn7" path="res://UI/WhiteScore.gd" id="8_5kguq"]
+[ext_resource type="Script" uid="uid://dcbguk6bdgxj5" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
 [ext_resource type="Script" uid="uid://cwful6gix2l71" path="res://UI/DraftUI.gd" id="14_486mp"]
 [ext_resource type="Script" uid="uid://cuit7uhrnwy0w" path="res://UI/Hand.gd" id="17_43ggv"]
 [ext_resource type="PackedScene" uid="uid://b32uginpqm7kl" path="res://UI/HideHandButton.tscn" id="17_tkh6c"]
-[ext_resource type="Script" uid="uid://cs1f6ja0qk1m5" path="res://EndUI.gd" id="17_v8qla"]
-[ext_resource type="Script" uid="uid://gcxwm3iap0cm" path="res://UI/Timeline.gd" id="19_6a7bp"]
-[ext_resource type="Script" uid="uid://dqhicm36cc2sq" path="res://UI/ObserveUI.gd" id="19_hbekn"]
+[ext_resource type="Script" path="res://EndUI.gd" id="17_v8qla"]
+[ext_resource type="Script" uid="uid://b34yiweki4jst" path="res://UI/Timeline.gd" id="19_6a7bp"]
+[ext_resource type="Script" uid="uid://b6aihhjoewe05" path="res://UI/ObserveUI.gd" id="19_hbekn"]
 [ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
 [ext_resource type="PackedScene" uid="uid://c3j2fpajvqrvl" path="res://UI/StructureInstanceInfo.tscn" id="20_xh85l"]
 [ext_resource type="Script" uid="uid://cy88kjsrxarxn" path="res://UI/TimeLeft.gd" id="21_fg20p"]
@@ -33,17 +33,17 @@
 [ext_resource type="Script" uid="uid://d2r3o347cbnpu" path="res://UI/Skip.gd" id="22_jpy4h"]
 [ext_resource type="Script" uid="uid://d241texty8vji" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
 [ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="23_bqvjb"]
-[ext_resource type="Script" uid="uid://bsuhrma07o7my" path="res://UI/EventUI.gd" id="23_v8qla"]
-[ext_resource type="Script" uid="uid://cl77iwoglik6l" path="res://UI/PauseButton.gd" id="24_difs8"]
+[ext_resource type="Script" path="res://UI/EventUI.gd" id="23_v8qla"]
+[ext_resource type="Script" uid="uid://cx0uchl6utxj7" path="res://UI/PauseButton.gd" id="24_difs8"]
 [ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="24_qjy5s"]
 [ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="24_up8a8"]
 [ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="25_581b6"]
 [ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="25_r63lr"]
-[ext_resource type="Script" uid="uid://bwplf5qukpmfd" path="res://ResourcesLabel.gd" id="25_tv7x8"]
-[ext_resource type="Script" uid="uid://o8dmeq1ngom7" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
+[ext_resource type="Script" path="res://ResourcesLabel.gd" id="25_tv7x8"]
+[ext_resource type="Script" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
 [ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
-[ext_resource type="Script" uid="uid://dkvc2oj1lnuiy" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
-[ext_resource type="Script" uid="uid://bik6jf3qxsrm1" path="res://UI/Thinking.gd" id="31_5mkgo"]
+[ext_resource type="Script" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
+[ext_resource type="Script" path="res://UI/Thinking.gd" id="31_5mkgo"]
 [ext_resource type="PackedScene" uid="uid://ce4ien23x0uk5" path="res://UI/CatInstanceInfo.tscn" id="38_v8qla"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1tbi"]
@@ -193,6 +193,7 @@ text = "KITTEN BOT"
 script = ExtResource("5_vi5kq")
 
 [node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
 layout_mode = 2
 text = "DUELINGBOT"
 script = ExtResource("6_y1tbi")
@@ -885,18 +886,21 @@ script = ExtResource("24_difs8")
 
 [node name="ShowCatInfoButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
 process_mode = 3
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Show Cat Info"
 script = ExtResource("26_jt61w")
 
 [node name="SkipButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "DEBUG USE ONLY"
 script = ExtResource("22_jpy4h")
 
 [node name="SaveMouseketeerData" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "SAVE"
 script = ExtResource("29_c2s76")

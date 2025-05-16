@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d2ko5f6up63d7"]
+[gd_scene load_steps=0 format=3 uid="uid://d2ko5f6up63d7"]
 
 [node name="CatInfoButton" type="Button" groups=["CatInfoButton"]]
 anchors_preset = 15

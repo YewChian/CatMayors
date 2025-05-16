@@ -983,9 +983,9 @@ var structures : Dictionary = {
 	"Pirate Library" : {	# invasion
 		"rarity": "common",
 		"path": "res://Structures/PirateLibrary.tscn",
-		"icon": "res://UI/StructureIcons/PirateLibraryIcon.tres",
+		"icon": "res://UI/StructureIcons/PirateLibrary.tres",
 		"sprite": "res://Assets/Structures/PirateLibrary.png",
-		"sprite_offset": Vector2(96, 64),
+		"sprite_offset": Vector2(64, 32),
 		"color": "green",
 		"occupied_coordinates": [
 			Vector2(0,0),

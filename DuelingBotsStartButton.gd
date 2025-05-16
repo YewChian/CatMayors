@@ -2,7 +2,8 @@ extends Button
 
 func _on_pressed():
 	PlayerMan.mode = "DuelingBot"
-	# await MouseketeerBot.initialize_q_table("create")
+	#await MouseketeerBot.initialize_q_table("create")
+	#await GreywhiskersBot.initialize_q_table("create")
 	await MouseketeerBot.initialize_q_table("load")
 	await GreywhiskersBot.initialize_q_table("load")
 	await StructureMan.set_name2staticid()
