@@ -9,13 +9,13 @@ func show_activity_progress(is_cat_spooked: bool):
 	else:
 		duration = structure.activity_duration / Settings.game_speed
 		
-	max_value = duration
+	max_value = duration * 100
 	$Timer.start(duration)
-	value = max_value - $Timer.time_left
+	value = max_value - ($Timer.time_left * 100)
 
 
 func _physics_process(delta):
-	value = max_value - $Timer.time_left
+	value = max_value - ($Timer.time_left * 100)
 	
 
 func _on_timer_timeout():

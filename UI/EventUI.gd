@@ -17,7 +17,7 @@ func initialize():
 		await GreywhiskersBot.choose_purple_tile_replacements()
 
 func transform_purple_tiles_into(new_color: String):
-	var num_tiles = 5 
+	var num_tiles = 10
 	var purple_tile_coordinates = []
 	for tile in TileMan.tiles.values():
 		if tile.color == "purple":
@@ -27,6 +27,7 @@ func transform_purple_tiles_into(new_color: String):
 	purple_tile_coordinates = purple_tile_coordinates.slice(0,num_tiles)
 	for coord in purple_tile_coordinates:
 		transform_tile_into(new_color, coord)
+	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/TimeLeft")._on_turn_timer_timeout()
 
 
 func transform_tile_into(color: String, coord: Vector2):
@@ -36,11 +37,12 @@ func transform_tile_into(color: String, coord: Vector2):
 	var num_flashes = 3
 	for i in range(num_flashes):
 		cross.visible = false
-		await get_tree().create_timer(1/Settings.game_speed).timeout
+		await get_tree().create_timer(0.3/Settings.game_speed).timeout
 		cross.visible = true
-		await get_tree().create_timer(1/Settings.game_speed).timeout
+		await get_tree().create_timer(0.3/Settings.game_speed).timeout
 	cross.queue_free()
 	TileMan.create_tile(color, coord)
+	await get_tree().create_timer(2/Settings.game_speed).timeout
 
 func end_turn():
 	pass

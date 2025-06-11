@@ -16,6 +16,7 @@ func create_structure(structure_name: String, coordinate: Vector2, team_color: S
 	
 	await new_instantiated_structure.initialize_stats(structure_name, team_color)
 	new_instantiated_structure.get_node("EntranceIndicator").position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
+	new_instantiated_structure.get_node("EntranceIndicator").frame = StructureData.structures[structure_name]["structure_stars"]
 	var flag_node: Object
 	match team_color:
 		"black":

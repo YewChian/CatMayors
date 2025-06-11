@@ -12,7 +12,8 @@ func initialize(json_or_node: String, structure_node: Object):
 			var structure_dict = StructureData.structures[structure_name]
 			%NumStructureStars.text = str(structure_dict["structure_stars"]) + " stars"
 			%StructureName.text = structure_name
-			%Duration.text = str(structure_dict["activity_duration"]) + "s"
+			%Duration.text = str(structure_dict["activity_duration"]) + " sec"
+			%ColorIcon.texture = load("res://Assets/" + structure_dict["color"].substr(0,1).to_upper() + structure_dict["color"].substr(1,-1) + "Tile.png")
 			%StructureTexture.texture = load(structure_dict["icon"])
 			%InfoEntranceIndicator.position = structure_dict["entrance_coordinate"] * Settings.TILE_LENGTH
 			%Color.visible = false
@@ -21,7 +22,6 @@ func initialize(json_or_node: String, structure_node: Object):
 			%Effects.text = ""
 			var effects = structure_dict["effects"]
 			await update_structure_effects(effects)
-
 			# %Effects.text += "\n"
 			# %Effects.text += "\"" + structure_dict["flavor"] + "\""
 			# %Effects.text += "\n"
@@ -87,21 +87,21 @@ func update_structure_effects(effects: Dictionary):
 			await print_conditions(effects[effect]["conditions"])
 			%Effects.text += "Gain " + str(effects["gain_ingredients"]["num_ingredients"]) + " ingredients"
 			%Effects.text += "\n"
-			%Effects.text += "Cats consume ingredients for bonuses on their next visit unless they gain more ingredients or they cook ingredients"
+			%Effects.text += "Ingredients can be cooked for stars. Ingredients expire in one visit."
 			%Effects.text += "\n"
 
 		if effect == "cook_ingredients":
 			await print_conditions(effects[effect]["conditions"])
 			%Effects.text += "Gain " + str(effects["cook_ingredients"]["num_cooked_ingredients_per_ingredient"]) + " cooked ingredients and " + str(effects["cook_ingredients"]["num_stars_per_ingredient"]) + " stars per ingredient held by visiting cat"
 			%Effects.text += "\n"
-			%Effects.text += "Cats sell their cooked ingredients at restaurants for massive amounts of stars"
+			%Effects.text += "Cooked ingredients can be served for stars. Cooked ingredients expire in one visit."
 			%Effects.text += "\n"
 
 		if effect == "serve_ingredients":
 			await print_conditions(effects[effect]["conditions"])
 			%Effects.text += "Gain " + str(effects["serve_ingredients"]["num_stars_per_cooked_ingredient"]) + " stars per cooked ingredient held by visiting cat"
 			%Effects.text += "\n"
-			%Effects.text += "Cats sell their cooked ingredients at restaurants for massive amounts of stars"
+			%Effects.text += "Cooked ingredients can be served for stars"
 			%Effects.text += "\n"
 
 		if effect == "gain_equipment":
@@ -118,6 +118,11 @@ func update_structure_effects(effects: Dictionary):
 		if effect == "retire":
 			await print_conditions(effects[effect]["conditions"])
 			%Effects.text += "Lose all curiosity"
+			%Effects.text += "\n"
+
+		if effect == "double_my_stars":
+			await print_conditions(effects[effect]["conditions"])
+			%Effects.text += "Gain stars equal to the stars earned by the visiting cat"
 			%Effects.text += "\n"
 
 		
@@ -211,7 +216,7 @@ func print_aura_description(data):
 		%Effects.text += "\n"
 
 	if type == "satisfied":
-		%Effects.text += "Gain a dutiful Aura for " + str(duration) + " visits"
+		%Effects.text += "Gain a satisfied Aura for " + str(duration) + " visits"
 		%Effects.text += "\n"
 		%Effects.text += "(Satisfied cats gain double the stars at the cost of their remaining curiosity)"
 		%Effects.text += "\n"

@@ -71,6 +71,12 @@ func start_activity(cat : Object):
 			and effects.has("cook_ingredients") == false
 		):
 		await cat.consume_ingredients()
+	if (
+			cat.num_cooked_ingredients > 0
+			and effects.has("cook_ingredients") == false
+			and effects.has("serve_ingredients") == false
+		):
+		await cat.consume_cooked_ingredients()
 
 	var is_cat_spooked: bool = false
 	if cat.aura == "spooked":
@@ -83,7 +89,9 @@ func start_activity(cat : Object):
 	$AnimationPlayer.speed_scale = Settings.game_speed
 	$AnimationPlayer.play("start_activity")
 	$ActivityProgress.show_activity_progress(is_cat_spooked)
-
+	
+	show_effects_of_cat_on_structure(cat)
+	
 
 func finish_activity():
 	$AnimationPlayer.speed_scale = Settings.game_speed
@@ -108,13 +116,15 @@ func finish_activity():
 				var new_log: String = active_cat.id + " knocked over some stuff at " + structure_name + ", lowering its stars"
 				print(new_log)
 				await get_tree().current_scene.add_to_log(new_log)
+				get_node("EntranceIndicator").frame = structure_stars
 
 			"generous":
 				await active_cat.decrement_aura_duration()
 				structure_stars += 1
-				var new_log: String = active_cat.id + " gave extra snacks to " + structure_name
+				var new_log: String = active_cat.id + " upgraded " + structure_name
 				print(new_log)
 				await get_tree().current_scene.add_to_log(new_log)
+				get_node("EntranceIndicator").frame = structure_stars
 
 			# lazy: the next structure this cat visits gains the following effect:
 			## structure_stars = 0
@@ -158,7 +168,7 @@ func finish_activity():
 			# gain 2 bonus stars if visited structure is of a different color
 			"nosy":
 				await active_cat.decrement_aura_duration()
-				if team_color != active_cat.team_color:
+				if team_color != active_cat.color:
 					bonus_stars += 2					
 				var new_log: String = active_cat.id + " was feeling nosy at " + structure_name
 				print(new_log)
@@ -202,6 +212,9 @@ func finish_activity():
 
 		if effects.has("double_structure_stars") and StructureMan.fulfils_effect_conditions(effects["double_structure_stars"]["conditions"], "finish_activity", self, active_cat):
 			structure_stars *= 2
+			
+		if effects.has("retire") and StructureMan.fulfils_effect_conditions(effects["retire"]["conditions"], "finish_activity", self, active_cat):
+			active_cat.max_curiosity = 0
 
 		if effects.has("cook_ingredients") and StructureMan.fulfils_effect_conditions(effects["cook_ingredients"]["conditions"], "finish_activity", self, active_cat):
 			var cook_ingredients_data = effects["cook_ingredients"]
@@ -209,6 +222,15 @@ func finish_activity():
 			active_cat.gain_cooked_ingredients(cook_ingredients_data["num_cooked_ingredients_per_ingredient"] * active_cat.num_ingredients)
 			active_cat.num_ingredients = 0
 			var new_log: String = active_cat.id + " cooked some ingredients at " + structure_name
+			print(new_log)
+			await get_tree().current_scene.add_to_log(new_log)
+		
+		if effects.has("serve_ingredients") and StructureMan.fulfils_effect_conditions(effects["serve_ingredients"]["conditions"], "finish_activity", self, active_cat):
+			var serve_ingredients_data = effects["serve_ingredients"]
+			active_cat.gain_stars(serve_ingredients_data["num_stars_per_cooked_ingredient"] * active_cat.num_cooked_ingredients)
+			active_cat.num_cooked_ingredients = 0
+			await active_cat.update_cooked_ingredients_icon()
+			var new_log: String = active_cat.id + " served some ingredients at " + structure_name
 			print(new_log)
 			await get_tree().current_scene.add_to_log(new_log)
 
@@ -234,6 +256,46 @@ func finish_activity():
 		num_visits += 1
 		visited_cats.append(active_cat.id)
 
+
+func show_effects_of_cat_on_structure(cat):
+	if cat.aura == "generous":
+		for relative_coord in occupied_coordinates:
+			var coord = relative_coord + coordinate
+			var new_anim_sprite = AnimatedSprite2D.new()
+			%FX.add_child(new_anim_sprite)
+			new_anim_sprite.global_position = coord * Settings.TILE_LENGTH
+			new_anim_sprite.sprite_frames = load("res://Assets/Structures/generous_structure_SF.tres")
+			new_anim_sprite.play()
+		await get_tree().create_timer(3/Settings.game_speed).timeout
+		for sprite in %FX.get_children():
+			sprite.queue_free()
+		return
+		
+	if cat.aura == "prankster":
+		for relative_coord in occupied_coordinates:
+			var coord = relative_coord + coordinate
+			var new_anim_sprite = AnimatedSprite2D.new()
+			%FX.add_child(new_anim_sprite)
+			new_anim_sprite.global_position = coord * Settings.TILE_LENGTH
+			new_anim_sprite.sprite_frames = load("res://Assets/Structures/prankster_structure_SF.tres")
+			new_anim_sprite.play()
+		await get_tree().create_timer(3/Settings.game_speed).timeout
+		for sprite in %FX.get_children():
+			sprite.queue_free()
+		return
+			
+	if effects.has("rehome") and num_rehomed < effects["rehome"]["conditions"]["discovery"]:
+		for relative_coord in occupied_coordinates:
+			var coord = relative_coord + coordinate
+			var new_anim_sprite = AnimatedSprite2D.new()
+			%FX.add_child(new_anim_sprite)
+			new_anim_sprite.global_position = coord * Settings.TILE_LENGTH
+			new_anim_sprite.sprite_frames = load("res://Assets/Structures/rehome_indicator_SF.tres")
+			new_anim_sprite.play()
+		await get_tree().create_timer(3/Settings.game_speed).timeout
+		for sprite in %FX.get_children():
+			sprite.queue_free()
+		return
 
 func update_flag_sprite():
 	var flag_sprite: Object
@@ -271,11 +333,22 @@ func get_global_entrance_coordinate():
 	return coordinate + entrance_coordinate
 
 
-func _on_mouse_entered() -> void:
-	structure_instance_info.visible = true
-	await structure_instance_info.update_info(self)
+#func _on_mouse_entered() -> void:
+	#structure_instance_info.visible = true
+	#await structure_instance_info.update_info(self)
+	#
+#
+#func _on_mouse_exited() -> void:
+	#structure_instance_info.visible = false
 	
 
-func _on_mouse_exited() -> void:
-	structure_instance_info.visible = false
-	
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			var cursor_sfx = get_tree().current_scene.get_node("CursorSFX")
+			cursor_sfx.stream = load(AudioMan.mouse_click)
+			cursor_sfx.volume_db = 20
+			cursor_sfx.play()
+			
+			structure_instance_info.visible = true
+			await structure_instance_info.update_info(self)

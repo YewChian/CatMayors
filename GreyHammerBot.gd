@@ -16,16 +16,20 @@ var gamma: float = 0.9
 var alpha: float = 0.9
 
 # state details
-var redness_tiers = {
-	#  (num_red * 100) / (num_red + num_green) 
-	0: 20,
-	1: 40,
-	2: 60,
-	3: -1,	# -1 refers to > the previous tier
+var num_sampled_structures = 5
+var num_conn_tile_rings = 4
+var max_color_connections: int = -1
+var color_connectivity_tiers = {
+	"pathetic": 0.2,
+	"weak": 0.4,
+	"average": 0.6,
+	"strong": 0.8,
+	"elite": 1.0
 }
+
 # action details
-var level_up_options = ["common","rare","epic"] 
-var choose_location_options = ["low", "high"] # in alphabetical order of the structure name
+var chosen_hand_structure_options = ["0", "1", "2", "3", "4"] 	# assuming that max hand is 5
+var origin_structure_options = ["0", "1", "2", "3", "4"] # assuming that we sample from 5 owned structures
 
 var statename2index = {}
 var actionname2index = {}
@@ -41,7 +45,7 @@ func initialize_q_table(create_or_load: String):
 			state variables:
 			1. five of my own structures, sorted by id
 			2. five opponent structures, sorted by id
-			3. the number of same color connections within 5 steps from the structure, per structure
+			3. the number of same color connections within 4 rings from the structure, per structure
 			4. the ids of the structures in hand, sorted by id
 			e.g. five_owned_structures = "0,1,12,-1,-1"
 			e.g. nearby_connected_edges_per_structure = "4, 2, 9, 5, 3"
@@ -54,12 +58,34 @@ func initialize_q_table(create_or_load: String):
 			"""
 
 			# initialize states
-			var five_own_structures: Array = get_x_owned_structures(5, "own")
-			var own_structure_state: String = five_own_structures[0]
-			var own_structure_ids: Array = five_own_structures[1]
-			var opponent_structure_state: String = get_x_owned_structures(5, "opponent")[0]
-			var num_conn_color_tiles: String = get_num_conn_color_tiles_within_x_steps(15, own_structure_ids)
+			var num_sampled_structure_combinations = Common.n_choose_r(len(StructureData.structures)+1, num_sampled_structures)		# note that +1 is needed to account for "-1" structure id
+			var num_color_connectivity_tier_combinations = pow(len(color_connectivity_tiers), num_sampled_structures)
+			var num_possible_hands = pow(len(StructureData.structures)+1, PlayerMan.max_hand_size)
+			# maxconn is the number of bagel types
+			# there are 5 slots
+			# so, there are 5 stars and maxconn-1 bars
+			# (5 + maxconn-1) actual slots
 
+			var num_col = num_sampled_structures * num_color_connectivity_tier_combinations * num_possible_hands
+			
+			# extract states
+			var sampled_own_structures: Array = get_x_owned_structures(num_sampled_structures, "own")
+			var own_structure_static_ids: Array = sampled_own_structures[0]
+			var own_structure_ids: Array = sampled_own_structures[1]
+			var opponent_structure_static_ids: Array = get_x_owned_structures(num_sampled_structures, "opponent")[0]
+			var color_connectivity: Array = get_color_connectivity_within_x_rings(num_conn_tile_rings, own_structure_ids)
+			var hand_structures: Array = get_hand_structures()
+			
+			## initialize actions
+			#
+			#var num_row = len(chosen_hand_structure_options) * len(origin_structure_options)
+			#await initialize_actionname2index()
+#
+			#q_table.resize(num_row)
+			#var new_col = []
+			#new_col.resize(num_col)
+			#new_col.fill(0)
+			#q_table.fill(new_col)
 """
 
 			var num_col = num_unique_structures * num_unique_structures * num_redness_tiers
@@ -73,14 +99,7 @@ func initialize_q_table(create_or_load: String):
 			num_actions = num_level_up_options * num_choose_location_options
 			= 3 * 2 = 6
 			'''
-			var num_row = len(level_up_options) * len(choose_location_options)
-			await initialize_actionname2index()
-
-			q_table.resize(num_row)
-			var new_col = []
-			new_col.resize(num_col)
-			new_col.fill(0)
-			q_table.fill(new_col)
+			
 		
 		"load":
 			load_q_table()
@@ -116,43 +135,79 @@ func get_x_owned_structures(x: int, own_or_opponent: String):
 		x_built_structures_static_ids.append(arr[0])
 		x_built_structure_ids.append(arr[1])
 		
-	var x_owned_structures_commastring = Common.arr_to_commastring(x_built_structures_static_ids)
-	return [x_owned_structures_commastring, x_built_structure_ids]
+	return [x_built_structures_static_ids, x_built_structure_ids]
 	
 
-func get_num_conn_color_tiles_within_x_steps(x: int, owned_structures_ids: Array):
-	printerr("owned struct ids within conn: ", owned_structures_ids)
+func get_color_connectivity_within_x_rings(x: int, owned_structures_ids: Array):
+	var counts = []
 	for id in owned_structures_ids:
 		var count = 0
 		if id == -1:
+			counts.append("pathetic")
 			continue
-		var queue = [StructureMan.structures[id].entrance_coordinate]
+		var current_ring: Array[Vector2] = [StructureMan.structures[id].entrance_coordinate]
+		var next_ring: Array[Vector2] = []
 		var visited: Array[Vector2] = []
-		var coord: Vector2
-		for i in range(x):
-			coord = queue.pop_front()
-			visited.append(coord)
-			if (
-				TileMan.get_tile(coord).color != "green" and
-				TileMan.get_tile(coord).color != "red"
-			): continue
-			TileMan.get_tile(coord).modulate = Color(1,1,1,1)
-			# check all 4 directions
-			# mark them as visited
-			# if the adj tile == color and is not visited, increment count
-			var coord_color = TileMan.get_tile(coord).color
-			var directions = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.RIGHT]
-			for dir in directions:
-				var adj_coord = coord + dir
-				if (adj_coord in visited) or (TileMan.get_tile(coord).color != coord_color):
-					continue
-				queue.append(adj_coord)
-				count += 1
-			TileMan.get_tile(coord).modulate = Color(0.2,0.2,0.2,1)
 		
+		for ring_number in range(x):
+			for coord in current_ring:
+				visited.append(coord)
+				for adj_coord in [(coord+Vector2.RIGHT),(coord+Vector2.UP),(coord+Vector2.LEFT),(coord+Vector2.DOWN)]:
+					var adj_tile_node = TileMan.get_tile(adj_coord)
+					if (	# reject untraversable tiles
+						adj_tile_node.color == "null" or
+						adj_tile_node.color == "blue" or
+						adj_tile_node.color == "purple" 
+					):
+						#print("rejected cos not traversable")
+						continue
+					if adj_coord in visited:
+						#print("rejected cos visited")
+						continue
+					if adj_coord in next_ring:
+						#print("rejected cos next ring")
+						continue
+						
+					#print("not rejected")
+					# check if the count for connected tiles should be incremented
+					var origin_tile_node = TileMan.get_tile(coord)
+					if adj_tile_node.color == origin_tile_node.color:
+						count += 1
+					next_ring.append(adj_coord)
 				
-		print("count for this structure: ", count)
-	return ""
+			current_ring = next_ring
+			next_ring = []
+		var count_percentage: float = float(count)/max_color_connections
+		if count_percentage > color_connectivity_tiers["strong"]:
+			counts.append("elite")
+		elif count_percentage > color_connectivity_tiers["average"]:
+			counts.append("strong")
+		elif count_percentage > color_connectivity_tiers["weak"]:
+			counts.append("average")
+		elif count_percentage > color_connectivity_tiers["pathetic"]:
+			counts.append("weak")
+		else:
+			counts.append("pathetic")
+	return counts
+	
+
+func get_hand_structures():
+	var hand_structure_names = PlayerMan.black_hand
+	var hand_structure_ids = []
+	
+	for i in range(PlayerMan.max_hand_size):
+		if i < len(hand_structure_names):
+			hand_structure_ids.append(StructureMan.name2static_id[hand_structure_names[i]])
+		else:
+			hand_structure_ids.append(-1)
+	
+	hand_structure_ids.sort()
+	return Common.arr_to_commastring(hand_structure_ids)
+	
+	
+func get_max_connections(num_rings: int):
+	return 4 * pow(num_rings, 2)
+
 
 func initialize_statename2index(num_unique_structures, num_redness_tiers):
 	statename2index = {}
@@ -170,92 +225,6 @@ func initialize_statename2index(num_unique_structures, num_redness_tiers):
 				cur += ","
 				statename2index[cur] = index
 				index += 1
-
-
-func initialize_actionname2index():
-	actionname2index = {}
-	var cur = ""
-	var index = 0
-	for level_up_option in level_up_options:
-		for choose_location_option in choose_location_options:
-			cur = ""
-			cur += level_up_option
-			cur += "," 
-			cur += choose_location_option
-			cur += ","
-			actionname2index[cur] = index
-			index2actionname[index] = cur
-			index += 1
-
-
-func pick_from_buttons(common_buttons: Array):
-	var state_name = get_state_name(common_buttons)
-	if prev_state != "":	# update the q_table everytime you enter a new state, unless you just started
-		await update_q_table(state_name)
-		await save_q_table()
-	var sorted_buttons = get_sorted_buttons(common_buttons)
-	get_tree().current_scene.get_node("CommonUI/ThinkingContainer/Thinking").texture = load("res://UI/ThinkingAnimSprites/GreywhiskersThinking.tres")
-	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = true
-
-	var action_string = ""
-	randomize()
-	var epsilon_roll = randf()
-	if epsilon_roll < epsilon:
-		action_string = get_random_action()
-		print("greywhiskers took a random action: ", action_string)
-	else:
-		# every column is a state
-		# get the actions along a column
-		var state_index = statename2index[state_name]
-		var state_column = Common.get_column_from_twodarr(q_table, state_index)
-		action_string = index2actionname[Common.argmax(state_column)]
-		print("greywhiskers took an argmax action: ", action_string)
-		
-	var action_string_unpacked = action_string.split(",")
-	var i = 0
-	for action in action_string_unpacked:
-		if i == 0:
-			if action == "common":
-				i += 1
-				continue
-			if action == "rare":
-				await choose_location_ui._on_upgrade_button_pressed()
-				var rare_buttons = choose_location_ui.get_node("CatBuildingInfo/VBoxContainer/BlueprintContainer/RareStructureButtons").get_children()
-				assert(len(rare_buttons) == 2)
-				sorted_buttons = get_sorted_buttons(rare_buttons)
-				i += 1
-				continue
-			if action == "epic":
-				await choose_location_ui._on_upgrade_button_pressed()
-				await choose_location_ui._on_upgrade_button_pressed()
-				var epic_buttons = choose_location_ui.get_node("CatBuildingInfo/VBoxContainer/BlueprintContainer/EpicStructureButtons").get_children()
-				assert(len(epic_buttons) == 2)
-				sorted_buttons = get_sorted_buttons(epic_buttons)
-				i += 1
-				continue
-		if i == 1:
-			if action == "low":
-				await sorted_buttons[0]._on_button_pressed()
-				i += 1
-				continue
-			if action == "high":
-				await sorted_buttons[1]._on_button_pressed()
-				i += 1
-				continue
-
-	get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = false
-	var new_log: String = "GreywhiskersBot's pick is: " + action_string
-	await get_tree().current_scene.add_to_log(new_log)
-
-	# after picking, save the old state and the reward gained. then, wait till the agent enters the next state before updating the q_table
-	var num_stars_at_current_action_end = PlayerMan.white_stars
-	var num_opponent_stars = PlayerMan.black_stars
-	prev_state = state_name
-	prev_action = action_string
-	prev_reward = get_reward(num_stars_at_prev_action_end, num_stars_at_current_action_end, num_opponent_stars)
-	print("greywhiskers's immediate reward = ", prev_reward)
-	num_stars_at_prev_action_end = num_stars_at_current_action_end
-
 
 func get_reward(prev_stars: int, current_stars: int, opponent_stars: float):
 	return snapped((float(current_stars - prev_stars) - (opponent_stars*0.1)), 0.01)	# round to two d.p.
@@ -302,40 +271,6 @@ func get_random_action():
 	randomize()
 	var action_index = randi_range(0, len(q_table)-1)
 	return index2actionname[action_index]
-	
-
-func get_state_name(buttons: Array):
-	# get the ids of the available structures from the buttons
-	# get the redness based on the redness_tiers
-	# combine them to get the state_name
-	var state_name = ""
-	var available_structure_ids = []
-	for button in buttons:
-		available_structure_ids.append(StructureMan.name2static_id[button.structure_name])
-	assert(len(available_structure_ids) == 2)
-	available_structure_ids.sort()
-	for id in available_structure_ids:
-		state_name += str(id)
-		state_name += ","
-		
-	var num_tiles_per_color: Dictionary = TileMan.get_num_tiles_per_color()
-	var redness: float = (num_tiles_per_color["red"] * 100) / (num_tiles_per_color["red"] + num_tiles_per_color["green"])
-	var redness_tier: String = ""
-	if redness > redness_tiers[2]:
-		redness_tier = "3"
-	elif redness > redness_tiers[1]:
-		redness_tier = "2"
-	elif redness > redness_tiers[0]:
-		redness_tier = "1"
-	else:
-		redness_tier = "0"
-	assert(redness_tier != "")
-
-	state_name += redness_tier
-	state_name += ","
-	
-	# print("state_name -- structure, structure, redness, :", state_name)
-	return state_name
 
 
 func show_thinking(duration: int):
@@ -449,7 +384,7 @@ func get_tile_ring_of_x_depth(origin_coord, x):
 func choose_purple_tile_replacements():
 	print("greywhiskers looking for replacements")
 	var event_ui = get_tree().current_scene.get_node("UI/EventUI")
-	await show_thinking(2)
+	await show_thinking(5)
 	var tile_buttons = event_ui.get_node("EventPanelContainer/VBoxContainer/EventOptions").get_children()
 	tile_buttons.shuffle()
 	await tile_buttons[0].emit_signal("pressed")

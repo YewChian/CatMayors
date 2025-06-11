@@ -11,4 +11,5 @@ func _on_pressed():
 	%CommonUI.visible = true
 	await PlayerMan.add_initial_structures_to_hand()
 	UIMan.enter_mode("DraftUI")
-	%TurnTimer.start(Settings.TURN_DURATION/Settings.game_speed)
+	%TurnTimer.start(Settings.TURN_DURATION[PlayerMan.phases[PlayerMan.phase_index]]/Settings.game_speed)
+	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = PlayerMan.turn_color + "'s turn"

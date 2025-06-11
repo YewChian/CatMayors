@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://c2pikrbhir4vh"]
+
+[ext_resource type="Texture2D" uid="uid://c7d6tiyub18dv" path="res://Assets/Cats/lazy_aura/lazy_aura11.png" id="1_rlrsh"]
+[ext_resource type="Texture2D" uid="uid://b8tvfyps30tsg" path="res://Assets/Cats/lazy_aura/lazy_aura12.png" id="2_j7ds8"]
+[ext_resource type="Texture2D" uid="uid://df5l56f007wc7" path="res://Assets/Cats/lazy_aura/lazy_aura13.png" id="3_hklcv"]
+[ext_resource type="Texture2D" uid="uid://b3mfdikie4ol1" path="res://Assets/Cats/lazy_aura/lazy_aura14.png" id="4_8jhuy"]
+[ext_resource type="Texture2D" uid="uid://b07vek6ar1lf1" path="res://Assets/Cats/lazy_aura/lazy_aura15.png" id="5_1jkte"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_rlrsh")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_j7ds8")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_hklcv")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_8jhuy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_1jkte")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

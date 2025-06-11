@@ -18,6 +18,7 @@ var turn_color_order = ["black", "white"]
 var turn_index : int = 0
 var round : int = 0
 var total_turns: int = 0
+var max_hand_size = 5
 	
 
 func add_initial_structures_to_hand():
@@ -36,6 +37,7 @@ func go_to_next_turn():
 		round += 1
 		turn_color_order.reverse()
 	turn_color = turn_color_order[turn_index]
+	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = turn_color + "'s turn"
 	if round == Settings.MAX_ROUNDS:
 		end_game()
 	else:
@@ -51,6 +53,8 @@ func go_to_next_turn():
 func end_game():
 	var victory_label = get_tree().current_scene.get_node("CommonUI/VBoxContainer/VictoryLabel")
 	victory_label.visible = true
+	var title_info = get_tree().current_scene.get_node("CommonUI/VBoxContainer/TitleInfo")
+	title_info.visible = true
 	if black_stars > white_stars:
 		victory_label.text = ("BLACK WINS")
 	elif black_stars < white_stars:

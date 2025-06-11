@@ -16,7 +16,8 @@ layout_mode = 2
 
 [node name="CatInfoHeader" type="Label" parent="CatList"]
 layout_mode = 2
-text = "C: Curiosity
+text = "S: Stars
+C: Curiosity
 I: Number of Ingredients
 O: Number of Cooked Ingredients"
 

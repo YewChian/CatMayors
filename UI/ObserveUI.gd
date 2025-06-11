@@ -4,7 +4,11 @@ extends CanvasLayer
 
 func initialize():
 	await %Timeline.update_timeline()
-
+	
+	if PlayerMan.mode == "KittenBot" and PlayerMan.turn_color == "white":
+		await get_tree().current_scene.disable_player_input()
+		await KittenBot.observe()
+		return
 	
 func on_touched(event):
 	pass

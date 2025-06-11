@@ -43,3 +43,17 @@ func commastring_to_arr(commastring: String):
 			continue
 		output.append(int(e))
 	return output
+
+
+func n_choose_r(n: int, r: int):
+	return factorial(n) / (factorial(r) * (n-r))
+
+
+func factorial(n: int):
+	assert(n >= 0)
+	if n == 0:
+		return 1
+	while n > 0:
+		n = n*(n-1)
+		n -= 1
+	return n

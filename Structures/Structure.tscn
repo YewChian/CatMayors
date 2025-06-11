@@ -1,15 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://cldq2ytrikigr"]
+[gd_scene load_steps=38 format=3 uid="uid://cldq2ytrikigr"]
 
 [ext_resource type="Texture2D" uid="uid://duldscapb1o7d" path="res://Assets/UI/ActivityUnder.png" id="1_8jkkh"]
 [ext_resource type="Script" uid="uid://bbn5esm8kn8ou" path="res://Structures/ActivityProgress.gd" id="1_8ssxn"]
 [ext_resource type="Script" uid="uid://dc50rbh5uac7l" path="res://Structures/Structure.gd" id="1_vnxqa"]
 [ext_resource type="Texture2D" uid="uid://ddji3g3kxhyho" path="res://Assets/UI/ActivityProgress.png" id="2_fhfrh"]
-[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="7_oty4d"]
-[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="8_spbvr"]
-[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="9_uejeh"]
+[ext_resource type="Texture2D" uid="uid://cq8un2ve0gwfh" path="res://Assets/UI/ThickEntranceIndicatorWithStars.png" id="5_vdq6w"]
 [ext_resource type="Texture2D" uid="uid://c7gmghtq6sv6a" path="res://Assets/Structures/Flags/BlackFlag1L/BlackFlag1L1.png" id="10_3kky8"]
-[ext_resource type="Script" uid="uid://xb3ohbj2u06v" path="res://Structures/EntranceIndicator.gd" id="10_n33h6"]
-[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="10_svgks"]
 [ext_resource type="Texture2D" uid="uid://cqnw4xjx2acud" path="res://Assets/Structures/Flags/BlackFlag1L/BlackFlag1L2.png" id="11_415dq"]
 [ext_resource type="Texture2D" uid="uid://dct22yrhna1ey" path="res://Assets/Structures/Flags/BlackFlag1L/BlackFlag1L3.png" id="12_vfkco"]
 [ext_resource type="Texture2D" uid="uid://b7kk3il0tv82g" path="res://Assets/Structures/Flags/BlackFlag2L/BlackFlag2L1.png" id="13_fdqkm"]
@@ -39,26 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://dw60lvbbv1hp5" path="res://Assets/Structures/Flags/WhiteFlag5L/WhiteFlag5L1.png" id="37_tiskq"]
 [ext_resource type="Texture2D" uid="uid://dbqjxgh58styj" path="res://Assets/Structures/Flags/WhiteFlag5L/WhiteFlag5L2.png" id="38_ms71x"]
 [ext_resource type="Texture2D" uid="uid://dj3kuauyd2ywc" path="res://Assets/Structures/Flags/WhiteFlag5L/WhiteFlag5L3.png" id="39_ikinm"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i0b4a"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_oty4d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_spbvr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_uejeh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_svgks")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7vlqe"]
 animations = [{
@@ -217,9 +193,9 @@ hframes = 2
 
 [node name="ActivityProgress" type="TextureProgressBar" parent="."]
 visible = false
-offset_right = 128.0
+offset_right = 256.0
 offset_bottom = 64.0
-scale = Vector2(0.5, 0.25)
+scale = Vector2(0.5, 0.1)
 texture_under = ExtResource("1_8jkkh")
 texture_progress = ExtResource("2_fhfrh")
 script = ExtResource("1_8ssxn")
@@ -227,10 +203,10 @@ script = ExtResource("1_8ssxn")
 [node name="Timer" type="Timer" parent="ActivityProgress"]
 one_shot = true
 
-[node name="EntranceIndicator" type="AnimatedSprite2D" parent="."]
+[node name="EntranceIndicator" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_i0b4a")
-script = ExtResource("10_n33h6")
+texture = ExtResource("5_vdq6w")
+hframes = 17
 
 [node name="ColorMarker" type="Sprite2D" parent="."]
 
@@ -244,10 +220,12 @@ frame_progress = 0.789481
 [node name="WhiteFlag" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_mqb3m")
-animation = &"Flag1"
-frame = 2
-frame_progress = 0.329634
+animation = &"Flag3"
 
+[node name="FX" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="ActivityProgress/Timer" to="ActivityProgress" method="_on_timer_timeout"]

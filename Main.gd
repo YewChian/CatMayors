@@ -100,3 +100,44 @@ func create_map(size : int, expansion_probability : float):
 
 func _on_generate_map_pressed():
 	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
+
+func show_tutorial(base_screen: String):
+	%PauseMenu.visible = true
+	for node in %PauseMenu/MarginContainer.get_children():
+		node.visible = false
+	var tutorial_node = get_node("PauseMenu/MarginContainer/Tutorial")
+	tutorial_node.visible = true
+	tutorial_node.called_from = base_screen
+
+func hide_tutorial():
+	var tutorial_node = get_node("PauseMenu/MarginContainer/Tutorial")
+	tutorial_node.visible = false
+	%PauseMenu.visible = false
+	get_tree().paused = false
+
+func start_game():
+	%CommonUI.visible = true
+	get_tree().current_scene.get_node("CommonUI/VBoxContainer").visible = true
+	await PlayerMan.add_initial_structures_to_hand()
+	UIMan.enter_mode("DraftUI")
+	%TurnTimer.start(Settings.TURN_DURATION[PlayerMan.phases[PlayerMan.phase_index]]/Settings.game_speed)
+	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = PlayerMan.turn_color + "'s turn"
+	print("Common UI visiblity: ", %CommonUI.visible)
+	%Timeline.emphasise()
+	emphasise_turn_label()
+
+
+func emphasise_turn_label():
+	var turn_label = %WhoseTurnLabel
+	var original_color = Color(1, 1, 1, 1)
+	var flash_color = Color(1, 1.5, 1, 1)
+	var tween
+	for i in range(5):
+		tween = get_tree().create_tween()
+		tween.tween_property(turn_label, "modulate", flash_color, 0.5/Settings.game_speed)
+		await tween.finished
+		tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property(turn_label, "modulate", original_color, 0.5/Settings.game_speed)
+		await tween.finished
+		tween.kill()

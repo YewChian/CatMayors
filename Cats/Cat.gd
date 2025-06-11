@@ -29,6 +29,8 @@ func set_sprite(new_color: String, new_vehicle: String):
 	sprite_frames_path = "res://Assets/Cats/SpriteFrames/" + uppercase_vehicle + uppercase_color + "CatSF.tres"
 	$AnimatedSprite2D.sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.play()
+	#printerr("visibility: ", %Ingredients.visible)
+	#printerr("SF: ", %Ingredients.texture)
 	
 
 
@@ -206,19 +208,58 @@ func gain_naps(number : int):
 
 func gain_curiosity(number : int):
 	curiosity += number
+	
+	for i in range(number):
+		play_gain_resource_animation("curiosity")
+		await get_tree().create_timer(0.2/Settings.game_speed).timeout
 
 
 func gain_max_curiosity(number : int):
 	max_curiosity += number
-
+	
+	for i in range(number):
+		play_gain_resource_animation("max_curiosity")
+		await get_tree().create_timer(0.2/Settings.game_speed).timeout
+	
 
 func gain_ingredients(number : int):
 	num_ingredients += number
 
+	for i in range(number):
+		play_gain_resource_animation("ingredients")
+		await get_tree().create_timer(0.2/Settings.game_speed).timeout
+	
+	await update_ingredients_icon()
+		
+		
+func update_ingredients_icon():
+	if num_ingredients <= 0:
+		%Ingredients.texture = null
+	elif num_ingredients > 0 and num_ingredients < 13:
+		%Ingredients.texture = load("res://Assets/Cats/Ingredients/Ingredients" + str(num_ingredients) + ".png")
+	elif num_ingredients >= 13:
+		%Ingredients.texture = load("res://Assets/Cats/Ingredients/Ingredients12.png")
+
 
 func gain_cooked_ingredients(number : int):
 	num_cooked_ingredients += number
+	
+	for i in range(number):
+		play_gain_resource_animation("cooked ingredients")
+		await get_tree().create_timer(0.2/Settings.game_speed).timeout
+		
+	await update_cooked_ingredients_icon()
+	await update_ingredients_icon()
 
+
+func update_cooked_ingredients_icon():
+	if num_cooked_ingredients <= 0:
+		%CookedIngredients.texture = null
+	elif num_cooked_ingredients > 0 and num_cooked_ingredients < 13:
+		%CookedIngredients.texture = load("res://Assets/Cats/CookedIngredients/CookedIngredients" + str(num_cooked_ingredients) + ".png")
+	elif num_cooked_ingredients >= 13:
+		%CookedIngredients.texture = load("res://Assets/Cats/CookedIngredients/CookedIngredients12.png")
+		
 
 func gain_stars(number : int):
 	for i in range(number):
@@ -247,12 +288,48 @@ func play_stars_animation(star_color):
 			new_fx.animation = "white"
 
 	new_fx.play()
-	tween.tween_property(new_fx, "global_position", new_fx.global_position+Vector2(0, -128), 1.2/Settings.game_speed).set_trans(Tween.TRANS_SPRING)
+	tween.tween_property(new_fx, "global_position", new_fx.global_position+Vector2(0, -128), 1.8/Settings.game_speed).set_trans(Tween.TRANS_SPRING)
+	await tween.finished
+	%StarFX.remove_child(new_fx)
+	new_fx.queue_free()
 	
+func play_gain_resource_animation(resource_type):
+	var sprite: Resource
+	match resource_type:
+		"ingredients":
+			sprite = load("res://Assets/Cats/Ingredients/Ingredients1.png")
+		"cooked ingredients":
+			sprite = load("res://Assets/Cats/CookedIngredients/CookedIngredients1.png")
+		"curiosity":
+			print("showing curio")
+			sprite = load("res://Assets/Cats/CurosityIcon.png")
+		"max_curiosity":
+			print("showing max curio")
+			sprite = load("res://Assets/Cats/MaxCuriosityIcon.png")
+			
+	var tween = get_tree().create_tween()
+	var new_fx = Sprite2D.new()
+	%ResourceFX.add_child(new_fx)
+	new_fx.texture = sprite
 
+	randomize()
+	var spray_x = (randf_range(-16, 16))
+	randomize()
+	var spray_y = (randf_range(-16, 16))
+
+	tween.tween_property(new_fx, "global_position", new_fx.global_position+Vector2(0, -128) + Vector2(spray_x, spray_y), 0.8/Settings.game_speed).set_trans(Tween.TRANS_SPRING)
+	await tween.finished
+	%StarFX.remove_child(new_fx)
+	new_fx.queue_free()
+	
+	
 func gain_aura(aura_type: String, num_of_visits_duration: int):
 	aura = aura_type
 	aura_duration = num_of_visits_duration
+	%AuraAnimSprite.visible = true
+	%AuraAnimSprite.sprite_frames = load("res://Assets/Cats/SpriteFrames/" + aura_type + "_aura_sf.tres")
+	%AuraAnimSprite.play()
+	#the aura needs to be bigger, and we need all the other aura spriteframes.
 
 
 func gain_equipment(equipment_type: String):
@@ -262,8 +339,10 @@ func gain_equipment(equipment_type: String):
 
 func decrement_aura_duration():
 	aura_duration -= 1
-	if aura_duration == 0:
+	if aura_duration <= 0:
 		aura = "neutral"
+		%AuraAnimSprite.visible = false
+		
 		
 	
 func enter_state(new_state : String):
@@ -291,6 +370,7 @@ func enter_state(new_state : String):
 			$AnimationPlayer.speed_scale = Settings.game_speed
 			$AnimationPlayer.play("enter_structure")
 			await $AnimationPlayer.animation_finished
+			%FX.visible = true
 			$AnimationPlayer.play("start_rest")
 			await get_tree().create_timer(rest_duration_stat / Settings.game_speed).timeout
 			curiosity = max_curiosity
@@ -301,6 +381,7 @@ func enter_state(new_state : String):
 			$AnimationPlayer.play("leave_structure")
 			await $AnimationPlayer.animation_finished
 			visited_structure_entrances = []
+			%FX.visible = false
 			enter_state("wander")
 				
 		"queue":
@@ -310,13 +391,22 @@ func enter_state(new_state : String):
 
 
 func consume_ingredients():
-	curiosity += num_ingredients
-	var new_log: String = id + " ate his ingredients! It gained " + str(num_ingredients) + " curiosity temporarily"
+	#curiosity += num_ingredients
+	var new_log: String = id + " ate his ingredients!"
 	print(new_log)
 	await get_tree().current_scene.add_to_log(new_log)
 	num_ingredients = 0 
-	
+	await update_ingredients_icon()
 
+
+func consume_cooked_ingredients():
+	#curiosity += num_ingredients
+	var new_log: String = id + " ate his ingredients!"
+	print(new_log)
+	await get_tree().current_scene.add_to_log(new_log)
+	num_cooked_ingredients = 0 
+	await update_cooked_ingredients_icon()
+	
 
 func _physics_process(delta):
 	$Stats.text = str(curiosity) + " curio"
@@ -326,6 +416,8 @@ func _physics_process(delta):
 	$Stats.text += str(num_cooked_ingredients) + " c ingrd"
 	$Stats.text += "\n"
 	$Stats.text += aura
+	%CuriosityLabel.text = str(curiosity)
+	
 	
 
 func _on_mouse_entered() -> void:

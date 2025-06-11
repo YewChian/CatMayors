@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dtfyij68xdv3p"]
+
+[ext_resource type="Texture2D" uid="uid://cvodn21wk6gyg" path="res://Assets/Cats/generous_aura/generous_aura1.png" id="1_3fwvn"]
+[ext_resource type="Texture2D" uid="uid://bjk50coxh1u8n" path="res://Assets/Cats/generous_aura/generous_aura2.png" id="2_2ngv4"]
+[ext_resource type="Texture2D" uid="uid://i6e7tuljaoui" path="res://Assets/Cats/generous_aura/generous_aura3.png" id="3_1px67"]
+[ext_resource type="Texture2D" uid="uid://bep0pqddqjh6" path="res://Assets/Cats/generous_aura/generous_aura4.png" id="4_udty2"]
+[ext_resource type="Texture2D" uid="uid://sg7iyqmhtln1" path="res://Assets/Cats/generous_aura/generous_aura5.png" id="5_r7bbr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_3fwvn")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_2ngv4")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_1px67")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_udty2")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_r7bbr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -31,3 +31,4 @@ func _unhandled_input(event):
 	elif event is InputEventScreenTouch:
 		if event.pressed:
 			UI.get_node(mode).on_touched(event)
+			get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer2/StructureInstanceInfo").visible = false

@@ -20,6 +20,7 @@ func update_info():
 	for name in CatMan.cats:
 		var info_button = cat_info_button.instantiate()
 		var cat = CatMan.cats[name]
+		info_button.target_cat = cat
 		var button_text: String = ""
 		
 		match cat.color:
@@ -34,4 +35,3 @@ func update_info():
 		button_text += " " + str(cat.num_ingredients) + " I |"
 		button_text += " " + str(cat.num_cooked_ingredients) + " O |"
 		info_button.text = button_text
-				

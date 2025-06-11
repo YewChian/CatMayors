@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://baesx43b7j7b5"]
+
+[ext_resource type="Texture2D" uid="uid://b03rkubvyhqka" path="res://Assets/UI/RehomeIndicator/RehomeIndicator1.png" id="1_t60vw"]
+[ext_resource type="Texture2D" uid="uid://blx55gjihrudc" path="res://Assets/UI/RehomeIndicator/RehomeIndicator2.png" id="2_ap2jx"]
+[ext_resource type="Texture2D" uid="uid://e8bc4sixcp3c" path="res://Assets/UI/RehomeIndicator/RehomeIndicator3.png" id="3_ejsl2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t60vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ap2jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ejsl2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]

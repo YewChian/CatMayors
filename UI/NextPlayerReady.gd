@@ -5,6 +5,7 @@ func _on_pressed():
 	print("im pressed")
 	visible = false
 	get_tree().paused = false
+	get_tree().current_scene.emphasise_turn_label()
 
 
 func show_next_player_button():

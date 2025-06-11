@@ -279,7 +279,7 @@ food and production: encourages them to prepare shops for visitors
 - 
 
 
-### HISTORICAL GOTO ISLAND SET (1600S TOKUGAWA SHOGUNATE)
+### HISTORICAL GOTO ISLAND SET (1600S TOKUGAWA SHOGUNATE) FOR ART DESIGN DIRECTION
 - Three themes:
 
 #### THEME 1: THE WARRIOR RULING CLASS AND FARMER PEASANTS
@@ -297,3 +297,18 @@ food and production: encourages them to prepare shops for visitors
 - These cats can gain the stars that the warrior rulers would gain, but without setting up the whole production system, since they are stealing.
 - However, they cannot make homes near the capital because they are pirates. They specialise in having a high amount of curiosity so that they can raid structures from far.
 - They can also cause an uprising by spreading "faith". With high enough faith, the farmer peasant s can improve their life? im not sure how.
+
+### POLISH AND UI
+- generous upgrade (up arrows and stars)
+- satisfied buff (x2 effect)
+- nosy buff (+2 effect)
+- cooking effect (show fire and knives)
+- prankster effect (down arrows and stars)
+- cat gain curiosity resource?
+- giving max curiosity 
+- rehome happening (show the stick and bag symbol)
+- gaining ingredients (show fishing pole)
+- gaining equipment (show chest)
+- retire (show x2 effect)
+- cultured (+x effect)
+- town hall (+x effect)

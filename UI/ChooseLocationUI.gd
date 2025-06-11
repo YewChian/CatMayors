@@ -4,7 +4,7 @@ var new_structure : String
 var is_placeable : bool
 @onready var new_structure_marker_node : Object = get_tree().current_scene.get_node("NewStructureMarker")
 @onready var structure_instance_info = get_tree().current_scene.get_node("CommonUI/StructureInstanceInfo")
-
+@onready var message_tween = get_tree().create_tween()
 
 func initialize():
 	new_structure = ""
@@ -48,6 +48,10 @@ func choose_location():
 func on_touched(event):
 	if PlayerMan.mode == "KittenBot" and PlayerMan.turn_color == "white":
 		return
+	var cursor_sfx = get_tree().current_scene.get_node("CursorSFX")
+	cursor_sfx.stream = load(AudioMan.stone_effect)
+	cursor_sfx.volume_db = 20
+	cursor_sfx.play()
 	var viewport_size : Vector2 = get_viewport().size
 	var event_global_position : Vector2 = (event.position-(viewport_size/2))/UIMan.camera.zoom + UIMan.camera.get_screen_center_position()
 	var event_tile_coordinate : Vector2
@@ -69,7 +73,7 @@ func check_placeable():
 	await check_color_match()
 	await check_entrance_blocker()
 	if is_placeable == true:
-		$TipBox/Tip.text = "Great location."
+		show_structure_marker_message("Great location.")
 		new_structure_marker_node.modulate = Color(1, 1, 1, 0.5)
 	else:
 		new_structure_marker_node.modulate = Color(1, 0, 0, 0.5)
@@ -83,7 +87,7 @@ func check_color_match():
 	for shifted_coordinate in occupied_coordinates:
 		if TileMan.get_tile(get_marker_position()/Settings.TILE_LENGTH + shifted_coordinate).color != structure_color:
 			is_placeable = false
-			$TipBox/Tip.text = "Structure does not match color of covered tiles."
+			show_structure_marker_message("Structure does not match color of covered tiles.")
 			break
 
 
@@ -96,17 +100,29 @@ func check_entrance_blocker():
 	for shifted_coordinate in occupied_coordinates:
 		for direction in Settings.DIRECTIONS:
 			if get_marker_position()/Settings.TILE_LENGTH + shifted_coordinate + direction in all_entrance_coordinates:
-					$TipBox/Tip.text = "Don't block the entrances of other buildings."
+					show_structure_marker_message("Don't block the entrances of other buildings.")
 					is_placeable = false
 					break
 
+
+func show_structure_marker_message(message: String):
+	message_tween.kill()
+	var message_label = %StructureMarkerMessage
+	message_label.text = message
+	var label_offset = Vector2(-160, 0)
+	message_label.global_position = new_structure_marker_node.global_position + label_offset
+	message_tween = get_tree().create_tween()
+	message_tween.tween_property(message_label, "global_position", message_label.global_position + Vector2(0, -64), 1)
+	
 
 func set_marker_position(event_position : Vector2):
 	var event_tile_coordinate = get_coord_from_event_position(event_position)
 	await move_marker_and_make_visible(event_tile_coordinate)
 
+
 func move_marker_and_make_visible(target_coord):
 	new_structure_marker_node.set_visible(true)
+	new_structure_marker_node.get_node("EntranceIndicator").visible = true
 	new_structure_marker_node.global_position = (target_coord * Settings.TILE_LENGTH)
 	
 
@@ -124,9 +140,18 @@ func get_marker_position():
 
 
 func end_turn():
+	%StructureMarkerMessage.text = ""
+	new_structure_marker_node.modulate = Color(1, 1, 1, 0.5)
+	new_structure_marker_node.get_node("EntranceIndicator").visible = false
+	new_structure_marker_node.visible = false
+	
 	if new_structure == "" or is_placeable == false:
-		new_structure_marker_node.visible = false
 		return
+	
+	var structure_sfx = get_tree().current_scene.get_node("StructureSFX")
+	structure_sfx.stream = load(AudioMan.hammer_sound)
+	structure_sfx.volume_db = 0
+	structure_sfx.play()
 	
 	var new_coordinate = get_marker_position()/Settings.TILE_LENGTH
 	await StructureMan.create_structure(new_structure, new_coordinate, PlayerMan.turn_color)

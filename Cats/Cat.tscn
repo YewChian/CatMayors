@@ -117,6 +117,7 @@ libraries = {
 }
 
 [node name="Stats" type="Label" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -135,17 +136,49 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_qqo44")
 horizontal_alignment = 1
 
 [node name="FX" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 visible = false
 texture = ExtResource("2_bjcrq")
 hframes = 2
 
 [node name="MouseHoverCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g6q02")
+disabled = true
 
 [node name="StarFX" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="ResourceFX" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CuriosityLabel" type="Label" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+offset_left = -30.0
+offset_top = 30.0
+offset_right = -18.0
+offset_bottom = 53.0
+theme = ExtResource("2_od0jn")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qqo44")
+horizontal_alignment = 1
+
+[node name="Ingredients" type="Sprite2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(16, 10)
+scale = Vector2(0.75, 0.75)
+
+[node name="CookedIngredients" type="Sprite2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(16, 10)
+scale = Vector2(0.75, 0.75)
+
+[node name="AuraAnimSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

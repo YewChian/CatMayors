@@ -1,30 +1,116 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhdqi8vkxgqu1"]
+[gd_scene load_steps=7 format=3 uid="uid://bhdqi8vkxgqu1"]
 
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_h423w"]
+[ext_resource type="Texture2D" uid="uid://dnyjm8oschx1u" path="res://Assets/GoldTile.png" id="1_wf1sp"]
 [ext_resource type="Script" uid="uid://cqjnoc2cga50k" path="res://UI/Rules.gd" id="1_xarry"]
+[ext_resource type="Texture2D" uid="uid://ceul7mb78hwyl" path="res://Assets/YakinikuHouse.png" id="3_73kip"]
+[ext_resource type="Script" uid="uid://dfkc14tw8628i" path="res://UI/Tutorial.gd" id="3_kuww5"]
+[ext_resource type="Script" uid="uid://ccjemjrgqee73" path="res://UI/MuteMusic.gd" id="6_f8btd"]
 
-[node name="PauseMenu" type="MarginContainer"]
+[node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
-z_index = 2
-z_as_relative = false
+layer = 2
+
+[node name="PauseBackdrop" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+texture = ExtResource("1_wf1sp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_h423w")
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 256
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 256
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(960, 960)
 layout_mode = 2
 
-[node name="Rules" type="Label" parent="ScrollContainer"]
+[node name="Rules" type="Label" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
 vertical_alignment = 1
 script = ExtResource("1_xarry")
+
+[node name="Tutorial" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(700, 640)
+layout_mode = 2
+script = ExtResource("3_kuww5")
+
+[node name="TutorialTitle" type="Label" parent="MarginContainer/Tutorial"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialImage" type="TextureRect" parent="MarginContainer/Tutorial"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+texture = ExtResource("3_73kip")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TutorialText" type="Label" parent="MarginContainer/Tutorial"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Tutorial Text here"
+vertical_alignment = 1
+
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/Tutorial"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MuteMusic" type="Button" parent="MarginContainer/Tutorial/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "MUSIC ON"
+script = ExtResource("6_f8btd")
+
+[node name="Left" type="Button" parent="MarginContainer/Tutorial/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "<-"
+
+[node name="PageNumber" type="Label" parent="MarginContainer/Tutorial/Navigation"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="MarginContainer/Tutorial/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "->"
+
+[node name="SkipTutorial" type="Button" parent="MarginContainer/Tutorial/Navigation"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SKIP"
+
+[connection signal="pressed" from="MarginContainer/Tutorial/Navigation/MuteMusic" to="MarginContainer/Tutorial/Navigation/MuteMusic" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Tutorial/Navigation/Left" to="MarginContainer/Tutorial" method="_on_left_pressed"]
+[connection signal="pressed" from="MarginContainer/Tutorial/Navigation/Right" to="MarginContainer/Tutorial" method="_on_right_pressed"]
+[connection signal="pressed" from="MarginContainer/Tutorial/Navigation/SkipTutorial" to="MarginContainer/Tutorial" method="_on_skip_pressed"]

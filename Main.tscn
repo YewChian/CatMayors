@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=57 format=3 uid="uid://cwqmm1rc4fy0s"]
 
 [ext_resource type="Script" uid="uid://dvus54yyeulp4" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" uid="uid://pckh6jhv1v0j" path="res://UI/IdleUI.gd" id="2_0u3m0"]
@@ -9,42 +9,46 @@
 [ext_resource type="Script" uid="uid://dh3j3u60vjgnw" path="res://MainCamera.gd" id="3_nxkky"]
 [ext_resource type="Script" uid="uid://blwfj6istbdtf" path="res://UI/CreateLumbercatYard.gd" id="4_mg0f1"]
 [ext_resource type="Script" uid="uid://oyf7qrjrqbjv" path="res://CreateFountain.gd" id="5_uadu4"]
-[ext_resource type="Script" path="res://KittenBotStartButton.gd" id="5_vi5kq"]
+[ext_resource type="Script" uid="uid://wr7l0bq0un2k" path="res://KittenBotStartButton.gd" id="5_vi5kq"]
 [ext_resource type="Script" uid="uid://d2ehlrnflpfof" path="res://UI/TurnButton.gd" id="6_86f7r"]
 [ext_resource type="Script" uid="uid://crhhgbeq3rm0" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
 [ext_resource type="Texture2D" uid="uid://c7j4nas34n2h1" path="res://Assets/UI/BlackCatStarIcon.png" id="6_giubr"]
 [ext_resource type="Script" uid="uid://b4dypdri54lv3" path="res://DuelingBotsStartButton.gd" id="6_y1tbi"]
 [ext_resource type="Script" uid="uid://c0uspb2v116jc" path="res://UI/BlackScore.gd" id="7_2kt63"]
-[ext_resource type="Script" uid="uid://dfm5tdfc0xrxj" path="res://UI/GameSpeedEdit.gd" id="7_f4ese"]
 [ext_resource type="Texture2D" uid="uid://do02a2q5cl6bf" path="res://Assets/UI/WhiteCatStarIcon.png" id="7_mq5lf"]
 [ext_resource type="Script" uid="uid://hq7g3rumg3vs" path="res://ShowQTable.gd" id="7_y1tbi"]
 [ext_resource type="Script" uid="uid://b8fevr71y1pn7" path="res://UI/WhiteScore.gd" id="8_5kguq"]
+[ext_resource type="Script" uid="uid://cgebuuhppfqc8" path="res://UI/GameSpeedBullet.gd" id="8_c2s76"]
+[ext_resource type="Script" uid="uid://c7jiiywsa4hah" path="res://UI/GameSpeedBlitz.gd" id="9_pljue"]
+[ext_resource type="Script" uid="uid://po6h0uc85pnh" path="res://GameSpeedRapid.gd" id="10_nx4yo"]
+[ext_resource type="Script" uid="uid://c8urutqnel5ju" path="res://UI/GameSpeedClassical.gd" id="11_5tfui"]
 [ext_resource type="Script" uid="uid://dcbguk6bdgxj5" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
 [ext_resource type="Script" uid="uid://cwful6gix2l71" path="res://UI/DraftUI.gd" id="14_486mp"]
 [ext_resource type="Script" uid="uid://cuit7uhrnwy0w" path="res://UI/Hand.gd" id="17_43ggv"]
 [ext_resource type="PackedScene" uid="uid://b32uginpqm7kl" path="res://UI/HideHandButton.tscn" id="17_tkh6c"]
 [ext_resource type="Script" path="res://EndUI.gd" id="17_v8qla"]
-[ext_resource type="Script" uid="uid://b34yiweki4jst" path="res://UI/Timeline.gd" id="19_6a7bp"]
-[ext_resource type="Script" uid="uid://b6aihhjoewe05" path="res://UI/ObserveUI.gd" id="19_hbekn"]
+[ext_resource type="Script" uid="uid://gcxwm3iap0cm" path="res://UI/Timeline.gd" id="19_6a7bp"]
+[ext_resource type="Script" uid="uid://dqhicm36cc2sq" path="res://UI/ObserveUI.gd" id="19_hbekn"]
 [ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
 [ext_resource type="PackedScene" uid="uid://c3j2fpajvqrvl" path="res://UI/StructureInstanceInfo.tscn" id="20_xh85l"]
 [ext_resource type="Script" uid="uid://cy88kjsrxarxn" path="res://UI/TimeLeft.gd" id="21_fg20p"]
 [ext_resource type="PackedScene" uid="uid://bhdqi8vkxgqu1" path="res://UI/PauseMenu.tscn" id="21_whh0n"]
 [ext_resource type="Script" uid="uid://d2r3o347cbnpu" path="res://UI/Skip.gd" id="22_jpy4h"]
 [ext_resource type="Script" uid="uid://d241texty8vji" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
-[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="23_bqvjb"]
-[ext_resource type="Script" path="res://UI/EventUI.gd" id="23_v8qla"]
-[ext_resource type="Script" uid="uid://cx0uchl6utxj7" path="res://UI/PauseButton.gd" id="24_difs8"]
-[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="24_qjy5s"]
+[ext_resource type="Script" uid="uid://bsuhrma07o7my" path="res://UI/EventUI.gd" id="23_v8qla"]
+[ext_resource type="Script" uid="uid://cl77iwoglik6l" path="res://UI/PauseButton.gd" id="24_difs8"]
 [ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="24_up8a8"]
 [ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="25_581b6"]
-[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="25_r63lr"]
-[ext_resource type="Script" path="res://ResourcesLabel.gd" id="25_tv7x8"]
 [ext_resource type="Script" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
-[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
 [ext_resource type="Script" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
 [ext_resource type="Script" path="res://UI/Thinking.gd" id="31_5mkgo"]
+[ext_resource type="Script" uid="uid://dl7ixf2kqhg2o" path="res://UI/ZoomInButton.gd" id="32_jt61w"]
+[ext_resource type="Script" uid="uid://cj71eidiymco6" path="res://UI/ZoomOutButton.gd" id="33_v8qla"]
+[ext_resource type="Script" uid="uid://cxkg1ch4guovw" path="res://UI/WhoseTurnLabel.gd" id="34_jt61w"]
 [ext_resource type="PackedScene" uid="uid://ce4ien23x0uk5" path="res://UI/CatInstanceInfo.tscn" id="38_v8qla"]
+[ext_resource type="Texture2D" uid="uid://kmu2ukd7d82k" path="res://Assets/UI/ThickEntranceIndicator.png" id="41_gngx1"]
+[ext_resource type="AudioStream" uid="uid://bptii4e25enej" path="res://Assets/Audio/whiskertown_ost.mp3" id="45_y1tbi"]
+[ext_resource type="Script" uid="uid://dwr5ilnwo7pod" path="res://BGM.gd" id="46_c2s76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1tbi"]
 
@@ -98,21 +102,14 @@ texture_margin_bottom = 20.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_bqvjb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_qjy5s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_r63lr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_ocq7l")
+"texture": ExtResource("41_gngx1")
 }],
 "loop": true,
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gngx1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_boo15")
@@ -175,41 +172,66 @@ theme = ExtResource("2_jxgaj")
 [node name="Title" type="Label" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
 theme_type_variation = &"BigLabel"
-text = "CAT MAYORS"
+text = "WHISKERTOWN DUELS"
 horizontal_alignment = 1
 
 [node name="GenerateMap" type="Button" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
 text = "REROLL MAP"
 
+[node name="GameSpeedHBox" type="HBoxContainer" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameSpeedLabel" type="Label" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "GAME SPEED:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bullet" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "BULLET"
+script = ExtResource("8_c2s76")
+
+[node name="Blitz" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "BLITZ"
+script = ExtResource("9_pljue")
+
+[node name="Rapid" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "RAPID"
+script = ExtResource("10_nx4yo")
+
+[node name="Classical" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "CLASSICAL"
+script = ExtResource("11_5tfui")
+
+[node name="KittenBotStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "VS KITTENBOT"
+script = ExtResource("5_vi5kq")
+
 [node name="VSStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
 text = "LOCAL 2P"
 script = ExtResource("3_4hy1x")
 
-[node name="KittenBotStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
-layout_mode = 2
-text = "KITTEN BOT"
-script = ExtResource("5_vi5kq")
-
 [node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
 layout_mode = 2
 text = "DUELINGBOT"
 script = ExtResource("6_y1tbi")
 
 [node name="ShowQTable" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
 layout_mode = 2
 text = "Show/Hide QTable"
 script = ExtResource("7_y1tbi")
-
-[node name="GameSpeedEdit" type="TextEdit" parent="UI/IdleUI/DebugButtons"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 3
-text = "10"
-placeholder_text = "Game Speed"
-script = ExtResource("7_f4ese")
 
 [node name="CreateFishingHut" type="Button" parent="UI/IdleUI/DebugButtons"]
 visible = false
@@ -627,22 +649,13 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ShopRarityLabel" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox/RarityVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 5
-text = "Rarity"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="UpgradeButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox/RarityVBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
-tooltip_text = "Upgrade the rarity of blueprints for one turn. Only available to the wealthiest player."
-text = "UPGRADE SHOP"
+tooltip_text = "You won't be able to pick from this shop till your next turn"
+text = "Browse Yoshi's shop"
 
 [node name="BlueprintContainer" type="PanelContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
 layout_mode = 2
@@ -771,7 +784,9 @@ theme = ExtResource("2_jxgaj")
 [node name="Tip" type="Label" parent="UI/ObserveUI/CatBuildingInfo/VBoxContainer/ObserveTipBox"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Observation Phase for 30 seconds"
+text = "Observation Phase
+
+Take a break and strategise for the next round"
 
 [node name="EventUI" type="CanvasLayer" parent="UI"]
 visible = false
@@ -827,25 +842,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Blue Tiles"
 
+[node name="PauseMenu" parent="." instance=ExtResource("21_whh0n")]
+unique_name_in_owner = true
+visible = false
+
 [node name="CommonUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 2
 visible = false
 
-[node name="PauseMenu" parent="CommonUI" instance=ExtResource("21_whh0n")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CommonUI"]
+unique_name_in_owner = true
 offset_right = 308.0
 offset_bottom = 59.0
 theme = ExtResource("2_jxgaj")
@@ -865,7 +872,7 @@ size_flags_vertical = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 5
-tooltip_text = "Click to toggle timeline visibilty"
+tooltip_text = "Click to view turn order"
 theme_type_variation = &"BigButton"
 
 [node name="TimelineHBox" type="HBoxContainer" parent="CommonUI/VBoxContainer/Timeline/VBoxContainer"]
@@ -877,14 +884,12 @@ layout_mode = 2
 theme = ExtResource("2_jxgaj")
 
 [node name="PauseButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Pause/Help"
 script = ExtResource("24_difs8")
 
 [node name="ShowCatInfoButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Show Cat Info"
@@ -896,7 +901,20 @@ size_flags_vertical = 3
 text = "DEBUG USE ONLY"
 script = ExtResource("22_jpy4h")
 
+[node name="ZoomInButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "+"
+script = ExtResource("32_jt61w")
+
+[node name="ZoomOutButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "-"
+script = ExtResource("33_v8qla")
+
 [node name="SaveMouseketeerData" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "SAVE"
 script = ExtResource("29_c2s76")
@@ -942,11 +960,10 @@ size_flags_horizontal = 5
 texture = ExtResource("7_mq5lf")
 stretch_mode = 5
 
-[node name="Resources" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
+[node name="WhoseTurnLabel" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-horizontal_alignment = 1
-script = ExtResource("25_tv7x8")
+script = ExtResource("34_jt61w")
 
 [node name="TimeLeft" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -979,6 +996,11 @@ text = "No events"
 visible = false
 layout_mode = 2
 
+[node name="TitleInfo" type="Label" parent="CommonUI/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "To play again, reload your webpage"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="CommonUI/VBoxContainer"]
 layout_mode = 2
 
@@ -986,10 +1008,12 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="CatInstanceInfo" parent="CommonUI/VBoxContainer/HBoxContainer2" instance=ExtResource("38_v8qla")]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="NextPlayerReady" type="Button" parent="CommonUI"]
 unique_name_in_owner = true
@@ -1017,7 +1041,6 @@ grow_vertical = 2
 [node name="Thinking" type="TextureRect" parent="CommonUI/ThinkingContainer"]
 unique_name_in_owner = true
 process_mode = 3
-modulate = Color(1, 1, 1, 0.475)
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
 size_flags_vertical = 7
@@ -1036,6 +1059,25 @@ hframes = 2
 [node name="EntranceIndicator" type="AnimatedSprite2D" parent="NewStructureMarker"]
 sprite_frames = SubResource("SpriteFrames_h8e5t")
 
+[node name="StructureMarkerMessage" type="Label" parent="NewStructureMarker"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_right = 311.0
+offset_bottom = 108.0
+grow_horizontal = 0
+theme = ExtResource("2_jxgaj")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gngx1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="NewTileMarker" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
 
@@ -1043,13 +1085,31 @@ modulate = Color(1, 1, 1, 0.392157)
 script = ExtResource("3_nxkky")
 pan_speed = 2.0
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("45_y1tbi")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("46_c2s76")
+
+[node name="CursorSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StructureSFX" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+
+[node name="ShopSFX" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+
 [connection signal="pressed" from="UI/IdleUI/QTableContainer/HideQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_hide_q_table_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GenerateMap" to="." method="_on_generate_map_pressed"]
-[connection signal="pressed" from="UI/IdleUI/DebugButtons/VSStartButton" to="UI/IdleUI/DebugButtons/VSStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Bullet" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Bullet" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Blitz" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Blitz" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Rapid" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Rapid" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Classical" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Classical" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/KittenBotStartButton" to="UI/IdleUI/DebugButtons/KittenBotStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/VSStartButton" to="UI/IdleUI/DebugButtons/VSStartButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/DuelingBotsStartButton" to="UI/IdleUI/DebugButtons/DuelingBotsStartButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/ShowQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_pressed"]
-[connection signal="text_changed" from="UI/IdleUI/DebugButtons/GameSpeedEdit" to="UI/IdleUI/DebugButtons/GameSpeedEdit" method="_on_text_changed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFishingHut" to="UI/IdleUI/DebugButtons/CreateFishingHut" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateLumbercatYard" to="UI/IdleUI/DebugButtons/CreateLumbercatYard" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFountain" to="UI/IdleUI/DebugButtons/CreateFountain" method="_on_pressed"]
@@ -1067,6 +1127,8 @@ pan_speed = 2.0
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/PauseButton" to="CommonUI/VBoxContainer/HBoxContainer/PauseButton" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" to="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SkipButton" to="CommonUI/VBoxContainer/HBoxContainer/SkipButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ZoomInButton" to="CommonUI/VBoxContainer/HBoxContainer/ZoomInButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ZoomOutButton" to="CommonUI/VBoxContainer/HBoxContainer/ZoomOutButton" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" to="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" method="_on_pressed"]
 [connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="CommonUI/NextPlayerReady" to="CommonUI/NextPlayerReady" method="_on_pressed"]

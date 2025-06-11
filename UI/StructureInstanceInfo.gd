@@ -13,3 +13,4 @@ func update_info(structure_node: Object):
 		%CatInfo.text += "\n"
 		%CatInfo.text += "Curiosity: " + str(cat.curiosity)
 		%CatInfo.text += "\n"
+		%CatInfo.text += "\n"
