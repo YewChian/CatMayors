@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cr46aguri5yqg"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cr46aguri5yqg"]
 
 [ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="1_37ltj"]
 [ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="2_g16el"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://6mqc3kopb1pu" path="res://Styles/NextSundayNormal.ttf" id="4_6nswu"]
 [ext_resource type="Texture2D" uid="uid://dbgv5gwb7h5p1" path="res://Assets/UI/BluePanelBox.png" id="4_mi3k3"]
 [ext_resource type="Texture2D" uid="uid://bw6ro8do4ryvw" path="res://Assets/UI/BlueLabelBox.png" id="4_qmwii"]
+[ext_resource type="Texture2D" uid="uid://b53mmjebrlsqj" path="res://Assets/UI/BlueButtonUnselectedEmpty.png" id="6_ns5gj"]
+[ext_resource type="Texture2D" uid="uid://dajxkacaexws5" path="res://Assets/UI/BlueButtonSelectedHover.png" id="6_xi2y4"]
+[ext_resource type="Texture2D" uid="uid://dr767i3lmg0e8" path="res://Assets/UI/TextEdit.png" id="9_p63kd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yqy8q"]
 texture = ExtResource("2_lgqav")
@@ -42,12 +45,41 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p63kd"]
+texture = ExtResource("6_xi2y4")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xi2y4"]
+texture = ExtResource("6_ns5gj")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfaqw"]
 texture = ExtResource("4_mi3k3")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 6.0
+modulate_color = Color(1, 1, 1, 0.8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyrss"]
+texture = ExtResource("9_p63kd")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ombn4"]
+texture = ExtResource("9_p63kd")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [resource]
 BigButton/base_type = &"Button"
@@ -69,4 +101,10 @@ Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("4_6nswu")
 Label/styles/normal = SubResource("StyleBoxTexture_lytyg")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_p63kd")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_xi2y4")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_vfaqw")
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/fonts/font = ExtResource("4_6nswu")
+TextEdit/styles/focus = SubResource("StyleBoxTexture_yyrss")
+TextEdit/styles/normal = SubResource("StyleBoxTexture_ombn4")

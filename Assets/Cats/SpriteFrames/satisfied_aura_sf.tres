@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b2x0u25nlmang"]
+
+[ext_resource type="Texture2D" uid="uid://5i7ts3pdeq0o" path="res://Assets/Cats/satisfied_aura/satisfied_aura1.png" id="1_5u0ty"]
+[ext_resource type="Texture2D" uid="uid://dgo2e8okjdm8m" path="res://Assets/Cats/satisfied_aura/satisfied_aura2.png" id="2_4iety"]
+[ext_resource type="Texture2D" uid="uid://c6gqf56h8nfgf" path="res://Assets/Cats/satisfied_aura/satisfied_aura3.png" id="3_vwpmj"]
+[ext_resource type="Texture2D" uid="uid://dr31enx3vlil1" path="res://Assets/Cats/satisfied_aura/satisfied_aura4.png" id="4_20042"]
+[ext_resource type="Texture2D" uid="uid://bm6cwtah5k5ox" path="res://Assets/Cats/satisfied_aura/satisfied_aura5.png" id="5_cgwsq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_5u0ty")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_4iety")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_vwpmj")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_20042")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_cgwsq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

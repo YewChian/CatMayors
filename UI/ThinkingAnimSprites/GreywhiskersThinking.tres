@@ -1,0 +1,16 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://buvr0ssue3tms"]
+
+[ext_resource type="Texture2D" uid="uid://4cnrmx3scp4f" path="res://Assets/UI/BlackThinkingCat/BlackThinkingCat1.png" id="1_ldwtr"]
+[ext_resource type="Texture2D" uid="uid://crhe1bjqtut1y" path="res://Assets/UI/BlackThinkingCat/BlackThinkingCat2.png" id="2_jxipt"]
+[ext_resource type="Texture2D" uid="uid://beoxnvtsit8gx" path="res://Assets/UI/BlackThinkingCat/BlackThinkingCat3.png" id="3_xdvi8"]
+[ext_resource type="Texture2D" uid="uid://bxkdjwho0fwie" path="res://Assets/UI/BlackThinkingCat/BlackThinkingCat4.png" id="4_fcwda"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_ldwtr")
+frame_1/texture = ExtResource("2_jxipt")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_xdvi8")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_fcwda")
+frame_3/duration = 1.0

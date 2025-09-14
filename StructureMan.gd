@@ -2,20 +2,10 @@ extends Node
 
 var structures : Dictionary
 var current_id = 0
-var all_structures : Dictionary = {
-	"Fishing Hut" : "res://Structures/FishingHut.tscn",
-	"Lumbercat Yard" : "res://Structures/LumbercatYard.tscn",
-	"Fountain" : "res://Structures/Fountain.tscn",
-	"Tower Tree" : "res://Structures/TowerTree.tscn",
-	"Catbeds" : "res://Structures/Catbeds.tscn",
-	"Rock" : "res://Structures/Rock.tscn",
-	"Catnip ALley" : "res://Structures/CatnipAlley.tscn",
-	"Scratch Post" : "res://Structures/ScratchPost.tscn",
-	"Tuna Factory" : "res://Structures/TunaFactory.tscn",
-}
+var name2static_id: Dictionary = {}
+@onready var structure_resource = preload("res://Structures/Structure.tscn")
 
-
-func create_structure(structure_resource : Resource, coordinate : Vector2):
+func create_structure(structure_name: String, coordinate: Vector2, team_color: String):
 	var new_instantiated_structure = structure_resource.instantiate()
 	get_tree().current_scene.get_node("Structures").add_child(new_instantiated_structure)
 	new_instantiated_structure.global_position = coordinate * Settings.TILE_LENGTH
@@ -24,12 +14,31 @@ func create_structure(structure_resource : Resource, coordinate : Vector2):
 	structures[current_id] = new_instantiated_structure
 	current_id += 1
 	
-	await new_instantiated_structure.initialize_stats()
+	await new_instantiated_structure.initialize_stats(structure_name, team_color)
 	new_instantiated_structure.get_node("EntranceIndicator").position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
+	new_instantiated_structure.get_node("EntranceIndicator").frame = StructureData.structures[structure_name]["structure_stars"]
+	var flag_node: Object
+	match team_color:
+		"black":
+			flag_node = new_instantiated_structure.get_node("BlackFlag")
+			PlayerMan.black_structures.append(new_instantiated_structure.id)
+		"white":
+			flag_node = new_instantiated_structure.get_node("WhiteFlag")
+			PlayerMan.white_structures.append(new_instantiated_structure.id)
+		"_":
+			printerr("why is the team color wrong")
+	flag_node.position = new_instantiated_structure.entrance_coordinate * Settings.TILE_LENGTH
+	flag_node.visible = true
+	flag_node.play("Flag1")
+
 	
 	for shifted_coordinate in new_instantiated_structure.occupied_coordinates:
 		if shifted_coordinate != new_instantiated_structure.entrance_coordinate:
 			await TileMan.create_tile("null", coordinate + shifted_coordinate)
+			await TileMan.connect_tiles([coordinate + shifted_coordinate])
+		elif shifted_coordinate == new_instantiated_structure.entrance_coordinate:
+			await TileMan.create_tile("gold", coordinate + shifted_coordinate)
+			await TileMan.connect_tiles([coordinate + shifted_coordinate])
 		# create collisionshape for structure
 		var collider = CollisionShape2D.new()
 		new_instantiated_structure.add_child(collider)
@@ -38,7 +47,52 @@ func create_structure(structure_resource : Resource, coordinate : Vector2):
 		collider.set_shape(new_shape)
 		collider.global_position = (coordinate + shifted_coordinate) * Settings.TILE_LENGTH
 	
-	await new_instantiated_structure.initialize_cats()
+	var structure_data = StructureData.structures[structure_name]
+	for effect in structure_data["effects"]:
+		if effect == "home" and fulfils_effect_conditions(structure_data["effects"]["home"]["conditions"], "create_structure", new_instantiated_structure, null):
+			var num_cats: int = structure_data["effects"]["home"]["num_cats"]
+			await new_instantiated_structure.home_cats(num_cats)
+
+
+func set_name2staticid():
+	var static_id = 0
+	for key in StructureData.structures:
+		name2static_id[key] = static_id
+		static_id += 1
+	print(name2static_id)
+
+
+func fulfils_effect_conditions(conditions_data: Dictionary, timing: String, structure: Object, cat: Object):
+	for condition in conditions_data:
+		if condition == "visit":
+			if timing != "finish_activity":
+				return false
+			continue
+
+		if condition == "discovery":
+			if timing != "finish_activity":
+				return false
+			var max_cats = conditions_data["discovery"]
+			if structure.num_visits >= max_cats:
+				return false
+			continue
+
+		if condition == "build":
+			if timing != "create_structure":
+				return false
+			continue
+
+		if condition == "wise":
+			if len(cat.visited_structure_entrances) < conditions_data["wise"]:
+				return false
+			continue
+
+		if condition == "historical":
+			if structure.num_visits < conditions_data["historical"]:
+				return false
+			continue
+	return true
+
 
 func get_structure_by_id(id):
 	if structures.has(id):

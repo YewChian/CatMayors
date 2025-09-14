@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cd2alqoom7slq"]
+
+[ext_resource type="Texture2D" uid="uid://blgk6bleeq6uy" path="res://Assets/Structures/TroutmouthStatue.png" id="1_d4o31"]
+
+[resource]
+atlas = ExtResource("1_d4o31")
+region = Rect2(0, 0, 64, 64)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://yms12x0mjpjm"]
+
+[ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_rigcf"]
+[ext_resource type="Script" path="res://UI/CatInstanceInfo.gd" id="2_bhyw2"]
+
+[node name="CatInstanceInfo" type="PanelContainer"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_rigcf")
+script = ExtResource("2_bhyw2")
+
+[node name="CatList" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CatInfoHeader" type="Label" parent="CatList"]
+layout_mode = 2
+text = "S: Stars
+C: Curiosity
+I: Number of Ingredients
+O: Number of Cooked Ingredients"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CatList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BlackVBox" type="VBoxContainer" parent="CatList/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BlackCatsLabel" type="Label" parent="CatList/HBoxContainer/BlackVBox"]
+layout_mode = 2
+text = "Black"
+
+[node name="WhiteVBox" type="VBoxContainer" parent="CatList/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WhiteCatsLabel" type="Label" parent="CatList/HBoxContainer/WhiteVBox"]
+layout_mode = 2
+text = "White"

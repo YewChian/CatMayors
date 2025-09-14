@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b453wji4t72xt"]
+
+[ext_resource type="Texture2D" uid="uid://b0nya0mb2y3r8" path="res://Assets/Structures/SushiHut.png" id="1_gegt2"]
+
+[resource]
+atlas = ExtResource("1_gegt2")
+region = Rect2(0, 0, 128, 64)

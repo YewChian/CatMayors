@@ -1,29 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://4ct82h8vsc13"]
+[gd_scene load_steps=7 format=3 uid="uid://4ct82h8vsc13"]
 
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_tkwlr"]
-[ext_resource type="Script" path="res://UI/StructureInfo.gd" id="1_xoyyw"]
-[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="2_lh3no"]
+[ext_resource type="Script" uid="uid://dnrkbiauok0tc" path="res://UI/StructureInfo.gd" id="1_xoyyw"]
 [ext_resource type="StyleBox" uid="uid://csfyndq5jikdl" path="res://Styles/UnhighlightedButton.tres" id="2_m6pfh"]
 [ext_resource type="StyleBox" uid="uid://snaixfnew7ko" path="res://Styles/HighlightedButton.tres" id="3_gvv8m"]
-[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="3_gw7a8"]
-[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="4_1x1lt"]
-[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="5_y6ft0"]
-[ext_resource type="Script" path="res://Structures/EntranceIndicator.gd" id="6_hc506"]
+[ext_resource type="Texture2D" uid="uid://kmu2ukd7d82k" path="res://Assets/UI/ThickEntranceIndicator.png" id="3_rrv6y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4oqu3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_lh3no")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_gw7a8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_1x1lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_y6ft0")
+"texture": ExtResource("3_rrv6y")
 }],
 "loop": true,
 "name": &"default",
@@ -31,6 +18,7 @@ animations = [{
 }]
 
 [node name="StructureInfo" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 0)
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 3
@@ -48,11 +36,56 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="StructureName" type="Label" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NumStructureStars" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "num stars"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Duration" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Duration"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StructureName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
 text = "Hello"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(92, 64)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+stretch_mode = 5
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -67,7 +100,6 @@ stretch_mode = 5
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_4oqu3")
 centered = false
-script = ExtResource("6_hc506")
 
 [node name="CardText" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -81,20 +113,12 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Cats" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
+[node name="Effects" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
-
-[node name="StatGains" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
-[node name="Stars" type="Label" parent="MarginContainer/VBoxContainer/CardText/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2

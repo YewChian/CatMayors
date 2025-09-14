@@ -1,15 +1,21 @@
 extends TextureProgressBar
 @onready var structure = get_parent()
 
-func show_activity_progress():
+func show_activity_progress(is_cat_spooked: bool):
 	visible = true
-	max_value = structure.activity_duration
-	$Timer.start(structure.activity_duration)
-	value = max_value - $Timer.time_left
+	var duration: float
+	if is_cat_spooked:
+		duration = 1.0 / Settings.game_speed
+	else:
+		duration = structure.activity_duration / Settings.game_speed
+		
+	max_value = duration * 100
+	$Timer.start(duration)
+	value = max_value - ($Timer.time_left * 100)
 
 
 func _physics_process(delta):
-	value = max_value - $Timer.time_left
+	value = max_value - ($Timer.time_left * 100)
 	
 
 func _on_timer_timeout():

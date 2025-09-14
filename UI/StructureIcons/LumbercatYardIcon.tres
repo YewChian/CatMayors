@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cb7xnhnjfrmym"]
+
+[ext_resource type="Texture2D" uid="uid://bbbf4hm3btl8g" path="res://Assets/Structures/LumbercatYard.png" id="1_vjbk8"]
+
+[resource]
+atlas = ExtResource("1_vjbk8")
+region = Rect2(0, 0, 128, 128)

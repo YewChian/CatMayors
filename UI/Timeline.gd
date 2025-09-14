@@ -18,11 +18,28 @@ func update_timeline():
 					new_label.text = color + "'s \nconstruction"
 				"ObserveUI":
 					new_label.text = color + "'s \nobservation"
+				"EventUI":
+					new_label.text = color + "'s \nlandscaping"
 					
 			if i == (PlayerMan.phase_index * 2) + PlayerMan.turn_index:
 				new_label.modulate = Color("eb6c82")
 			i = (i+1)%(len(PlayerMan.phases)*2)
 	%RoundLabel.text = "Round " + str(PlayerMan.round + 1) + "/" + str(Settings.MAX_ROUNDS)
+
+func emphasise():
+	$VBoxContainer/TimelineHBox.visible = !$VBoxContainer/TimelineHBox.visible
+	var initial_modulate = $VBoxContainer/TimelineHBox.modulate
+	for i in range(3):
+		print("flashing")
+		var flash_tween = get_tree().create_tween()
+		flash_tween.tween_property($VBoxContainer/TimelineHBox, "modulate", Color(1.5,1.5,1.5,1), 1/Settings.game_speed)
+		await flash_tween.finished
+		
+		print("unflashing")
+		var unflash_tween = get_tree().create_tween()
+		unflash_tween.tween_property($VBoxContainer/TimelineHBox, "modulate", initial_modulate, 1/Settings.game_speed)
+		await unflash_tween.finished
+	$VBoxContainer/TimelineHBox.visible = !$VBoxContainer/TimelineHBox.visible
 
 
 func _on_round_label_pressed() -> void:

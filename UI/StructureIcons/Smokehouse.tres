@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://he4hw720beb5"]
+
+[ext_resource type="Texture2D" uid="uid://bv1g1g0eakaip" path="res://Assets/Structures/Smokehouse.png" id="1_858fy"]
+
+[resource]
+atlas = ExtResource("1_858fy")
+region = Rect2(0, 0, 64, 128)

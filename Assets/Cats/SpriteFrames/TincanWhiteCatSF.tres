@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://c3bquaxmd7l2n"]
+
+[ext_resource type="Texture2D" uid="uid://dw5cy75ifvx6o" path="res://Assets/Cats/PringleWhiteCat/PringleWhiteCat1.png" id="1_djexl"]
+[ext_resource type="Texture2D" uid="uid://bdg5b0rr78yyd" path="res://Assets/Cats/PringleWhiteCat/PringleWhiteCat2.png" id="2_e58g7"]
+[ext_resource type="Texture2D" uid="uid://dotvixqe8nwco" path="res://Assets/Cats/PringleWhiteCat/PringleWhiteCat3.png" id="3_yytx6"]
+[ext_resource type="Texture2D" uid="uid://c6ukkox0qdprj" path="res://Assets/Cats/PringleWhiteCat/PringleWhiteCat4.png" id="4_vtd6e"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_djexl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e58g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yytx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vtd6e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -1,32 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3j2fpajvqrvl"]
+[gd_scene load_steps=4 format=3 uid="uid://c3j2fpajvqrvl"]
 
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_flxhx"]
-[ext_resource type="Script" path="res://UI/StructureInstanceInfo.gd" id="1_kwye6"]
-[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="2_tsv1m"]
-[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="3_aioms"]
-[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="4_wmtpw"]
-[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="5_c2oda"]
-[ext_resource type="Script" path="res://Structures/EntranceIndicator.gd" id="6_xl8l3"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jf1kr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_tsv1m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_aioms")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_wmtpw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_c2oda")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}]
+[ext_resource type="Script" uid="uid://qymo1dnkx2h2" path="res://UI/StructureInstanceInfo.gd" id="1_kwye6"]
+[ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="3_pvsmj"]
 
 [node name="StructureInstanceInfo" type="PanelContainer"]
 offset_right = 8.0
@@ -36,80 +12,38 @@ size_flags_vertical = 3
 theme = ExtResource("1_flxhx")
 script = ExtResource("1_kwye6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="StructureInstanceHeader" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Selected Structure Info"
+text = "Currently Viewing
+(Click outside to hide)"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StructureName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="StructureInfo" parent="VBoxContainer" instance=ExtResource("3_pvsmj")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-horizontal_alignment = 1
 
-[node name="StructureTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="LiveInfo" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/LiveInfo"]
+layout_mode = 2
+
+[node name="NumVisits" type="Label" parent="VBoxContainer/LiveInfo/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-stretch_mode = 5
+size_flags_vertical = 3
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="InstanceEntranceIndicator" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StructureTexture"]
+[node name="CatInfoHeader" type="Label" parent="VBoxContainer/LiveInfo/VBoxContainer"]
+layout_mode = 2
+text = "Residents"
+
+[node name="CatInfo" type="Label" parent="VBoxContainer/LiveInfo/VBoxContainer"]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_jf1kr")
-centered = false
-script = ExtResource("6_xl8l3")
-
-[node name="Cats" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
 layout_mode = 2
-horizontal_alignment = 1
-
-[node name="StatGains" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="Stars" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NumVisits" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="Residents" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-horizontal_alignment = 1

@@ -1,40 +1,56 @@
-[gd_scene load_steps=41 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=57 format=3 uid="uid://cwqmm1rc4fy0s"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_boo15"]
-[ext_resource type="Script" path="res://UI/IdleUI.gd" id="2_0u3m0"]
-[ext_resource type="Script" path="res://UI/CreateFishingHut.gd" id="2_e3vyw"]
+[ext_resource type="Script" uid="uid://dvus54yyeulp4" path="res://Main.gd" id="1_boo15"]
+[ext_resource type="Script" uid="uid://pckh6jhv1v0j" path="res://UI/IdleUI.gd" id="2_0u3m0"]
+[ext_resource type="Script" uid="uid://41nmg6eon2fj" path="res://UI/CreateFishingHut.gd" id="2_e3vyw"]
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="2_jxgaj"]
-[ext_resource type="Script" path="res://UI/DraftButton.gd" id="3_4hy1x"]
-[ext_resource type="Script" path="res://UI/ChooseLocationUI.gd" id="3_4ltef"]
-[ext_resource type="Script" path="res://MainCamera.gd" id="3_nxkky"]
-[ext_resource type="Script" path="res://UI/CreateLumbercatYard.gd" id="4_mg0f1"]
-[ext_resource type="Script" path="res://CreateFountain.gd" id="5_uadu4"]
-[ext_resource type="Script" path="res://UI/TurnButton.gd" id="6_86f7r"]
-[ext_resource type="Script" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
+[ext_resource type="Script" uid="uid://wda28635m8qe" path="res://UI/DraftButton.gd" id="3_4hy1x"]
+[ext_resource type="Script" uid="uid://dof60brw4dopv" path="res://UI/ChooseLocationUI.gd" id="3_4ltef"]
+[ext_resource type="Script" uid="uid://dh3j3u60vjgnw" path="res://MainCamera.gd" id="3_nxkky"]
+[ext_resource type="Script" uid="uid://blwfj6istbdtf" path="res://UI/CreateLumbercatYard.gd" id="4_mg0f1"]
+[ext_resource type="Script" uid="uid://oyf7qrjrqbjv" path="res://CreateFountain.gd" id="5_uadu4"]
+[ext_resource type="Script" path="res://KittenBotStartButton.gd" id="5_vi5kq"]
+[ext_resource type="Script" uid="uid://d2ehlrnflpfof" path="res://UI/TurnButton.gd" id="6_86f7r"]
+[ext_resource type="Script" uid="uid://crhhgbeq3rm0" path="res://UI/CreateWhiteTileButton.gd" id="6_dv3dy"]
 [ext_resource type="Texture2D" uid="uid://c7j4nas34n2h1" path="res://Assets/UI/BlackCatStarIcon.png" id="6_giubr"]
-[ext_resource type="Script" path="res://UI/BlackScore.gd" id="7_2kt63"]
+[ext_resource type="Script" path="res://DuelingBotsStartButton.gd" id="6_y1tbi"]
+[ext_resource type="Script" uid="uid://c0uspb2v116jc" path="res://UI/BlackScore.gd" id="7_2kt63"]
 [ext_resource type="Texture2D" uid="uid://do02a2q5cl6bf" path="res://Assets/UI/WhiteCatStarIcon.png" id="7_mq5lf"]
-[ext_resource type="Script" path="res://UI/WhiteScore.gd" id="8_5kguq"]
-[ext_resource type="Script" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
-[ext_resource type="Script" path="res://UI/DraftUI.gd" id="14_486mp"]
-[ext_resource type="Script" path="res://UI/Hand.gd" id="17_43ggv"]
+[ext_resource type="Script" path="res://ShowQTable.gd" id="7_y1tbi"]
+[ext_resource type="Script" uid="uid://b8fevr71y1pn7" path="res://UI/WhiteScore.gd" id="8_5kguq"]
+[ext_resource type="Script" path="res://UI/GameSpeedBullet.gd" id="8_c2s76"]
+[ext_resource type="Script" path="res://UI/GameSpeedBlitz.gd" id="9_pljue"]
+[ext_resource type="Script" path="res://GameSpeedRapid.gd" id="10_nx4yo"]
+[ext_resource type="Script" path="res://UI/GameSpeedClassical.gd" id="11_5tfui"]
+[ext_resource type="Script" uid="uid://dcbguk6bdgxj5" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
+[ext_resource type="Script" uid="uid://cwful6gix2l71" path="res://UI/DraftUI.gd" id="14_486mp"]
+[ext_resource type="Script" uid="uid://cuit7uhrnwy0w" path="res://UI/Hand.gd" id="17_43ggv"]
 [ext_resource type="PackedScene" uid="uid://b32uginpqm7kl" path="res://UI/HideHandButton.tscn" id="17_tkh6c"]
-[ext_resource type="Script" path="res://UI/Timeline.gd" id="19_6a7bp"]
-[ext_resource type="Script" path="res://UI/ObserveUI.gd" id="19_hbekn"]
+[ext_resource type="Script" path="res://EndUI.gd" id="17_v8qla"]
+[ext_resource type="Script" uid="uid://gcxwm3iap0cm" path="res://UI/Timeline.gd" id="19_6a7bp"]
+[ext_resource type="Script" uid="uid://dqhicm36cc2sq" path="res://UI/ObserveUI.gd" id="19_hbekn"]
 [ext_resource type="PackedScene" uid="uid://4ct82h8vsc13" path="res://UI/StructureInfo.tscn" id="20_e30uy"]
-[ext_resource type="Script" path="res://UI/DecorShopUI.gd" id="20_o7req"]
 [ext_resource type="PackedScene" uid="uid://c3j2fpajvqrvl" path="res://UI/StructureInstanceInfo.tscn" id="20_xh85l"]
-[ext_resource type="Script" path="res://UI/TimeLeft.gd" id="21_fg20p"]
+[ext_resource type="Script" uid="uid://cy88kjsrxarxn" path="res://UI/TimeLeft.gd" id="21_fg20p"]
 [ext_resource type="PackedScene" uid="uid://bhdqi8vkxgqu1" path="res://UI/PauseMenu.tscn" id="21_whh0n"]
-[ext_resource type="Script" path="res://UI/Skip.gd" id="22_jpy4h"]
-[ext_resource type="Script" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
-[ext_resource type="Texture2D" uid="uid://coque58ppdujm" path="res://Assets/UI/EntranceIndicator/EntranceIndicator2.png" id="23_bqvjb"]
-[ext_resource type="Script" path="res://UI/PauseButton.gd" id="24_difs8"]
-[ext_resource type="Texture2D" uid="uid://dvmw8fl1tjgpi" path="res://Assets/UI/EntranceIndicator/EntranceIndicator3.png" id="24_qjy5s"]
+[ext_resource type="Script" uid="uid://d2r3o347cbnpu" path="res://UI/Skip.gd" id="22_jpy4h"]
+[ext_resource type="Script" uid="uid://d241texty8vji" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
+[ext_resource type="Script" path="res://UI/EventUI.gd" id="23_v8qla"]
+[ext_resource type="Script" uid="uid://cl77iwoglik6l" path="res://UI/PauseButton.gd" id="24_difs8"]
 [ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="24_up8a8"]
 [ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="25_581b6"]
-[ext_resource type="Texture2D" uid="uid://bkavvj8bbmb5o" path="res://Assets/UI/EntranceIndicator/EntranceIndicator4.png" id="25_r63lr"]
-[ext_resource type="Texture2D" uid="uid://cx1p77xsfq3cs" path="res://Assets/UI/EntranceIndicator/EntranceIndicator5.png" id="26_ocq7l"]
+[ext_resource type="Script" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
+[ext_resource type="Script" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
+[ext_resource type="Script" path="res://UI/Thinking.gd" id="31_5mkgo"]
+[ext_resource type="Script" path="res://UI/ZoomInButton.gd" id="32_jt61w"]
+[ext_resource type="Script" path="res://UI/ZoomOutButton.gd" id="33_v8qla"]
+[ext_resource type="Script" path="res://UI/WhoseTurnLabel.gd" id="34_jt61w"]
+[ext_resource type="PackedScene" path="res://UI/CatInstanceInfo.tscn" id="38_v8qla"]
+[ext_resource type="Texture2D" uid="uid://kmu2ukd7d82k" path="res://Assets/UI/ThickEntranceIndicator.png" id="41_gngx1"]
+[ext_resource type="AudioStream" uid="uid://bptii4e25enej" path="res://Assets/Audio/whiskertown_ost.mp3" id="45_y1tbi"]
+[ext_resource type="Script" path="res://BGM.gd" id="46_c2s76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1tbi"]
 
 [sub_resource type="Animation" id="Animation_ley0s"]
 length = 0.001
@@ -71,8 +87,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ljt12"]
 _data = {
-"RESET": SubResource("Animation_ley0s"),
-"urgent": SubResource("Animation_41ctd")
+&"RESET": SubResource("Animation_ley0s"),
+&"urgent": SubResource("Animation_41ctd")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7h3w"]
@@ -86,21 +102,14 @@ texture_margin_bottom = 20.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_bqvjb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_qjy5s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_r63lr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_ocq7l")
+"texture": ExtResource("41_gngx1")
 }],
 "loop": true,
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gngx1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_boo15")
@@ -113,6 +122,38 @@ theme = ExtResource("2_jxgaj")
 [node name="IdleUI" type="CanvasLayer" parent="UI"]
 visible = false
 script = ExtResource("2_0u3m0")
+
+[node name="QTableContainer" type="VBoxContainer" parent="UI/IdleUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -107.5
+offset_right = 180.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/IdleUI/QTableContainer"]
+custom_minimum_size = Vector2(960, 180)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y1tbi")
+
+[node name="QTableLabel" type="Label" parent="UI/IdleUI/QTableContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "TESTING"
+
+[node name="HideQTable" type="Button" parent="UI/IdleUI/QTableContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CLOSE"
 
 [node name="DebugButtons" type="VBoxContainer" parent="UI/IdleUI"]
 anchors_preset = 8
@@ -131,17 +172,66 @@ theme = ExtResource("2_jxgaj")
 [node name="Title" type="Label" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
 theme_type_variation = &"BigLabel"
-text = "CAT MAYORS"
+text = "WHISKERTOWN DUELS"
 horizontal_alignment = 1
 
 [node name="GenerateMap" type="Button" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
 text = "REROLL MAP"
 
-[node name="DraftButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+[node name="GameSpeedHBox" type="HBoxContainer" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
-text = "Start Structure Draft"
+size_flags_vertical = 3
+
+[node name="GameSpeedLabel" type="Label" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "GAME SPEED:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bullet" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "BULLET"
+script = ExtResource("8_c2s76")
+
+[node name="Blitz" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "BLITZ"
+script = ExtResource("9_pljue")
+
+[node name="Rapid" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "RAPID"
+script = ExtResource("10_nx4yo")
+
+[node name="Classical" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+layout_mode = 2
+text = "CLASSICAL"
+script = ExtResource("11_5tfui")
+
+[node name="KittenBotStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "VS KITTENBOT"
+script = ExtResource("5_vi5kq")
+
+[node name="VSStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "LOCAL 2P"
 script = ExtResource("3_4hy1x")
+
+[node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+text = "DUELINGBOT"
+script = ExtResource("6_y1tbi")
+
+[node name="ShowQTable" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
+layout_mode = 2
+text = "Show/Hide QTable"
+script = ExtResource("7_y1tbi")
 
 [node name="CreateFishingHut" type="Button" parent="UI/IdleUI/DebugButtons"]
 visible = false
@@ -173,6 +263,7 @@ layout_mode = 2
 selected = 0
 item_count = 2
 popup/item_0/text = "black"
+popup/item_0/id = 0
 popup/item_1/text = "white"
 popup/item_1/id = 1
 script = ExtResource("6_86f7r")
@@ -414,16 +505,23 @@ text = "Nap Stars"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="EndUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("17_v8qla")
+
 [node name="ChooseLocationUI" type="CanvasLayer" parent="UI"]
 visible = false
 script = ExtResource("3_4ltef")
 
 [node name="TipBox" type="VBoxContainer" parent="UI/ChooseLocationUI"]
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -208.0
 offset_top = -205.0
-offset_right = 208.0
+grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_jxgaj")
 
@@ -465,6 +563,17 @@ layout_mode = 2
 [node name="StructureInfo4" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
+
+[node name="StructureInfo5" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+visible = false
+layout_mode = 2
+
+[node name="ConfirmLocationButton" type="Button" parent="UI/ChooseLocationUI/TipBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "Confirm location and end turn"
+script = ExtResource("22_jpy4h")
 
 [node name="ChooseTileLocationUI" type="CanvasLayer" parent="UI"]
 visible = false
@@ -525,22 +634,78 @@ layout_mode = 2
 theme_type_variation = &"BigLabel"
 horizontal_alignment = 1
 
-[node name="Tip" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
+[node name="DraftInfoBox" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
 layout_mode = 2
 
-[node name="StructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+[node name="Tip" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 9.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RarityVBox" type="VBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox/RarityVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+tooltip_text = "You won't be able to pick from this shop till your next turn"
+text = "Browse Yoshi's shop"
+
+[node name="BlueprintContainer" type="PanelContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="CommonStructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/StructureButtons" instance=ExtResource("20_e30uy")]
+[node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/CommonStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
 
-[node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/StructureButtons" instance=ExtResource("20_e30uy")]
+[node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/CommonStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+
+[node name="RareStructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/RareStructureButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/RareStructureButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="EpicStructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/EpicStructureButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/EpicStructureButtons" instance=ExtResource("20_e30uy")]
+layout_mode = 2
+
+[node name="ConfirmDraftButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy highlighted blueprint and end turn"
+script = ExtResource("22_jpy4h")
 
 [node name="Hand" type="PanelContainer" parent="UI/DraftUI"]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -553,13 +718,22 @@ script = ExtResource("17_43ggv")
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DraftUI/Hand"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/DraftUI/Hand/VBoxContainer"]
+[node name="HandHeader" type="HBoxContainer" parent="UI/DraftUI/Hand/VBoxContainer"]
 layout_mode = 2
+
+[node name="DraftedCardsLabel" type="Label" parent="UI/DraftUI/Hand/VBoxContainer/HandHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 9.0
 text = "Drafted Cards"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HideHandButton" parent="UI/DraftUI/Hand/VBoxContainer" instance=ExtResource("17_tkh6c")]
+[node name="HideHandButton" parent="UI/DraftUI/Hand/VBoxContainer/HandHeader" instance=ExtResource("17_tkh6c")]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Hide/Show"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/DraftUI/Hand/VBoxContainer"]
 layout_mode = 2
@@ -580,84 +754,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="DecorShopUI" type="CanvasLayer" parent="UI"]
-script = ExtResource("20_o7req")
-
-[node name="DecorInfo" type="PanelContainer" parent="UI/DecorShopUI"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -535.0
-offset_top = -116.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("2_jxgaj")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/DecorShopUI/DecorInfo"]
-layout_mode = 2
-
-[node name="DecorShopTipBox" type="VBoxContainer" parent="UI/DecorShopUI/DecorInfo/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_jxgaj")
-
-[node name="TurnLabel" type="Label" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorShopTipBox"]
-layout_mode = 2
-theme_type_variation = &"BigLabel"
-horizontal_alignment = 1
-
-[node name="Tip" type="Label" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorShopTipBox"]
-layout_mode = 2
-
-[node name="DecorButtons" type="HBoxContainer" parent="UI/DecorShopUI/DecorInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="DecorInfo" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorButtons" instance=ExtResource("20_e30uy")]
-layout_mode = 2
-
-[node name="DecorInfo2" parent="UI/DecorShopUI/DecorInfo/VBoxContainer/DecorButtons" instance=ExtResource("20_e30uy")]
-layout_mode = 2
-
-[node name="Hand" type="PanelContainer" parent="UI/DecorShopUI"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 44.0
-grow_vertical = 0
-theme = ExtResource("2_jxgaj")
-script = ExtResource("17_43ggv")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/DecorShopUI/Hand"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/DecorShopUI/Hand/VBoxContainer"]
-layout_mode = 2
-text = "Drafted Cards"
-horizontal_alignment = 1
-
-[node name="HideHandButton" parent="UI/DecorShopUI/Hand/VBoxContainer" instance=ExtResource("17_tkh6c")]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/DecorShopUI/Hand/VBoxContainer"]
-layout_mode = 2
-
-[node name="StructureInfo" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
-visible = false
-layout_mode = 2
-
-[node name="StructureInfo2" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
-visible = false
-layout_mode = 2
-
-[node name="StructureInfo3" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
-visible = false
-layout_mode = 2
-
-[node name="StructureInfo4" parent="UI/DecorShopUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
+[node name="StructureInfo5" parent="UI/DraftUI/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
 
@@ -687,27 +784,75 @@ theme = ExtResource("2_jxgaj")
 [node name="Tip" type="Label" parent="UI/ObserveUI/CatBuildingInfo/VBoxContainer/ObserveTipBox"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Take some time to admire your creation."
+text = "Observation Phase
+
+Take a break and strategise for the next round"
+
+[node name="EventUI" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("23_v8qla")
+
+[node name="EventPanelContainer" type="PanelContainer" parent="UI/EventUI"]
+custom_minimum_size = Vector2(480, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("2_jxgaj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EventUI/EventPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="EventTip" type="Label" parent="UI/EventUI/EventPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Transform some random purple tiles into?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EventOptions" type="HBoxContainer" parent="UI/EventUI/EventPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="GreenTilesButton" type="Button" parent="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Green Tiles"
+
+[node name="RedTilesButton" type="Button" parent="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Red Tiles"
+
+[node name="BlueTilesButton" type="Button" parent="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Blue Tiles"
+
+[node name="PauseMenu" parent="." instance=ExtResource("21_whh0n")]
+unique_name_in_owner = true
+visible = false
 
 [node name="CommonUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 2
 visible = false
 
-[node name="PauseMenu" parent="CommonUI" instance=ExtResource("21_whh0n")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CommonUI"]
+unique_name_in_owner = true
 offset_right = 308.0
 offset_bottom = 59.0
 theme = ExtResource("2_jxgaj")
@@ -727,7 +872,7 @@ size_flags_vertical = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 5
-tooltip_text = "Click to toggle timeline visibilty"
+tooltip_text = "Click to view turn order"
 theme_type_variation = &"BigButton"
 
 [node name="TimelineHBox" type="HBoxContainer" parent="CommonUI/VBoxContainer/Timeline/VBoxContainer"]
@@ -738,18 +883,41 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("2_jxgaj")
 
-[node name="Skip" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "End Turn"
-script = ExtResource("22_jpy4h")
-
 [node name="PauseButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Pause/Help"
 script = ExtResource("24_difs8")
+
+[node name="ShowCatInfoButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Show Cat Info"
+script = ExtResource("26_jt61w")
+
+[node name="SkipButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DEBUG USE ONLY"
+script = ExtResource("22_jpy4h")
+
+[node name="ZoomInButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "+"
+script = ExtResource("32_jt61w")
+
+[node name="ZoomOutButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "-"
+script = ExtResource("33_v8qla")
+
+[node name="SaveMouseketeerData" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "SAVE"
+script = ExtResource("29_c2s76")
 
 [node name="Scoreboard" type="PanelContainer" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -792,6 +960,11 @@ size_flags_horizontal = 5
 texture = ExtResource("7_mq5lf")
 stretch_mode = 5
 
+[node name="WhoseTurnLabel" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("34_jt61w")
+
 [node name="TimeLeft" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -811,12 +984,36 @@ unique_name_in_owner = true
 [node name="TimerAnimationPlayer" type="AnimationPlayer" parent="CommonUI/VBoxContainer/HBoxContainer/TimeLeft"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_ljt12")
+&"": SubResource("AnimationLibrary_ljt12")
 }
+
+[node name="Log" type="Label" parent="CommonUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No events"
 
 [node name="VictoryLabel" type="Label" parent="CommonUI/VBoxContainer"]
 visible = false
 layout_mode = 2
+
+[node name="TitleInfo" type="Label" parent="CommonUI/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "To play again, reload your webpage"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CommonUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="StructureInstanceInfo" parent="CommonUI/VBoxContainer/HBoxContainer2" instance=ExtResource("20_xh85l")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="CatInstanceInfo" parent="CommonUI/VBoxContainer/HBoxContainer2" instance=ExtResource("38_v8qla")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="NextPlayerReady" type="Button" parent="CommonUI"]
 unique_name_in_owner = true
@@ -833,16 +1030,23 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_x7h3w")
 text = "Click when ready."
 script = ExtResource("23_5m5oo")
 
-[node name="StructureInstanceInfo" parent="CommonUI" instance=ExtResource("20_xh85l")]
-unique_name_in_owner = true
+[node name="ThinkingContainer" type="CenterContainer" parent="CommonUI"]
 visible = false
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -72.0
-offset_right = 0.0
-offset_bottom = 82.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Thinking" type="TextureRect" parent="CommonUI/ThinkingContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+size_flags_vertical = 7
+theme = ExtResource("2_jxgaj")
+stretch_mode = 5
+script = ExtResource("31_5mkgo")
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -855,6 +1059,25 @@ hframes = 2
 [node name="EntranceIndicator" type="AnimatedSprite2D" parent="NewStructureMarker"]
 sprite_frames = SubResource("SpriteFrames_h8e5t")
 
+[node name="StructureMarkerMessage" type="Label" parent="NewStructureMarker"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_right = 311.0
+offset_bottom = 108.0
+grow_horizontal = 0
+theme = ExtResource("2_jxgaj")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gngx1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="NewTileMarker" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
 
@@ -862,17 +1085,50 @@ modulate = Color(1, 1, 1, 0.392157)
 script = ExtResource("3_nxkky")
 pan_speed = 2.0
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("45_y1tbi")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("46_c2s76")
+
+[node name="CursorSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StructureSFX" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+
+[node name="ShopSFX" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+
+[connection signal="pressed" from="UI/IdleUI/QTableContainer/HideQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_hide_q_table_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GenerateMap" to="." method="_on_generate_map_pressed"]
-[connection signal="pressed" from="UI/IdleUI/DebugButtons/DraftButton" to="UI/IdleUI/DebugButtons/DraftButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Bullet" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Bullet" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Blitz" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Blitz" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Rapid" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Rapid" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Classical" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Classical" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/KittenBotStartButton" to="UI/IdleUI/DebugButtons/KittenBotStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/VSStartButton" to="UI/IdleUI/DebugButtons/VSStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/DuelingBotsStartButton" to="UI/IdleUI/DebugButtons/DuelingBotsStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/ShowQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFishingHut" to="UI/IdleUI/DebugButtons/CreateFishingHut" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateLumbercatYard" to="UI/IdleUI/DebugButtons/CreateLumbercatYard" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFountain" to="UI/IdleUI/DebugButtons/CreateFountain" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateWhiteTileButton" to="UI/IdleUI/DebugButtons/CreateWhiteTileButton" method="_on_pressed"]
 [connection signal="item_selected" from="UI/IdleUI/DebugButtons/TurnButton" to="UI/IdleUI/DebugButtons/TurnButton" method="_on_item_selected"]
+[connection signal="pressed" from="UI/ChooseLocationUI/TipBox/ConfirmLocationButton" to="UI/ChooseLocationUI/TipBox/ConfirmLocationButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Confirm" to="UI/ChooseTileLocationUI" method="_on_confirm_pressed"]
 [connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Cancel" to="UI/ChooseTileLocationUI" method="_on_cancel_pressed"]
+[connection signal="pressed" from="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox/RarityVBox/UpgradeButton" to="UI/DraftUI" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton" to="UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/GreenTilesButton" to="UI/EventUI" method="_on_green_tiles_button_pressed"]
+[connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/RedTilesButton" to="UI/EventUI" method="_on_red_tiles_button_pressed"]
+[connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/BlueTilesButton" to="UI/EventUI" method="_on_blue_tiles_button_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/Timeline/VBoxContainer/RoundLabel" to="CommonUI/VBoxContainer/Timeline" method="_on_round_label_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/Skip" to="CommonUI/VBoxContainer/HBoxContainer/Skip" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/PauseButton" to="CommonUI/VBoxContainer/HBoxContainer/PauseButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" to="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SkipButton" to="CommonUI/VBoxContainer/HBoxContainer/SkipButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ZoomInButton" to="CommonUI/VBoxContainer/HBoxContainer/ZoomInButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ZoomOutButton" to="CommonUI/VBoxContainer/HBoxContainer/ZoomOutButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" to="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" method="_on_pressed"]
 [connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="CommonUI/NextPlayerReady" to="CommonUI/NextPlayerReady" method="_on_pressed"]

@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://puk43laemcmg"]
+
+[ext_resource type="Texture2D" uid="uid://bt3kjxymfdejq" path="res://Assets/Cats/WalkingBlackCat/WalkingBlackCat1.png" id="1_tsljb"]
+[ext_resource type="Texture2D" uid="uid://crpjd0d7igeqk" path="res://Assets/Cats/WalkingBlackCat/WalkingBlackCat2.png" id="2_53cew"]
+[ext_resource type="Texture2D" uid="uid://bka8gfg2xjo6b" path="res://Assets/Cats/WalkingBlackCat/WalkingBlackCat3.png" id="3_wl1na"]
+[ext_resource type="Texture2D" uid="uid://di5p7ayots18j" path="res://Assets/Cats/WalkingBlackCat/WalkingBlackCat4.png" id="4_1hgdl"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tsljb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_53cew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wl1na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1hgdl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

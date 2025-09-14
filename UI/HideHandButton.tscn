@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b32uginpqm7kl"]
 
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_dufhl"]
-[ext_resource type="Script" path="res://UI/HideHandButton.gd" id="2_53faq"]
+[ext_resource type="Script" uid="uid://cfcswvrxya04" path="res://UI/HideHandButton.gd" id="2_53faq"]
 
 [node name="HideHandButton" type="Button"]
 anchors_preset = 3

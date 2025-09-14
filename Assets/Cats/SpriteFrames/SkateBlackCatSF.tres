@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bcacfvngai7ss"]
+
+[ext_resource type="Texture2D" uid="uid://c3xmuv1vbq8lj" path="res://Assets/Cats/SkateBlackCat/SkateBlackCat1.png" id="1_gq014"]
+[ext_resource type="Texture2D" uid="uid://d0fdaojsy1mlt" path="res://Assets/Cats/SkateBlackCat/SkateBlackCat2.png" id="2_nqeby"]
+[ext_resource type="Texture2D" uid="uid://ccsc1vapoi7gu" path="res://Assets/Cats/SkateBlackCat/SkateBlackCat3.png" id="3_xytnp"]
+[ext_resource type="Texture2D" uid="uid://cb2hmeebrs7kx" path="res://Assets/Cats/SkateBlackCat/SkateBlackCat4.png" id="4_h0jxj"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gq014")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nqeby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xytnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h0jxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -4,23 +4,19 @@
 
 As a billionaire mayor (and also a cat) who recently purchased an uninhabited island, you have a dream of creating a paradise for cat clan to have plenty of snacks, take plenty of naps and play plenty of tricks to their hearts desire.
 
-Looks like someone messed up the purchase, and another mayor also has ownership of the island!. Build structures alongside your rival mayor, but remember: your goal is to bring happiness to your clan of cats.
+But you're not the only one who bought that island!. Build structures alongside your rival mayor while ensuring that your cat clan is the happier one.
 
 ### What happens in a week on this island?
 
 ### Meet Tireless Tommy, the blueprint merchant!
 
-To build structures, you need to buy blueprints from Tommy. Tommy runs a blueprint shop on a cart, and he comes around to your office twice a day.
+Tommy sells blueprints. Blueprints can be turned into structures.
 
-#### Blueprints are hard to find.
-
-Tommy only has 2 blueprints on sale everyday. If you can catch him in the morning, you get to pick a blueprint of your choice. However, if you only meet him at night, you can only purchase the leftover blueprint. Wake up early if you want to choose your blueprints!
+He only has 2 blueprints on sale everyday. If you can catch him in the morning, you get to pick a blueprint of your choice. However, if you only meet him at night, you can only purchase the leftover blueprint. Wake up early if you want to choose your blueprints!
 
 ### Meet Bobcat the Builder!
 
-Bobcat turns your **Blueprints** into **Structures**! Just tell him where to place it. Different blueprints can only be built in specific kinds of terrain. For example, the "Rock" blueprint can only be built on __Red__ hilly tiles.
-
-#### Bobcat's quite a lazy fella...
+Bobcat turns your **Blueprints** into **Structures**! Just tell him where to place it. Different structures can only be built in specific kinds of terrain.
 
 However many blueprints you have, Bobcat always refuses to build the last one. What a waste.
 

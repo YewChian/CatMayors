@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cd6pqihu71xv7"]
+
+[ext_resource type="Texture2D" uid="uid://bu3i3duk2bkvv" path="res://Assets/Structures/FishGutter.png" id="1_5wc4p"]
+
+[resource]
+atlas = ExtResource("1_5wc4p")
+region = Rect2(0, 0, 64, 64)

@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dvqarob3h2547"]
+
+[ext_resource type="Texture2D" uid="uid://b15d3lmtxgf1r" path="res://Assets/Cats/nosy_aura/nosy_aura1.png" id="1_i86v8"]
+[ext_resource type="Texture2D" uid="uid://c8xd5wtw3lld" path="res://Assets/Cats/nosy_aura/nosy_aura2.png" id="2_v2d1l"]
+[ext_resource type="Texture2D" uid="uid://c57gavmf1mqq" path="res://Assets/Cats/nosy_aura/nosy_aura3.png" id="3_kja1l"]
+[ext_resource type="Texture2D" uid="uid://8rbailqf32pt" path="res://Assets/Cats/nosy_aura/nosy_aura4.png" id="4_qeys6"]
+[ext_resource type="Texture2D" uid="uid://3eqos5kfdaqo" path="res://Assets/Cats/nosy_aura/nosy_aura5.png" id="5_13ehj"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_i86v8")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_v2d1l")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_kja1l")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_qeys6")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_13ehj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

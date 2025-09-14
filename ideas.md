@@ -32,6 +32,7 @@ Each resident has the following needs:
 2. Naps
 3. Snacks
 
+
 You score cat points when cats visit respective Paradise locations:
 1. Tower Tree : Scores tricks 
 2. Sunspot : Scores naps
@@ -68,7 +69,16 @@ mechanics: these buildings make your future plays have more constraints, but the
 - blueprints: create a "blueprint" tile with a condition. when the condition is met, target buildings will receive various effects
 
 
+### Vary the following stats for structures
+1. Size
+2. Entrance location
+3. Level
+4. effects:
+    a. home
+    b. rehome
+
 ## Structure Ideas
+
 1. Bobcat Workshop (Bustle)
 	_A small hut surrounded by woody forests on three sides. Plenty of lumber._
 	Allows you to build better buildings
@@ -144,6 +154,10 @@ mechanics: these buildings make your future plays have more constraints, but the
     +2 cats
     Cats living here have +10 curiosity
 
+15. Fountain of Courage
+    _Bathe in it if you dare_
+    Discovery (This effect applies to the first cat to visit): cat gains the ability to walk on water with a penalty.
+
 	
 ## Tiles
 Strutures are placed on tiles that measure 64x64. Each tile determines the kind of structure that can be placed on it.
@@ -200,16 +214,15 @@ simulate the movement of cats in a realistic, yet simple to understand way.
 
 structures in a city:
 houses - gives varying number of cats.
-restaurants - the next structure a cat visits gives double the stars
-shops - consumes 2 curiosity if possible to give double the stars
+restaurants - makes cats lazy
+shops - if wealthy, get more stars
 services(hospital/firestation/police) - 
 schools - 
 religious - 
-offices
-parks - if this is the nearest structure, cats with 0 curiosity can still visit it.
-roads
-industrial (factories, manufacturing)
-landmarks (statues, culturally important structures) - if this structure has been visited more than 50 times, cats that visit it gain twice the stars. otherwise, gain 0 stars.
+offices - get wealth
+parks - get curiosity
+industrial (factories, manufacturing) - get creativity and wealth
+landmarks (statues, culturally important structures) - if this structure has been visited more than 50 times, cats that visit it gain twice the stars.
 
 ## 2025 Plan
 
@@ -223,3 +236,81 @@ landmarks (statues, culturally important structures) - if this structure has bee
 1. To keep things simple, you may only build buildings (duh)
 
 ### There are bots now
+
+### Scoring
+1. cats score at buildings based on the buildings level
+2. houses have low levels
+
+### KITTENBOT
+actions: 
+1. pick a building
+    - just pick a random one
+2. end a turn
+    - easy
+5. choose a good location
+    a. identify all your cats
+    b. find their entrances
+    c. get the shapes of all your buildings
+    d. iterate through the nearest squares to each of those entrances that are +1 distance away
+    e. for each building, check if you can place them on those squares
+    f. if successful, just place it and end the turn.
+
+
+### THEME??:
+nature and travellers: encourages them to travel further, visit more places
+* INVASION THEME
+- increase max_curiosity
+- meet cultural conditions
+- pillage: gain more stars from opponent structures
+    - cats with tools can steal stuff
+
+labor and public: encourages them to improve their area
+* KINGDOM THEME (royalty vibes)
+- use tire buildings to surround your area. the tire buildings can give more stars too
+- increase stars of buildings
+- lower rest durations of buildings
+- increase capacity of current homes
+- double stars
+
+food and production: encourages them to prepare shops for visitors
+* MERCHANT THEME
+- create material
+- craft components 
+- sell item
+- all items expire within x number of visits.
+- 
+
+
+### HISTORICAL GOTO ISLAND SET (1600S TOKUGAWA SHOGUNATE) FOR ART DESIGN DIRECTION
+- Three themes:
+
+#### THEME 1: THE WARRIOR RULING CLASS AND FARMER PEASANTS
+- The warrior royalty is able to gain a large number of stars by visiting "storehouses" of food.
+- These "storehouses" are stocked up by peasants that have been visiting farmland such as "Berry Bush"
+- The warrior royalty need to dispatch cats with an "official" aura that will mark certain buildings as "kingdom" buildings, in order to gain bonus stars from those buildings.
+
+#### THEME 2: THE MERCHANTS AND CRAFTSMEN
+- The farmer peasants are able to exit their low status by becoming merchants.
+- They can increase the value of their food by bringing it to structures like "Berry Cauldron"
+- They can further increase it by bringing their food to "Potion Shop" after that.
+- They can hire more cats at these shops and processing plants to increase their production and earn more stars
+
+#### THEME 3: PIRATE HERETICS
+- These cats can gain the stars that the warrior rulers would gain, but without setting up the whole production system, since they are stealing.
+- However, they cannot make homes near the capital because they are pirates. They specialise in having a high amount of curiosity so that they can raid structures from far.
+- They can also cause an uprising by spreading "faith". With high enough faith, the farmer peasant s can improve their life? im not sure how.
+
+### POLISH AND UI
+- generous upgrade (up arrows and stars)
+- satisfied buff (x2 effect)
+- nosy buff (+2 effect)
+- cooking effect (show fire and knives)
+- prankster effect (down arrows and stars)
+- cat gain curiosity resource?
+- giving max curiosity 
+- rehome happening (show the stick and bag symbol)
+- gaining ingredients (show fishing pole)
+- gaining equipment (show chest)
+- retire (show x2 effect)
+- cultured (+x effect)
+- town hall (+x effect)

@@ -10,7 +10,9 @@ const TILE_SCENES : Dictionary = {
 	"red" : preload("res://Tiles/RedTile.tscn"),
 	#"grey" : preload("res://Tiles/GreyTile.tscn"),
 	"null" : preload("res://Tiles/NullTile.tscn"),
-	"white" : preload("res://Tiles/WhiteTile.tscn")
+	"white" : preload("res://Tiles/WhiteTile.tscn"),
+	"purple": preload("res://Tiles/PurpleTile.tscn"),
+	"gold": preload("res://Tiles/GoldTile.tscn"),
 }
 
 
@@ -36,7 +38,13 @@ func create_tile(color : String, coordinate : Vector2):
 			astar.add_point(current_id, coordinate, 1)
 			current_id += 1
 		"red":
-			astar.add_point(current_id, coordinate, 2)
+			astar.add_point(current_id, coordinate, 1)
+			current_id += 1
+		"purple":
+			astar.add_point(current_id, coordinate, 1)
+			current_id += 1
+		"gold":
+			astar.add_point(current_id, coordinate, 1)
 			current_id += 1
 		"blue":
 			astar.add_point(current_id, coordinate, 1)
@@ -69,6 +77,22 @@ func get_id(coordinate : Vector2):
 func set_tile(coordinate : Vector2, tile : Object, new_id : int):
 	tiles[coordinate] = tile
 	coordinate_to_id[coordinate] = new_id
+
+
+func get_num_tiles_per_color():
+	# only gets red and green tiles for now
+	var num_tiles_per_color = {
+		"green":0,
+		"red":0,
+	}
+	for id in tiles:
+		if tiles[id].color == "green":
+			num_tiles_per_color["green"] += 1
+			continue
+		if tiles[id].color == "red":
+			num_tiles_per_color["red"] += 1
+			continue
+	return num_tiles_per_color
 
 
 func get_neighbor_tiles(current_tile : Object):

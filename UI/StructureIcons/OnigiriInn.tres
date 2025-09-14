@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dfjnif8a4fqyu"]
+
+[ext_resource type="Texture2D" uid="uid://ruo18oebe6dc" path="res://Assets/Structures/OnigiriInn.png" id="1_8bxad"]
+
+[resource]
+atlas = ExtResource("1_8bxad")
+region = Rect2(0, 0, 128, 64)

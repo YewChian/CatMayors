@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bbfgwg6tb8w8o"]
+
+[ext_resource type="Texture2D" uid="uid://ikguoqss6h0h" path="res://Assets/Structures/BerryCauldron.png" id="1_wlr45"]
+
+[resource]
+atlas = ExtResource("1_wlr45")
+region = Rect2(0, 0, 128, 64)

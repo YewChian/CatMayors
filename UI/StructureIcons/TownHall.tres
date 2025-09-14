@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://beeqdgth1555c"]
+
+[ext_resource type="Texture2D" uid="uid://daask8n8jgv8w" path="res://Assets/Structures/TownHall.png" id="1_oypgp"]
+
+[resource]
+atlas = ExtResource("1_oypgp")
+region = Rect2(0, 0, 192, 192)

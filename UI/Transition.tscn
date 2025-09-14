@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://rw2sfot1vbca"]
+
+[ext_resource type="Texture2D" uid="uid://gfppkuk3itqc" path="res://Assets/NullTile.png" id="1_5k7as"]
+[ext_resource type="Script" path="res://UI/Transition.gd" id="2_lpiu8"]
+
+[node name="Transition" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5k7as")
+script = ExtResource("2_lpiu8")

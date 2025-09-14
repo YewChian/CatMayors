@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ytve6804re8g"]
+
+[ext_resource type="Texture2D" uid="uid://by5jnkkgp8wtd" path="res://Assets/Structures/Pawson.png" id="1_sn78i"]
+
+[resource]
+atlas = ExtResource("1_sn78i")
+region = Rect2(0, 0, 128, 128)

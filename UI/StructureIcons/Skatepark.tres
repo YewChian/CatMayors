@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bnjskoh7vbvrs"]
+
+[ext_resource type="Texture2D" uid="uid://chmeq2yqifgvo" path="res://Assets/Structures/Skatepark.png" id="1_6a21u"]
+
+[resource]
+atlas = ExtResource("1_6a21u")
+region = Rect2(0, 0, 192, 128)

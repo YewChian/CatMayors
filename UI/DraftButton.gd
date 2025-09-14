@@ -1,6 +1,6 @@
 extends Button
 
 func _on_pressed():
-	%CommonUI.visible = true
-	UIMan.enter_mode("DraftUI")
-	%TurnTimer.start(Settings.TURN_DURATION)
+	PlayerMan.mode = "Local"
+	get_tree().current_scene.show_tutorial("title")
+	get_tree().paused = true
