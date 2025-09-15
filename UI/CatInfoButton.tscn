@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2ko5f6up63d7"]
 
-[ext_resource type="Script" path="res://UI/CatInfoButton.gd" id="1_j61xg"]
+[ext_resource type="Script" uid="uid://dp8hfi3dwwgca" path="res://UI/CatInfoButton.gd" id="1_j61xg"]
 
 [node name="CatInfoButton" type="Button" groups=["CatInfoButton"]]
 anchors_preset = 15

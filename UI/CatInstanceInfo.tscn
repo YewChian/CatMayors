@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://yms12x0mjpjm"]
 
 [ext_resource type="Theme" uid="uid://cr46aguri5yqg" path="res://Styles/Arq16Theme.tres" id="1_rigcf"]
-[ext_resource type="Script" path="res://UI/CatInstanceInfo.gd" id="2_bhyw2"]
+[ext_resource type="Script" uid="uid://bdwgg6dasthyn" path="res://UI/CatInstanceInfo.gd" id="2_bhyw2"]
 
 [node name="CatInstanceInfo" type="PanelContainer"]
 offset_right = 8.0
