@@ -93,18 +93,43 @@ func check_color_match():
 
 func check_entrance_blocker():
 	var all_entrance_coordinates : Array[Vector2] = []
+	var new_global_entrance_coordinate = StructureData.structures[new_structure]['entrance_coordinate'] + (get_marker_position()/Settings.TILE_LENGTH)
+	
+	# check if NEW entrance coordinate is blocked on all 4 sides because of other structures/tiles
+	if get_num_adjacent_unwalkable_tiles(new_global_entrance_coordinate) >= 4:
+		show_structure_marker_message("Your new entrance cannot be blocked on all 4 sides")
+		is_placeable = false
+		return
+		
+	# check if OTHER entrances are blocked on all 4 sides because of this new structure
 	for structure in StructureMan.structures.values():
 		all_entrance_coordinates.push_back(structure.get_global_entrance_coordinate())
 		
 	var occupied_coordinates = StructureData.structures[new_structure]["occupied_coordinates"]
 	for shifted_coordinate in occupied_coordinates:
 		for direction in Settings.DIRECTIONS:
-			if get_marker_position()/Settings.TILE_LENGTH + shifted_coordinate + direction in all_entrance_coordinates:
-					show_structure_marker_message("Don't block the entrances of other buildings.")
-					is_placeable = false
-					break
-
-
+			var marker_adjacent_coord = get_marker_position()/Settings.TILE_LENGTH + shifted_coordinate + direction
+			if marker_adjacent_coord not in all_entrance_coordinates:
+				continue
+			
+			var num_adjacent_unwalkable_tiles = get_num_adjacent_unwalkable_tiles(marker_adjacent_coord)
+			var global_shifted_coordinate = shifted_coordinate + get_marker_position()/Settings.TILE_LENGTH
+			if global_shifted_coordinate != new_global_entrance_coordinate:
+				num_adjacent_unwalkable_tiles += 1
+			if num_adjacent_unwalkable_tiles >= 4:
+				show_structure_marker_message("Your new structure cannot block all 4 sides of any other entrance")
+				is_placeable = false
+				break
+		
+		
+func get_num_adjacent_unwalkable_tiles(origin_coord: Vector2):
+	var count = 0
+	for direction in Settings.DIRECTIONS:
+		var adjacent_coord = origin_coord + direction
+		if TileMan.coord2tile[adjacent_coord].color in ['null', 'blue']:
+			count += 1
+	return count
+				
 func show_structure_marker_message(message: String):
 	message_tween.kill()
 	var message_label = %StructureMarkerMessage

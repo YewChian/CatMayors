@@ -40,21 +40,22 @@ func decide_destination():
 	for structure in StructureMan.structures.values():
 		var entrance = structure.entrance_coordinate + structure.coordinate
 		if entrance == StructureMan.get_structure_by_id(home_id).get_global_entrance_coordinate(): 
-			#printerr(structure.structure_name, " is home, skipped by ", id)
+			printerr(structure.structure_name, " is home, skipped by ", id)
 			continue	# skip home structure
 		if entrance == get_coordinate(): 
-			#printerr(structure.structure_name, " is current, skipped by ", id)
+			printerr(structure.structure_name, " is current, skipped by ", id)
 			continue	# skip current_structure
 		if entrance in visited_structure_entrances:
-			#printerr(structure.structure_name, " is visited, skipped by ", id)
+			printerr(structure.structure_name, " is visited, skipped by ", id)
 			continue	# skip visited structures
 		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance)))-1 > curiosity:
-			#printerr(structure.structure_name, " is faraway, skipped by ", id)
+			printerr(structure.structure_name, " is faraway, skipped by ", id)
 			continue	# skip faraway structures
 		if len(TileMan.astar.get_point_path(TileMan.get_id(get_coordinate()), TileMan.get_id(entrance))) == 0:
-			#printerr(structure.structure_name, " is blocked, skipped by ", id)
+			printerr(structure.structure_name, " is blocked, skipped by ", id)
 			continue	# if path is blocked
 		possible_destinations.push_back(entrance)
+	printerr("possible destinations: ", possible_destinations)
 	
 	match aura:
 		"adventurous": # skips the nearest destination

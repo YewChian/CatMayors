@@ -1,6 +1,6 @@
 extends Node2D
-var tiles : Dictionary = {}
-var coordinate_to_id : Dictionary = {}
+var coord2tile : Dictionary = {}
+var coord2tile_id : Dictionary = {}
 @onready var astar = AStar2D.new() 
 var current_id : int = 0
 
@@ -65,18 +65,18 @@ func remove_tile(coordinate):
 	
 
 func get_tile(coordinate : Vector2):
-	if tiles.has(coordinate) == false:
+	if coord2tile.has(coordinate) == false:
 		return null
 	else:
-		return tiles[coordinate]
+		return coord2tile[coordinate]
 	
 func get_id(coordinate : Vector2):
-	return coordinate_to_id[coordinate]
+	return coord2tile_id[coordinate]
 
 
 func set_tile(coordinate : Vector2, tile : Object, new_id : int):
-	tiles[coordinate] = tile
-	coordinate_to_id[coordinate] = new_id
+	coord2tile[coordinate] = tile
+	coord2tile_id[coordinate] = new_id
 
 
 func get_num_tiles_per_color():
@@ -85,11 +85,11 @@ func get_num_tiles_per_color():
 		"green":0,
 		"red":0,
 	}
-	for id in tiles:
-		if tiles[id].color == "green":
+	for tile in coord2tile.values():
+		if tile.color == "green":
 			num_tiles_per_color["green"] += 1
 			continue
-		if tiles[id].color == "red":
+		if tile.color == "red":
 			num_tiles_per_color["red"] += 1
 			continue
 	return num_tiles_per_color

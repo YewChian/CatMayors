@@ -19,7 +19,7 @@ func initialize():
 func transform_purple_tiles_into(new_color: String):
 	var num_tiles = 10
 	var purple_tile_coordinates = []
-	for tile in TileMan.tiles.values():
+	for tile in TileMan.coord2tile.values():
 		if tile.color == "purple":
 			purple_tile_coordinates.push_back(tile.coordinate)
 	randomize()

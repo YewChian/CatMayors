@@ -36,7 +36,7 @@ func create_map(size : int, expansion_probability : float):
 	# create blue tiles
 	print("water")
 	var potential_blue_tile_coordinates : Array[Vector2] = []
-	for tile in TileMan.tiles.values():
+	for tile in TileMan.coord2tile.values():
 		if tile.color != "green":
 			continue
 		for neighbor_tile in TileMan.get_neighbor_tiles(tile).values():	# replace with blue
@@ -60,7 +60,7 @@ func create_map(size : int, expansion_probability : float):
 	var num_red_tiles = 0
 	var green_tile_coordinates : Array[Vector2] = []
 	var red_tile_coordinates : Array[Vector2] = []
-	for tile in TileMan.tiles.values():
+	for tile in TileMan.coord2tile.values():
 		if tile.color == "green":
 			green_tile_coordinates.push_back(tile.coordinate)
 	
@@ -96,7 +96,7 @@ func create_map(size : int, expansion_probability : float):
 	for coord in red_and_green_tiles.slice(0, max_num_purple_tiles):
 		await TileMan.create_tile("purple", coord)
 	
-	await TileMan.connect_tiles(TileMan.tiles.keys())
+	await TileMan.connect_tiles(TileMan.coord2tile.keys())
 
 func _on_generate_map_pressed():
 	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
