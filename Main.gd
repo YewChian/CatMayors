@@ -2,6 +2,12 @@ extends Node2D
 
 func _ready():
 	create_map(Settings.SIZE, Settings.GREEN_EXPANSION_PROBABILITY)
+	await set_default_game_options()
+	
+func set_default_game_options():
+	await %Blitz._on_pressed()
+	await %FiveIslandVillage._on_pressed()
+	await %KittenBotStartButton._on_pressed()
 	
 func disable_player_input():
 	await set_process_input(false)
@@ -87,8 +93,7 @@ func create_map(size : int, expansion_probability : float):
 		for direction in Settings.DIRECTIONS:
 			red_tile_coordinates.push_back(coordinate + direction)
 			
-	print("fishbones")
-	var max_num_purple_tiles : int = max_num_green_tiles / 8
+	var max_num_purple_tiles : int = max_num_green_tiles / 10
 	var red_and_green_tiles = red_tile_coordinates.duplicate(true)
 	red_and_green_tiles.append_array(green_tile_coordinates)
 	randomize()
@@ -117,15 +122,12 @@ func hide_tutorial():
 
 func start_game():
 	%CommonUI.visible = true
-	get_tree().current_scene.get_node("CommonUI/VBoxContainer").visible = true
+	%TopBar.visible = true
 	await PlayerMan.add_initial_structures_to_hand()
 	UIMan.enter_mode("DraftUI")
 	%TurnTimer.start(Settings.TURN_DURATION[PlayerMan.phases[PlayerMan.phase_index]]/Settings.game_speed)
 	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = PlayerMan.turn_color + "'s turn"
-	print("Common UI visiblity: ", %CommonUI.visible)
-	%Timeline.emphasise()
-	emphasise_turn_label()
-
+	await %Timeline.update_timeline()
 
 func emphasise_turn_label():
 	var turn_label = %WhoseTurnLabel

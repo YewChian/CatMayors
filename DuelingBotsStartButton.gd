@@ -1,5 +1,5 @@
 extends Button
-
+# THIS SCRIPT DOESNT WORK ANYMORE AS OF 3/JAN/2026
 func _on_pressed():
 	PlayerMan.mode = "DuelingBot"
 	#await MouseketeerBot.initialize_q_table("create")

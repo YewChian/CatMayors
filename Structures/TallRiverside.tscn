@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0tr7betmebha"]
+
+[ext_resource type="PackedScene" uid="uid://cldq2ytrikigr" path="res://Structures/Structure.tscn" id="1_7slm3"]
+[ext_resource type="Script" uid="uid://b3wfvd1n86o2s" path="res://Structures/TallRiverside.gd" id="2_7slm3"]
+[ext_resource type="Texture2D" uid="uid://6s284xb2dsla" path="res://Assets/Structures/TallRiverside.png" id="3_cipei"]
+
+[sub_resource type="Animation" id="Animation_gs0vc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bh1rl"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tn1h"]
+_data = {
+&"RESET": SubResource("Animation_gs0vc"),
+&"idle": SubResource("Animation_bh1rl")
+}
+
+[node name="TallRiverside" instance=ExtResource("1_7slm3")]
+script = ExtResource("2_7slm3")
+
+[node name="StructureSprite" parent="." index="0"]
+texture = ExtResource("3_cipei")
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_1tn1h")
+}

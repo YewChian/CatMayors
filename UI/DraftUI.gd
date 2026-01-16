@@ -67,7 +67,7 @@ func initialize():
 		return
 
 	
-func on_touched(event):
+func on_touched(_event):
 	pass
 	
 
@@ -78,7 +78,7 @@ func initialize_draftable_structures():
 	var all_common_structures = []
 	var all_rare_structures = []
 	var all_epic_structures = []
-	for name in StructureData.structures:
+	for name in StructureData.region_structures[Settings.region]:
 		var structure_data = StructureData.structures[name]
 		if structure_data["rarity"] == "common":
 			all_common_structures.append(name)

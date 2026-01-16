@@ -124,6 +124,11 @@ func update_structure_effects(effects: Dictionary):
 			await print_conditions(effects[effect]["conditions"])
 			%Effects.text += "Gain stars equal to the stars earned by the visiting cat"
 			%Effects.text += "\n"
+		
+		if effect == "terraform":
+			await print_conditions(effects[effect]["conditions"])
+			%Effects.text += "Change nearby tiles to " + str(effects[effect]["color"]) + " tiles"
+			%Effects.text += "\n"
 
 		
 func print_conditions(all_conditions: Dictionary):

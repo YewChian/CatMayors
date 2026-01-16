@@ -11,7 +11,22 @@ var white_hand : Array = []
 var black_structures: Array = []
 var white_structures: Array = []
 
-var phases = ["DraftUI", "DraftUI", "ChooseLocationUI", "ChooseLocationUI", "ChooseLocationUI", "ObserveUI", "EventUI"]
+var black_levels = {
+	"Archi": 0,
+	"Nature": 0,
+	"Farming": 0,
+	"Construct": 0,
+}
+var white_levels = {
+	"Archi": 0,
+	"Nature": 0,
+	"Farming": 0,
+	"Construct": 0,
+}
+
+
+#var phases = ["DraftUI", "DraftUI", "ChooseLocationUI", "ChooseLocationUI", "ChooseLocationUI", "ObserveUI", "EventUI"]
+var phases = ["DraftUI", "DraftUI", "ChooseLocationUI", "ChooseLocationUI", "ChooseLocationUI", "ObserveUI"]
 var phase_index : int = 0
 var turn_color : String = "black"
 var turn_color_order = ["black", "white"]
@@ -22,8 +37,8 @@ var max_hand_size = 5
 	
 
 func add_initial_structures_to_hand():
-	black_hand.append("Rock")
-	white_hand.append("Rock")
+	black_hand.append("Folk House")
+	white_hand.append("Folk House")
 
 	
 func go_to_next_turn():
@@ -48,7 +63,6 @@ func go_to_next_turn():
 			return	# don't show the next player button
 		else:
 			await get_tree().current_scene.get_node("CommonUI/NextPlayerReady").show_next_player_button()
-
 
 func end_game():
 	var victory_label = get_tree().current_scene.get_node("CommonUI/VBoxContainer/VictoryLabel")

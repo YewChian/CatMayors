@@ -314,3 +314,40 @@ food and production: encourages them to prepare shops for visitors
 - retire (show x2 effect)
 - cultured (+x effect)
 - town hall (+x effect)
+
+
+## 2025 October plan:
+
+#### REWORKED STRUCTURE PLACEMENT
+We will now allow the placement of structures directly adjacent to entrances. This creates a more satisfying alignment of buildings that match and look nice together
+
+#### SIMPLE LEVELS
+Create a new set of buildings that have the simplest rules, like a tutorial level
+Its important to include less complicated mechanics.
+We will focus on the following mechanics:
+
+1. Fitting shapes and colors
+    - we want to focus on having a variety of shapes to make the jigsaw aspect satisfying
+    - we can have structures that synergise and stack nicely together
+        - e.g. house and garage?
+
+2. Gaining food
+    - food is reworked to have more value on its own
+    - when cats are holding food, they gain double the stars at any structure
+    - cats will lose food at certain structures
+    - food no longer gives curiosity bonuses
+
+3. Curiosity and roads
+    - roads give curiosity
+    - less structures should give curiosity now
+
+4. Prominence
+    - Structures have a 'prominence' stat, serving as a tiebreaker when cats decide between equidistant structures
+
+5. On-build bonuses
+    - Some structures should be able to increase the stats of nearby structure 'on build', based on distance and shape
+    - Some structures should be able to change the tile colors near it.
+    - Some structures should be able to remove structures? TBD
+
+
+3. 

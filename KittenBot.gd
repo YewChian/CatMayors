@@ -77,7 +77,10 @@ func build_structure():
 					#var new_log: String = "kittenbot is checking "+structure_button.structure_name+" at "+str(ring_coord)
 					#print(new_log)
 					#await get_tree().current_scene.add_to_log(new_log)
-					await get_tree().create_timer(max(0.01, (0.5 - (i*0.2)))/Settings.game_speed).timeout
+					var is_placeable_check_interval_seconds = max(0.01, (0.2 - (i*0.05)))/Settings.game_speed
+					print('game speed: ', Settings.game_speed)
+					print(is_placeable_check_interval_seconds, "interval")
+					await get_tree().create_timer(is_placeable_check_interval_seconds).timeout
 					if is_placeable == true:
 						await get_tree().current_scene.get_node("UI/ChooseLocationUI/TipBox/ConfirmLocationButton")._on_pressed()
 						get_tree().current_scene.get_node("CommonUI/ThinkingContainer").visible = false

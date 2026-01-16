@@ -53,6 +53,9 @@ func home_cats(num_cats: int):
 		new_cat.global_position = (entrance_coordinate + coordinate) * Settings.TILE_LENGTH
 		cats.append(new_cat)
 		new_cat.enter_state("wander")
+	var new_log: String = "[color=green]" + str(cats) + "[/color]" + "was still spooked at" + structure_name
+	print(new_log)
+	await get_tree().current_scene.add_to_log(new_log)
 
 
 func get_can_enter():
@@ -233,6 +236,7 @@ func finish_activity():
 			var new_log: String = active_cat.id + " served some ingredients at " + structure_name
 			print(new_log)
 			await get_tree().current_scene.add_to_log(new_log)
+		
 
 		var earned_stars = (structure_stars * lazy_stars_multiplier * dutiful_stars_multiplier * satisfied_stars_multiplier) + bonus_stars
 

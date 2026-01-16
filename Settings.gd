@@ -14,4 +14,5 @@ const TURN_DURATION: Dictionary = {
 const MAX_ROUNDS: int = 4
 const BASE_CURIOSITY: int = 5
 
-var game_speed: float = 1
+var game_speed: float
+var region: String

@@ -50,7 +50,25 @@ func create_structure(structure_name: String, coordinate: Vector2, team_color: S
 		if effect == "home" and fulfils_effect_conditions(structure_data["effects"]["home"]["conditions"], "create_structure", new_instantiated_structure, null):
 			var num_cats: int = structure_data["effects"]["home"]["num_cats"]
 			await new_instantiated_structure.home_cats(num_cats)
+			continue
+		if effect == ("terraform") and fulfils_effect_conditions(structure_data["effects"]["terraform"]["conditions"], "create_structure", new_instantiated_structure, null):
+			var global_terraformed_coords = []
+			for coord in structure_data["effects"]["terraform"]["coordinates"]:
+				global_terraformed_coords.append(coord + new_instantiated_structure.coordinate)
+			var color = structure_data["effects"]["terraform"]["color"]
+			await terraform(global_terraformed_coords, color)
+			continue
+		if effect == ("gain_levels") and fulfils_effect_conditions(structure_data["effects"]["gain_levels"]["conditions"], "create_structure", new_instantiated_structure, null):
+			await PlayerMan.gain_levels("white", structure_data["effects"]["gain_levels"]["type"], structure_data["effects"]["gain_levels"]["quantity"])
+			continue
 
+func terraform(coords, tile_color):
+	for coord in coords:
+		var structure_in_coord = get_structure_by_coordinate(coord)
+		if structure_in_coord != null:
+			continue	# don't terraform tiles that are occupied by structures
+		
+		await TileMan.create_tile(tile_color, coord)
 
 func set_name2staticid():
 	var static_id = 0
@@ -58,7 +76,6 @@ func set_name2staticid():
 		name2static_id[key] = static_id
 		static_id += 1
 	print(name2static_id)
-
 
 func fulfils_effect_conditions(conditions_data: Dictionary, timing: String, structure: Object, cat: Object):
 	for condition in conditions_data:

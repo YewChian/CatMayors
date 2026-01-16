@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://djj0x83fn6h46"]
+
+[ext_resource type="Texture2D" uid="uid://dxo582w4kadtn" path="res://Assets/Structures/WideLilyShrubPath.png" id="1_qkwws"]
+
+[resource]
+atlas = ExtResource("1_qkwws")
+region = Rect2(0, 0, 64, 192)

@@ -12,7 +12,7 @@ func initialize():
 	new_structure_marker_node.texture = null
 	$TipBox/TurnLabel.text = "CAT CONSTRUCTION"
 	$TipBox/Tip.text = "Choose 1 structure to place."
-	get_tree().current_scene.get_node("CommonUI/VBoxContainer/Timeline").update_timeline()
+	get_tree().current_scene.get_node("CommonUI/TopBar/Timeline").update_timeline()
 	$TipBox/Hand.enable_buttons()
 	$TipBox/Hand.update_hand_structure_buttons()
 	$TipBox/Hand/VBoxContainer/HBoxContainer.visible = true
@@ -40,6 +40,11 @@ func choose_location():
 	new_structure_marker_node.get_node("EntranceIndicator").position = StructureData.structures[new_structure]["entrance_coordinate"] * Settings.TILE_LENGTH
 	new_structure_marker_node.offset = StructureData.structures[new_structure]["sprite_offset"]
 	await set_marker_position(Vector2(0,0) + Vector2(get_viewport().size/2))
+	if StructureData.structures[new_structure]["effects"].has("terraform"):
+		var global_terraform_coords = []
+		for coord in StructureData.structures[new_structure]["effects"]["terraform"]["coordinates"]:
+			global_terraform_coords.append(coord + Vector2(0,0))
+		await set_terraform_markers(global_terraform_coords, StructureData.structures[new_structure]["effects"]["terraform"]["color"])
 	await check_placeable()
 	
 	$TipBox/Tip.text = "Touch tile to place structure."
@@ -64,6 +69,11 @@ func on_touched(event):
 	if new_structure == "":
 		return
 	await set_marker_position(event.position)
+	if StructureData.structures[new_structure]["effects"].has("terraform"):
+		var global_terraform_coords = []
+		for coord in StructureData.structures[new_structure]["effects"]["terraform"]["coordinates"]:
+			global_terraform_coords.append(coord + event_tile_coordinate)
+		await set_terraform_markers(global_terraform_coords, StructureData.structures[new_structure]["effects"]["terraform"]["color"])
 	await check_placeable()
 	#await highlight_reachable_tiles()
 	
@@ -144,6 +154,23 @@ func set_marker_position(event_position : Vector2):
 	var event_tile_coordinate = get_coord_from_event_position(event_position)
 	await move_marker_and_make_visible(event_tile_coordinate)
 
+func set_terraform_markers(coords, color):
+	var terraform_marker_parent = get_tree().current_scene.get_node("TerraformMarkers")
+	# remove existing markers first, if any
+	for node in terraform_marker_parent.get_children():
+		remove_child(node)
+		node.queue_free()
+	for coord in coords:
+		var new_sprite = Sprite2D.new()
+		terraform_marker_parent.add_child(new_sprite)
+		new_sprite.texture = load("res://Assets/" + color.capitalize() + "Tile.png")
+		new_sprite.global_position = coord * Settings.TILE_LENGTH
+		
+		if StructureMan.get_structure_by_coordinate(coord) == null:
+			new_sprite.modulate = Color(1, 1, 1, 0.6)
+		else:
+			new_sprite.modulate = Color(1, 1, 1, 0.0)		# don't show new tile if overlapping with structure
+
 
 func move_marker_and_make_visible(target_coord):
 	new_structure_marker_node.set_visible(true)
@@ -169,6 +196,11 @@ func end_turn():
 	new_structure_marker_node.modulate = Color(1, 1, 1, 0.5)
 	new_structure_marker_node.get_node("EntranceIndicator").visible = false
 	new_structure_marker_node.visible = false
+	
+	var terraform_marker_parent = get_tree().current_scene.get_node("TerraformMarkers")
+	for node in terraform_marker_parent.get_children():
+		remove_child(node)
+		node.queue_free()
 	
 	if new_structure == "" or is_placeable == false:
 		return

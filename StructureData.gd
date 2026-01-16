@@ -1,6 +1,5 @@
 extends Node
 
-
 var structures : Dictionary = {
 	"Fishing Hut" : {	# merchant
 		"rarity": "epic",
@@ -117,7 +116,7 @@ var structures : Dictionary = {
 		},
 	},
 	"Rock" : {	# invasion
-		"rarity": "common",
+		"rarity": "rare",
 		"path": "res://Structures/Rock.tscn",
 		"icon": "res://UI/StructureIcons/Rock.tres",
 		"sprite": "res://Assets/Structures/Rock.png",
@@ -158,8 +157,20 @@ var structures : Dictionary = {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 5
+				"value": 1
 			},
+			"terraform": {
+				"conditions": {
+					"build": -1,
+				},
+				"coordinates": [	# with respect to 0,0
+					Vector2(0,-1),
+					Vector2(-1,0),
+					Vector2(1,0),
+					Vector2(0,1),
+				],
+				"color": "green",
+			}
 		},
 	},
 	"Pile Of Clean Laundry" : {
@@ -195,7 +206,7 @@ var structures : Dictionary = {
 		},
 	},
 	"Floating Planks" : {
-		"rarity": "common", # invasion
+		"rarity": "rare", # invasion
 		"path": "res://Structures/FloatingPlanks.tscn",
 		"icon": "res://UI/StructureIcons/FloatingPlanks.tres",
 		"sprite": "res://Assets/Structures/FloatingPlanks.png",
@@ -246,7 +257,7 @@ var structures : Dictionary = {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 5
+				"value": 1
 			},
 		},
 	},
@@ -520,7 +531,7 @@ var structures : Dictionary = {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 3,
+				"value": 1,
 			}
 		},
 	},
@@ -653,7 +664,7 @@ var structures : Dictionary = {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 3,
+				"value": 2,
 			},
 		},
 	},
@@ -1037,7 +1048,7 @@ var structures : Dictionary = {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 3
+				"value": 1
 			},
 		},
 	},
@@ -1109,6 +1120,163 @@ var structures : Dictionary = {
 				"duration": 10,
 			},
 		},
+	},
+	"Tall Lily Shrub Path" : {	# invasion
+		"rarity": "rare",
+		"path": "res://Structures/TallLilyShrubPath.tscn",
+		"icon": "res://UI/StructureIcons/TallLilyShrubPath.tres",
+		"sprite": "res://Assets/Structures/TallLilyShrubPath.png",
+		"sprite_offset": Vector2(64, 0),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+			Vector2(2,0),
+		],
+		"entrance_coordinate": Vector2(1,0),
+		"activity_duration": 1,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"catffeinate": {
+				"conditions": {
+					"visit": -1,
+				},
+				"value": 3
+			}
+		},
+	},
+	"Wide Lily Shrub Path" : {	# invasion
+		"rarity": "rare",
+		"path": "res://Structures/WideLilyShrubPath.tscn",
+		"icon": "res://UI/StructureIcons/WideLilyShrubPath.tres",
+		"sprite": "res://Assets/Structures/WideLilyShrubPath.png",
+		"sprite_offset": Vector2(0, 64),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(0,1),
+			Vector2(0,2),
+		],
+		"entrance_coordinate": Vector2(0,1),
+		"activity_duration": 1,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"catffeinate": {
+				"conditions": {
+					"visit": -1,
+				},
+				"value": 3
+			}
+		},
+	},
+	"Tall Riverside" : {
+		"rarity": "rare",
+		"path": "res://Structures/TallRiverside.tscn",
+		"icon": "res://UI/StructureIcons/TallRiverside.tres",
+		"sprite": "res://Assets/Structures/TallRiverside.png",
+		"sprite_offset": Vector2(0, 0),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+		],
+		"entrance_coordinate": Vector2(0,0),
+		"activity_duration": 1,
+		"structure_stars": 0,
+		"flavor": "Running water is a great resource",
+		"effects": {
+			"terraform": {
+				"conditions": {
+					"build": -1,
+				},
+				"coordinates": [	# with respect to 0,0
+					Vector2(-1,-1),
+					Vector2(0,-1),
+					Vector2(-1,0),
+				],
+				"color": "blue",
+			}
+		},
+	},
+	"Folk House" : {	# invasion
+		"rarity": "common",
+		"path": "res://Structures/FolkHouse.tscn",
+		"icon": "res://UI/StructureIcons/FolkHouse.tres",
+		"sprite": "res://Assets/Structures/FolkHouse.png",
+		"sprite_offset": Vector2(32, 0),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+		],
+		"entrance_coordinate": Vector2(0, 0),
+		"activity_duration": 1,
+		"structure_stars": 1,
+		"flavor": "",
+		"effects": {
+			"home": {
+				"conditions": {
+					"build": -1,
+				},
+				"num_cats": 1,
+			},
+		},
+	},
+	"Crossroads" : {
+		"rarity": "common",
+		"path": "res://Structures/Crossroads.tscn",
+		"icon": "res://UI/StructureIcons/Crossroads.tres",
+		"sprite": "res://Assets/Structures/Crossroads.png",
+		"sprite_offset": Vector2(0,0),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+		],
+		"entrance_coordinate": Vector2(0, 0),
+		"activity_duration": 1,
+		"structure_stars": 0,
+		"flavor": "Where to next?",
+		"effects": {
+			"catffeinate": {
+				"conditions": {
+					"visit": -1,
+				},
+				"value": 2
+			},
+		},
+	},
+	"Bobcat Hut" : {
+		"rarity": "common", # kingdom, merchant
+		"path": "res://Structures/BobcatHut.tscn",
+		"icon": "res://UI/StructureIcons/BobcatHut.tres",
+		"sprite": "res://Assets/Structures/BobcatHut.png",
+		"sprite_offset": Vector2(32, 32),
+		"color": "red",
+		"occupied_coordinates": [
+			Vector2(1,0),
+			Vector2(0,1),
+			Vector2(1,1),
+		],
+		"entrance_coordinate": Vector2(1, 0),
+		"activity_duration": 5,
+		"structure_stars": 1,
+		"flavor": "Improves your town's ARCHI level",
+		"effects": {
+			"home": {
+				"conditions": {
+					"build": -1,
+				},
+				"num_cats": 1,
+			},
+			"gain_levels": {
+				"conditions": {
+					"build": -1,
+				},
+				"type": "ARCHI",
+				"quantity": 1,
+			},
+		}
 	},
 }
 
@@ -1246,4 +1414,72 @@ var removed_structures = {
 	},
 	# firefly waterfall
 	# that cafe with the old golf guy and pasta
+}
+
+var region_structures = {
+	'Five Island Village': [
+		"Fishing Hut",
+		"Rock",
+		"Flowerbed",
+		"Floating Planks",
+		"Oak Treehouse",
+		"Round Fountain",
+		"The Catto",
+		"Hostel Good Neet",
+		"Tall Sea Wall",
+		"Shabby Shrine",
+		"Tsubaki Bush",
+		"Benches",
+		"Ice Cream Trees",
+		"Maple Grove",
+		"Big Puddle",
+		"Tall Lily Shrub Path",
+		"Wide Lily Shrub Path",
+		"Tall Riverside",
+		"Folk House",
+		"Crossroads",
+		"Troutmouth Statue",
+		"Quiet Farmhouse",
+		"Bobcat Hut",
+		#Fish Market
+	],
+	'Grand Whiskertown': [
+		"Bobcat Workshop",
+		"Fishing Hut",
+		"Tuna Factory",
+		"Rock",
+		"Flowerbed",
+		"Pile Of Clean Laundry",
+		"Floating Planks",
+		"Oak Treehouse",
+		"Round Fountain",
+		"Catbed Campground",
+		"Catnip Alley",
+		"Scratch Post",
+		"The Catto",
+		"Little Red House",
+		"Hostel Good Neet",
+		"Tall Sea Wall",
+		"Shabby Shrine",
+		"Town Hall",
+		"Hydrant",
+		"Trashcan",
+		"Bobcat Guild",
+		"Tsubaki Bush",
+		"Fish Gutter",
+		"Benches",
+		"Pawson",
+		"Quiet Farmhouse",
+		"Junkyard",
+		"Skatepark",
+		"Sushi Hut",
+		"Troutmouth Statue",
+		"Pirate Library",
+		"Family House",
+		"Ice Cream Trees",
+		"Maple Grove",
+		"Big Puddle",
+		"Onigiri Inn",
+		"Smokehouse",
+	]
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cwqmm1rc4fy0s"]
+[gd_scene load_steps=69 format=3 uid="uid://cwqmm1rc4fy0s"]
 
 [ext_resource type="Script" uid="uid://dvus54yyeulp4" path="res://Main.gd" id="1_boo15"]
 [ext_resource type="Script" uid="uid://pckh6jhv1v0j" path="res://UI/IdleUI.gd" id="2_0u3m0"]
@@ -19,10 +19,13 @@
 [ext_resource type="Script" uid="uid://hq7g3rumg3vs" path="res://ShowQTable.gd" id="7_y1tbi"]
 [ext_resource type="Script" uid="uid://b8fevr71y1pn7" path="res://UI/WhiteScore.gd" id="8_5kguq"]
 [ext_resource type="Script" uid="uid://cgebuuhppfqc8" path="res://UI/GameSpeedBullet.gd" id="8_c2s76"]
+[ext_resource type="Script" uid="uid://b4bm8gwfo5ipd" path="res://UI/RegionButtons/FiveIslandVillage.gd" id="8_khphd"]
+[ext_resource type="Script" uid="uid://b4lwgvav73ssq" path="res://UI/RegionButtons/GrandWhiskertown.gd" id="9_g4yo4"]
 [ext_resource type="Script" uid="uid://c7jiiywsa4hah" path="res://UI/GameSpeedBlitz.gd" id="9_pljue"]
 [ext_resource type="Script" uid="uid://po6h0uc85pnh" path="res://GameSpeedRapid.gd" id="10_nx4yo"]
 [ext_resource type="Script" uid="uid://c8urutqnel5ju" path="res://UI/GameSpeedClassical.gd" id="11_5tfui"]
 [ext_resource type="Script" uid="uid://dcbguk6bdgxj5" path="res://UI/ChooseTileLocationUI.gd" id="13_81w2g"]
+[ext_resource type="Script" uid="uid://c2r32tu6gjwke" path="res://StartButton.gd" id="13_g4yo4"]
 [ext_resource type="Script" uid="uid://cwful6gix2l71" path="res://UI/DraftUI.gd" id="14_486mp"]
 [ext_resource type="Script" uid="uid://cuit7uhrnwy0w" path="res://UI/Hand.gd" id="17_43ggv"]
 [ext_resource type="PackedScene" uid="uid://b32uginpqm7kl" path="res://UI/HideHandButton.tscn" id="17_tkh6c"]
@@ -37,7 +40,6 @@
 [ext_resource type="Script" uid="uid://d241texty8vji" path="res://UI/NextPlayerReady.gd" id="23_5m5oo"]
 [ext_resource type="Script" uid="uid://bsuhrma07o7my" path="res://UI/EventUI.gd" id="23_v8qla"]
 [ext_resource type="Script" uid="uid://cl77iwoglik6l" path="res://UI/PauseButton.gd" id="24_difs8"]
-[ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="24_up8a8"]
 [ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="25_581b6"]
 [ext_resource type="Script" uid="uid://o8dmeq1ngom7" path="res://UI/ShowCatInfoButton.gd" id="26_jt61w"]
 [ext_resource type="Script" uid="uid://dkvc2oj1lnuiy" path="res://SaveMouseketeerData.gd" id="29_c2s76"]
@@ -45,53 +47,26 @@
 [ext_resource type="Script" uid="uid://dl7ixf2kqhg2o" path="res://UI/ZoomInButton.gd" id="32_jt61w"]
 [ext_resource type="Script" uid="uid://cj71eidiymco6" path="res://UI/ZoomOutButton.gd" id="33_v8qla"]
 [ext_resource type="Script" uid="uid://cxkg1ch4guovw" path="res://UI/WhoseTurnLabel.gd" id="34_jt61w"]
+[ext_resource type="Texture2D" uid="uid://bbp08fxcqknq6" path="res://Assets/UI/TurnTimerProgress.png" id="36_im7ls"]
 [ext_resource type="Script" uid="uid://bxtutudwp4irb" path="res://UI/Speed1x.gd" id="37_5tfui"]
 [ext_resource type="Script" uid="uid://b2677487x4xhq" path="res://UI/Speed4x.gd" id="37_nx4yo"]
+[ext_resource type="Texture2D" uid="uid://1jce0rjl7tlm" path="res://Assets/UI/LevelIcons/ArchitectureLevelIcon.png" id="37_oaklg"]
+[ext_resource type="Texture2D" uid="uid://be5unymttjfw" path="res://Assets/UI/ToolsButtons/ZoomInIcon.png" id="38_a34eg"]
 [ext_resource type="PackedScene" uid="uid://yms12x0mjpjm" path="res://UI/CatInstanceInfo.tscn" id="38_v8qla"]
+[ext_resource type="Texture2D" uid="uid://2e268nh42s2q" path="res://Assets/UI/LevelIcons/NatureLevelIcon.png" id="38_yf3a2"]
+[ext_resource type="Texture2D" uid="uid://cm3gu2dhshx18" path="res://Assets/UI/ToolsButtons/ZoomOutIcon.png" id="39_ek63v"]
+[ext_resource type="Texture2D" uid="uid://b4lcjhhh1cylm" path="res://Assets/UI/LevelIcons/FarmingLevelIcon.png" id="39_gdb40"]
+[ext_resource type="Texture2D" uid="uid://dklwxbfccq5w7" path="res://Assets/UI/LevelIcons/ConstructionLevelIcon.png" id="40_8h1yq"]
 [ext_resource type="Texture2D" uid="uid://kmu2ukd7d82k" path="res://Assets/UI/ThickEntranceIndicator.png" id="41_gngx1"]
+[ext_resource type="Texture2D" uid="uid://dwuwd3p0i7y2d" path="res://Assets/UI/ToolsButtons/SpeedNormal.png" id="41_oaklg"]
+[ext_resource type="Texture2D" uid="uid://fk5q1vhhx315" path="res://Assets/UI/ToolsButtons/SpeedUpIcon.png" id="43_4bst2"]
 [ext_resource type="AudioStream" uid="uid://bptii4e25enej" path="res://Assets/Audio/whiskertown_ost.mp3" id="45_y1tbi"]
 [ext_resource type="Script" uid="uid://dwr5ilnwo7pod" path="res://BGM.gd" id="46_c2s76"]
+[ext_resource type="Texture2D" uid="uid://dnpx1qdxmfxq1" path="res://Assets/UI/PauseIcon.png" id="51_yf3a2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1tbi"]
 
-[sub_resource type="Animation" id="Animation_ley0s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_41ctd"]
-resource_name = "urgent"
-length = 0.5
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ljt12"]
-_data = {
-&"RESET": SubResource("Animation_ley0s"),
-&"urgent": SubResource("Animation_41ctd")
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_im7ls"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7h3w"]
 texture = ExtResource("25_581b6")
@@ -122,7 +97,6 @@ anchors_preset = 0
 theme = ExtResource("2_jxgaj")
 
 [node name="IdleUI" type="CanvasLayer" parent="UI"]
-visible = false
 script = ExtResource("2_0u3m0")
 
 [node name="QTableContainer" type="VBoxContainer" parent="UI/IdleUI"]
@@ -172,12 +146,14 @@ grow_vertical = 2
 theme = ExtResource("2_jxgaj")
 
 [node name="Title" type="Label" parent="UI/IdleUI/DebugButtons"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"BigLabel"
 text = "WHISKERTOWN DUELS"
 horizontal_alignment = 1
 
 [node name="GenerateMap" type="Button" parent="UI/IdleUI/DebugButtons"]
+visible = false
 layout_mode = 2
 text = "REROLL MAP"
 
@@ -187,47 +163,99 @@ size_flags_vertical = 3
 
 [node name="GameSpeedLabel" type="Label" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "GAME SPEED:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bullet" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+[node name="Bullet" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox" groups=["GameSpeedButtons"]]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "BULLET"
 script = ExtResource("8_c2s76")
 
-[node name="Blitz" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+[node name="Blitz" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox" groups=["GameSpeedButtons"]]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "BLITZ"
 script = ExtResource("9_pljue")
 
-[node name="Rapid" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+[node name="Rapid" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox" groups=["GameSpeedButtons"]]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "RAPID"
 script = ExtResource("10_nx4yo")
 
-[node name="Classical" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox"]
+[node name="Classical" type="Button" parent="UI/IdleUI/DebugButtons/GameSpeedHBox" groups=["GameSpeedButtons"]]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "CLASSICAL"
 script = ExtResource("11_5tfui")
 
-[node name="KittenBotStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+[node name="RegionHBox" type="HBoxContainer" parent="UI/IdleUI/DebugButtons"]
 layout_mode = 2
-text = "VS KITTENBOT"
+size_flags_vertical = 3
+
+[node name="RegionLabel" type="Label" parent="UI/IdleUI/DebugButtons/RegionHBox"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "REGION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FiveIslandVillage" type="Button" parent="UI/IdleUI/DebugButtons/RegionHBox" groups=["RegionButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FIVE ISLAND VILLAGE"
+script = ExtResource("8_khphd")
+
+[node name="GrandWhiskertown" type="Button" parent="UI/IdleUI/DebugButtons/RegionHBox" groups=["RegionButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "GRAND WHISKERTOWN"
+script = ExtResource("9_g4yo4")
+
+[node name="ModeHBox" type="HBoxContainer" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+
+[node name="ModeLabel" type="Label" parent="UI/IdleUI/DebugButtons/ModeHBox"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KittenBotStartButton" type="Button" parent="UI/IdleUI/DebugButtons/ModeHBox" groups=["GameModeButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "KITTENBOT"
 script = ExtResource("5_vi5kq")
 
-[node name="VSStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+[node name="VSStartButton" type="Button" parent="UI/IdleUI/DebugButtons/ModeHBox" groups=["GameModeButtons"]]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "LOCAL 2P"
 script = ExtResource("3_4hy1x")
 
-[node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+[node name="DuelingBotsStartButton" type="Button" parent="UI/IdleUI/DebugButtons/ModeHBox" groups=["GameModeButtons"]]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "DUELINGBOT"
 script = ExtResource("6_y1tbi")
+
+[node name="StartButton" type="Button" parent="UI/IdleUI/DebugButtons"]
+layout_mode = 2
+text = "START GAME"
+script = ExtResource("13_g4yo4")
 
 [node name="ShowQTable" type="Button" parent="UI/IdleUI/DebugButtons"]
 visible = false
@@ -609,6 +637,7 @@ size_flags_horizontal = 3
 text = "Cancel"
 
 [node name="DraftUI" type="CanvasLayer" parent="UI"]
+visible = false
 script = ExtResource("14_486mp")
 
 [node name="CatBuildingInfo" type="PanelContainer" parent="UI/DraftUI"]
@@ -634,7 +663,7 @@ theme = ExtResource("2_jxgaj")
 [node name="TurnLabel" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
 layout_mode = 2
 theme_type_variation = &"BigLabel"
-horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DraftInfoBox" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
 layout_mode = 2
@@ -851,45 +880,238 @@ visible = false
 [node name="CommonUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 2
+
+[node name="TopBar" type="HBoxContainer" parent="CommonUI"]
+unique_name_in_owner = true
 visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.5
+offset_right = 125.5
+offset_bottom = 52.0
+grow_horizontal = 2
+theme = ExtResource("2_jxgaj")
+theme_override_constants/separation = 16
+
+[node name="Scoreboard" type="HBoxContainer" parent="CommonUI/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="BlackCatTexture" type="TextureRect" parent="CommonUI/TopBar/Scoreboard"]
+layout_mode = 2
+size_flags_horizontal = 5
+texture = ExtResource("6_giubr")
+stretch_mode = 5
+
+[node name="BlackScore" type="Label" parent="CommonUI/TopBar/Scoreboard"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_im7ls")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_2kt63")
+
+[node name="WhiteCatTexture" type="TextureRect" parent="CommonUI/TopBar/Scoreboard"]
+layout_mode = 2
+size_flags_horizontal = 5
+texture = ExtResource("7_mq5lf")
+stretch_mode = 5
+
+[node name="WhiteScore" type="Label" parent="CommonUI/TopBar/Scoreboard"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_im7ls")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_5kguq")
+
+[node name="Timeline" type="PanelContainer" parent="CommonUI/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_jxgaj")
+theme_type_variation = &"HorizontalTransparentPanel"
+script = ExtResource("19_6a7bp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CommonUI/TopBar/Timeline"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TimelineHBox" type="HBoxContainer" parent="CommonUI/TopBar/Timeline/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="RoundLabel" type="Label" parent="CommonUI/TopBar/Timeline/VBoxContainer/TimelineHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_type_variation = &"TimelineLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeftBar" type="TextureProgressBar" parent="CommonUI/TopBar/Timeline/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 0
+nine_patch_stretch = true
+texture_progress = ExtResource("36_im7ls")
+
+[node name="TurnTimer" type="Timer" parent="CommonUI/TopBar/Timeline/VBoxContainer/TimeLeftBar"]
+unique_name_in_owner = true
+script = ExtResource("21_fg20p")
+
+[node name="Levels" type="HBoxContainer" parent="CommonUI/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ArchiLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
+layout_mode = 2
+texture = ExtResource("37_oaklg")
+stretch_mode = 5
+
+[node name="ArchiLevelLabel" type="Label" parent="CommonUI/TopBar/Levels"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TimelineLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NatureLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
+layout_mode = 2
+texture = ExtResource("38_yf3a2")
+stretch_mode = 5
+
+[node name="NatureLevelLabel" type="Label" parent="CommonUI/TopBar/Levels"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TimelineLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FarmingLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
+layout_mode = 2
+texture = ExtResource("39_gdb40")
+stretch_mode = 5
+
+[node name="FarmingLevelLabel" type="Label" parent="CommonUI/TopBar/Levels"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TimelineLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConstructLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
+layout_mode = 2
+texture = ExtResource("40_8h1yq")
+stretch_mode = 5
+
+[node name="ConstructLevelLabel" type="Label" parent="CommonUI/TopBar/Levels"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TimelineLabel"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tools" type="FoldableContainer" parent="CommonUI/TopBar"]
+layout_mode = 2
+folded = true
+title = "TOOLS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommonUI/TopBar/Tools"]
+visible = false
+layout_mode = 2
+
+[node name="SkipButton" type="Button" parent="CommonUI/TopBar/Tools/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"TopBarButton"
+text = "DEBUG USE ONLY"
+script = ExtResource("22_jpy4h")
+
+[node name="ZoomInButton" type="Button" parent="CommonUI/TopBar/Tools/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"TopBarButton"
+icon = ExtResource("38_a34eg")
+script = ExtResource("32_jt61w")
+
+[node name="ZoomOutButton" type="Button" parent="CommonUI/TopBar/Tools/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"TopBarButton"
+icon = ExtResource("39_ek63v")
+script = ExtResource("33_v8qla")
+
+[node name="Speed1x" type="Button" parent="CommonUI/TopBar/Tools/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"TopBarButton"
+icon = ExtResource("41_oaklg")
+script = ExtResource("37_5tfui")
+
+[node name="Speed4x" type="Button" parent="CommonUI/TopBar/Tools/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"TopBarButton"
+icon = ExtResource("43_4bst2")
+script = ExtResource("37_nx4yo")
+
+[node name="SaveMouseketeerData" type="Button" parent="CommonUI/TopBar/Tools/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"TopBarButton"
+text = "SAVE"
+script = ExtResource("29_c2s76")
+
+[node name="PauseButton" type="Button" parent="CommonUI/TopBar"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"TopBarButton"
+icon = ExtResource("51_yf3a2")
+script = ExtResource("24_difs8")
+
+[node name="Log" type="RichTextLabel" parent="CommonUI/TopBar"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "No events"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CommonUI"]
 unique_name_in_owner = true
-offset_right = 308.0
-offset_bottom = 59.0
-theme = ExtResource("2_jxgaj")
-
-[node name="Timeline" type="PanelContainer" parent="CommonUI/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("19_6a7bp")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CommonUI/VBoxContainer/Timeline"]
-layout_mode = 2
-size_flags_vertical = 5
-
-[node name="RoundLabel" type="Button" parent="CommonUI/VBoxContainer/Timeline/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 5
-tooltip_text = "Click to view turn order"
-theme_type_variation = &"BigButton"
-
-[node name="TimelineHBox" type="HBoxContainer" parent="CommonUI/VBoxContainer/Timeline/VBoxContainer"]
 visible = false
-layout_mode = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -118.0
+offset_right = 855.0
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource("2_jxgaj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_jxgaj")
-
-[node name="PauseButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Pause/Help"
-script = ExtResource("24_difs8")
 
 [node name="ShowCatInfoButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -897,114 +1119,10 @@ size_flags_horizontal = 3
 text = "Show Cat Info"
 script = ExtResource("26_jt61w")
 
-[node name="SkipButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "DEBUG USE ONLY"
-script = ExtResource("22_jpy4h")
-
-[node name="ZoomInButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "+"
-script = ExtResource("32_jt61w")
-
-[node name="ZoomOutButton" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "-"
-script = ExtResource("33_v8qla")
-
-[node name="Speed1x" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "1X"
-script = ExtResource("37_5tfui")
-
-[node name="Speed4x" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "4X"
-script = ExtResource("37_nx4yo")
-
-[node name="SaveMouseketeerData" type="Button" parent="CommonUI/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-text = "SAVE"
-script = ExtResource("29_c2s76")
-
-[node name="Scoreboard" type="PanelContainer" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="HBoxContainer" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard"]
-layout_mode = 2
-
-[node name="BlackCatTexture" type="TextureRect" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-texture = ExtResource("6_giubr")
-stretch_mode = 5
-
-[node name="BlackScore" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 1
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("7_2kt63")
-
-[node name="Container" type="Container" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_horizontal = 5
-
-[node name="WhiteScore" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 1
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("8_5kguq")
-
-[node name="WhiteCatTexture" type="TextureRect" parent="CommonUI/VBoxContainer/HBoxContainer/Scoreboard/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-texture = ExtResource("7_mq5lf")
-stretch_mode = 5
-
 [node name="WhoseTurnLabel" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("34_jt61w")
-
-[node name="TimeLeft" type="Label" parent="CommonUI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("24_up8a8")
-theme_override_font_sizes/font_size = 48
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("21_fg20p")
-
-[node name="TurnTimer" type="Timer" parent="CommonUI/VBoxContainer/HBoxContainer/TimeLeft"]
-unique_name_in_owner = true
-
-[node name="TimerAnimationPlayer" type="AnimationPlayer" parent="CommonUI/VBoxContainer/HBoxContainer/TimeLeft"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_ljt12")
-}
-
-[node name="Log" type="Label" parent="CommonUI/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "No events"
 
 [node name="VictoryLabel" type="Label" parent="CommonUI/VBoxContainer"]
 visible = false
@@ -1055,6 +1173,7 @@ grow_vertical = 2
 [node name="Thinking" type="TextureRect" parent="CommonUI/ThinkingContainer"]
 unique_name_in_owner = true
 process_mode = 3
+modulate = Color(1, 1, 1, 0.2)
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
 size_flags_vertical = 7
@@ -1065,6 +1184,8 @@ script = ExtResource("31_5mkgo")
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="Structures" type="Node2D" parent="."]
+
+[node name="TerraformMarkers" type="Node2D" parent="."]
 
 [node name="NewStructureMarker" type="Sprite2D" parent="."]
 visible = false
@@ -1120,9 +1241,12 @@ process_mode = 3
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Blitz" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Blitz" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Rapid" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Rapid" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/GameSpeedHBox/Classical" to="UI/IdleUI/DebugButtons/GameSpeedHBox/Classical" method="_on_pressed"]
-[connection signal="pressed" from="UI/IdleUI/DebugButtons/KittenBotStartButton" to="UI/IdleUI/DebugButtons/KittenBotStartButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/IdleUI/DebugButtons/VSStartButton" to="UI/IdleUI/DebugButtons/VSStartButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/IdleUI/DebugButtons/DuelingBotsStartButton" to="UI/IdleUI/DebugButtons/DuelingBotsStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/RegionHBox/FiveIslandVillage" to="UI/IdleUI/DebugButtons/RegionHBox/FiveIslandVillage" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/RegionHBox/GrandWhiskertown" to="UI/IdleUI/DebugButtons/RegionHBox/GrandWhiskertown" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/ModeHBox/KittenBotStartButton" to="UI/IdleUI/DebugButtons/ModeHBox/KittenBotStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/ModeHBox/VSStartButton" to="UI/IdleUI/DebugButtons/ModeHBox/VSStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/ModeHBox/DuelingBotsStartButton" to="UI/IdleUI/DebugButtons/ModeHBox/DuelingBotsStartButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/IdleUI/DebugButtons/StartButton" to="UI/IdleUI/DebugButtons/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/ShowQTable" to="UI/IdleUI/DebugButtons/ShowQTable" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateFishingHut" to="UI/IdleUI/DebugButtons/CreateFishingHut" method="_on_pressed"]
 [connection signal="pressed" from="UI/IdleUI/DebugButtons/CreateLumbercatYard" to="UI/IdleUI/DebugButtons/CreateLumbercatYard" method="_on_pressed"]
@@ -1137,14 +1261,13 @@ process_mode = 3
 [connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/GreenTilesButton" to="UI/EventUI" method="_on_green_tiles_button_pressed"]
 [connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/RedTilesButton" to="UI/EventUI" method="_on_red_tiles_button_pressed"]
 [connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/BlueTilesButton" to="UI/EventUI" method="_on_blue_tiles_button_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/Timeline/VBoxContainer/RoundLabel" to="CommonUI/VBoxContainer/Timeline" method="_on_round_label_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/PauseButton" to="CommonUI/VBoxContainer/HBoxContainer/PauseButton" method="_on_pressed"]
+[connection signal="timeout" from="CommonUI/TopBar/Timeline/VBoxContainer/TimeLeftBar/TurnTimer" to="CommonUI/TopBar/Timeline/VBoxContainer/TimeLeftBar/TurnTimer" method="_on_timeout"]
+[connection signal="pressed" from="CommonUI/TopBar/Tools/HBoxContainer/SkipButton" to="CommonUI/TopBar/Tools/HBoxContainer/SkipButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/TopBar/Tools/HBoxContainer/ZoomInButton" to="CommonUI/TopBar/Tools/HBoxContainer/ZoomInButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/TopBar/Tools/HBoxContainer/ZoomOutButton" to="CommonUI/TopBar/Tools/HBoxContainer/ZoomOutButton" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/TopBar/Tools/HBoxContainer/Speed1x" to="CommonUI/TopBar/Tools/HBoxContainer/Speed1x" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/TopBar/Tools/HBoxContainer/Speed4x" to="CommonUI/TopBar/Tools/HBoxContainer/Speed4x" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/TopBar/Tools/HBoxContainer/SaveMouseketeerData" to="CommonUI/TopBar/Tools/HBoxContainer/SaveMouseketeerData" method="_on_pressed"]
+[connection signal="pressed" from="CommonUI/TopBar/PauseButton" to="CommonUI/TopBar/PauseButton" method="_on_pressed"]
 [connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" to="CommonUI/VBoxContainer/HBoxContainer/ShowCatInfoButton" method="_on_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SkipButton" to="CommonUI/VBoxContainer/HBoxContainer/SkipButton" method="_on_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ZoomInButton" to="CommonUI/VBoxContainer/HBoxContainer/ZoomInButton" method="_on_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/ZoomOutButton" to="CommonUI/VBoxContainer/HBoxContainer/ZoomOutButton" method="_on_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/Speed1x" to="CommonUI/VBoxContainer/HBoxContainer/Speed1x" method="_on_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/Speed4x" to="CommonUI/VBoxContainer/HBoxContainer/Speed4x" method="_on_pressed"]
-[connection signal="pressed" from="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" to="CommonUI/VBoxContainer/HBoxContainer/SaveMouseketeerData" method="_on_pressed"]
-[connection signal="timeout" from="CommonUI/VBoxContainer/HBoxContainer/TimeLeft/TurnTimer" to="CommonUI/VBoxContainer/HBoxContainer/TimeLeft" method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="CommonUI/NextPlayerReady" to="CommonUI/NextPlayerReady" method="_on_pressed"]
