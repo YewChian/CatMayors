@@ -59,7 +59,7 @@ func create_structure(structure_name: String, coordinate: Vector2, team_color: S
 			await terraform(global_terraformed_coords, color)
 			continue
 		if effect == ("gain_levels") and fulfils_effect_conditions(structure_data["effects"]["gain_levels"]["conditions"], "create_structure", new_instantiated_structure, null):
-			await PlayerMan.gain_levels("white", structure_data["effects"]["gain_levels"]["type"], structure_data["effects"]["gain_levels"]["quantity"])
+			await PlayerMan.gain_levels("white", structure_data["effects"]["gain_levels"]["type"], structure_data["effects"]["gain_levels"]["value"])
 			continue
 
 func terraform(coords, tile_color):
@@ -91,9 +91,29 @@ func fulfils_effect_conditions(conditions_data: Dictionary, timing: String, stru
 			if structure.num_visits >= max_cats:
 				return false
 			continue
+		
+		if condition == "level":
+			var required_level_type = conditions_data["level"]["type"]
+			var required_level_value = conditions_data["level"]["value"]
+			var current_level = -1
+			match cat.color:
+				"black":
+					current_level = PlayerMan.black_levels[required_level_type]
+				"white":
+					current_level = PlayerMan.white_levels[required_level_type]
+			assert(current_level != -1)
+			if current_level < required_level_value:
+				return false
 
 		if condition == "build":
 			if timing != "create_structure":
+				return false
+			continue
+		
+		if condition == "thirsty":
+			if timing != "create_structure":
+				return false
+			if structure.get_flow() < conditions_data["thirsty"]:
 				return false
 			continue
 

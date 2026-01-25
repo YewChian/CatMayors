@@ -12,16 +12,16 @@ var black_structures: Array = []
 var white_structures: Array = []
 
 var black_levels = {
-	"Archi": 0,
+	"Archi.": 0,
 	"Nature": 0,
 	"Farming": 0,
-	"Construct": 0,
+	"Constr.": 0,
 }
 var white_levels = {
-	"Archi": 0,
+	"Archi.": 0,
 	"Nature": 0,
 	"Farming": 0,
-	"Construct": 0,
+	"Constr.": 0,
 }
 
 
@@ -40,6 +40,12 @@ func add_initial_structures_to_hand():
 	black_hand.append("Folk House")
 	white_hand.append("Folk House")
 
+func gain_levels(player_color: String, level_type: String, value: int):
+	match player_color:
+		"black":
+			black_levels[level_type] += value
+		"white":
+			white_levels[level_type] += value
 	
 func go_to_next_turn():
 	total_turns += 1
@@ -52,7 +58,8 @@ func go_to_next_turn():
 		round += 1
 		turn_color_order.reverse()
 	turn_color = turn_color_order[turn_index]
-	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = turn_color + "'s turn"
+	await get_tree().current_scene.update_level_ui()
+	#get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = turn_color + "'s turn"
 	if round == Settings.MAX_ROUNDS:
 		end_game()
 	else:

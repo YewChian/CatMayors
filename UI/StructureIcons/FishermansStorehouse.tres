@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c8v3fklb67o83"]
+
+[ext_resource type="Texture2D" uid="uid://da8tvebciml4" path="res://Assets/Structures/FishermansStorehouse.png" id="1_rtpyo"]
+
+[resource]
+atlas = ExtResource("1_rtpyo")
+region = Rect2(0, 0, 256, 192)

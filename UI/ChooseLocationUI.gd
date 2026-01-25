@@ -40,6 +40,10 @@ func choose_location():
 	new_structure_marker_node.get_node("EntranceIndicator").position = StructureData.structures[new_structure]["entrance_coordinate"] * Settings.TILE_LENGTH
 	new_structure_marker_node.offset = StructureData.structures[new_structure]["sprite_offset"]
 	await set_marker_position(Vector2(0,0) + Vector2(get_viewport().size/2))
+		
+	var terraform_marker_parent = get_tree().current_scene.get_node("TerraformMarkers")
+	terraform_marker_parent.visible = false
+	
 	if StructureData.structures[new_structure]["effects"].has("terraform"):
 		var global_terraform_coords = []
 		for coord in StructureData.structures[new_structure]["effects"]["terraform"]["coordinates"]:
@@ -53,10 +57,12 @@ func choose_location():
 func on_touched(event):
 	if PlayerMan.mode == "KittenBot" and PlayerMan.turn_color == "white":
 		return
+	
 	var cursor_sfx = get_tree().current_scene.get_node("CursorSFX")
 	cursor_sfx.stream = load(AudioMan.stone_effect)
 	cursor_sfx.volume_db = 20
 	cursor_sfx.play()
+	
 	var viewport_size : Vector2 = get_viewport().size
 	var event_global_position : Vector2 = (event.position-(viewport_size/2))/UIMan.camera.zoom + UIMan.camera.get_screen_center_position()
 	var event_tile_coordinate : Vector2
@@ -156,6 +162,7 @@ func set_marker_position(event_position : Vector2):
 
 func set_terraform_markers(coords, color):
 	var terraform_marker_parent = get_tree().current_scene.get_node("TerraformMarkers")
+	terraform_marker_parent.visible = true
 	# remove existing markers first, if any
 	for node in terraform_marker_parent.get_children():
 		remove_child(node)

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://135tjwvhpqdy"]
+
+[ext_resource type="Texture2D" uid="uid://b5r5phcutuguc" path="res://Assets/Structures/DriftersHut.png" id="1_b7ran"]
+
+[resource]
+atlas = ExtResource("1_b7ran")
+region = Rect2(0, 0, 64, 128)

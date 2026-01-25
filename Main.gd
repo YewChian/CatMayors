@@ -129,17 +129,31 @@ func start_game():
 	get_tree().current_scene.get_node("CommonUI/VBoxContainer/HBoxContainer/WhoseTurnLabel").text = PlayerMan.turn_color + "'s turn"
 	await %Timeline.update_timeline()
 
-func emphasise_turn_label():
-	var turn_label = %WhoseTurnLabel
-	var original_color = Color(1, 1, 1, 1)
-	var flash_color = Color(1, 1.5, 1, 1)
-	var tween
-	for i in range(5):
-		tween = get_tree().create_tween()
-		tween.tween_property(turn_label, "modulate", flash_color, 0.5/Settings.game_speed)
-		await tween.finished
-		tween.kill()
-		tween = get_tree().create_tween()
-		tween.tween_property(turn_label, "modulate", original_color, 0.5/Settings.game_speed)
-		await tween.finished
-		tween.kill()
+#func emphasise_turn_label():
+	#var turn_label = %WhoseTurnLabel
+	#var original_color = Color(1, 1, 1, 1)
+	#var flash_color = Color(1, 1.5, 1, 1)
+	#var tween
+	#for i in range(5):
+		#tween = get_tree().create_tween()
+		#tween.tween_property(turn_label, "modulate", flash_color, 0.5/Settings.game_speed)
+		#await tween.finished
+		#tween.kill()
+		#tween = get_tree().create_tween()
+		#tween.tween_property(turn_label, "modulate", original_color, 0.5/Settings.game_speed)
+		#await tween.finished
+		#tween.kill()
+
+func update_level_ui():
+	var level_data = {}
+	match PlayerMan.turn_color:
+		"black":	
+			level_data = PlayerMan.black_levels
+			print("new level data for black: ", PlayerMan.black_levels)
+		"white":	
+			level_data = PlayerMan.white_levels
+			print("new level data for white: ", PlayerMan.white_levels)
+	assert(level_data != {})
+	
+	%ConstrLevelLabel.text = str(level_data["Constr."])
+	%NatureLevelLabel.text = str(level_data["Nature"])

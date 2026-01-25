@@ -536,22 +536,21 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="EndUI" type="CanvasLayer" parent="UI"]
-visible = false
 script = ExtResource("17_v8qla")
 
 [node name="ChooseLocationUI" type="CanvasLayer" parent="UI"]
-visible = false
 script = ExtResource("3_4ltef")
 
 [node name="TipBox" type="VBoxContainer" parent="UI/ChooseLocationUI"]
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -208.0
-offset_top = -205.0
-grow_horizontal = 0
+offset_left = -98.0
+offset_top = -193.0
+offset_right = 98.0
+grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_jxgaj")
 
@@ -581,22 +580,27 @@ layout_mode = 2
 [node name="StructureInfo" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo2" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo3" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo4" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo5" parent="UI/ChooseLocationUI/TipBox/Hand/VBoxContainer/HBoxContainer" instance=ExtResource("20_e30uy")]
 visible = false
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="ConfirmLocationButton" type="Button" parent="UI/ChooseLocationUI/TipBox"]
 visible = false
@@ -641,15 +645,17 @@ visible = false
 script = ExtResource("14_486mp")
 
 [node name="CatBuildingInfo" type="PanelContainer" parent="UI/DraftUI"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -535.0
-offset_top = -116.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -194.5
+offset_right = 362.0
+offset_bottom = 194.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_jxgaj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DraftUI/CatBuildingInfo"]
@@ -660,33 +666,24 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_jxgaj")
 
-[node name="TurnLabel" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
-layout_mode = 2
-theme_type_variation = &"BigLabel"
-vertical_alignment = 1
-
 [node name="DraftInfoBox" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox"]
 layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"BigLabel"
+vertical_alignment = 1
 
 [node name="Tip" type="Label" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
-size_flags_stretch_ratio = 9.0
+size_flags_stretch_ratio = 8.0
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="RarityVBox" type="VBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="UpgradeButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox/RarityVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 5
-tooltip_text = "You won't be able to pick from this shop till your next turn"
-text = "Browse Yoshi's shop"
 
 [node name="BlueprintContainer" type="PanelContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
 layout_mode = 2
@@ -699,9 +696,11 @@ size_flags_vertical = 3
 
 [node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/CommonStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/CommonStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="RareStructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer"]
 unique_name_in_owner = true
@@ -712,9 +711,11 @@ size_flags_vertical = 3
 
 [node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/RareStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/RareStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="EpicStructureButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer"]
 unique_name_in_owner = true
@@ -725,11 +726,24 @@ size_flags_vertical = 3
 
 [node name="StructureInfo" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/EpicStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
 [node name="StructureInfo2" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/BlueprintContainer/EpicStructureButtons" instance=ExtResource("20_e30uy")]
 layout_mode = 2
+theme_type_variation = &"StructureInfoPanelContainer"
 
-[node name="ConfirmDraftButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+[node name="DraftButtons" type="HBoxContainer" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradeButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+tooltip_text = "You won't be able to pick from this shop till your next turn"
+text = "Browse ..."
+
+[node name="ConfirmDraftButton" type="Button" parent="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buy highlighted blueprint and end turn"
@@ -979,6 +993,7 @@ size_flags_vertical = 0
 
 [node name="ArchiLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
 layout_mode = 2
+tooltip_text = "Archi."
 texture = ExtResource("37_oaklg")
 stretch_mode = 5
 
@@ -992,6 +1007,7 @@ vertical_alignment = 1
 
 [node name="NatureLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
 layout_mode = 2
+tooltip_text = "Nature"
 texture = ExtResource("38_yf3a2")
 stretch_mode = 5
 
@@ -1005,6 +1021,7 @@ vertical_alignment = 1
 
 [node name="FarmingLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
 layout_mode = 2
+tooltip_text = "Farming"
 texture = ExtResource("39_gdb40")
 stretch_mode = 5
 
@@ -1016,12 +1033,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConstructLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
+[node name="ConstrLevelIcon" type="TextureRect" parent="CommonUI/TopBar/Levels"]
 layout_mode = 2
+tooltip_text = "Constr."
 texture = ExtResource("40_8h1yq")
 stretch_mode = 5
 
-[node name="ConstructLevelLabel" type="Label" parent="CommonUI/TopBar/Levels"]
+[node name="ConstrLevelLabel" type="Label" parent="CommonUI/TopBar/Levels"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TimelineLabel"
@@ -1256,8 +1274,8 @@ process_mode = 3
 [connection signal="pressed" from="UI/ChooseLocationUI/TipBox/ConfirmLocationButton" to="UI/ChooseLocationUI/TipBox/ConfirmLocationButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Confirm" to="UI/ChooseTileLocationUI" method="_on_confirm_pressed"]
 [connection signal="pressed" from="UI/ChooseTileLocationUI/AcceptContainer/Cancel" to="UI/ChooseTileLocationUI" method="_on_cancel_pressed"]
-[connection signal="pressed" from="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftTipBox/DraftInfoBox/RarityVBox/UpgradeButton" to="UI/DraftUI" method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton" to="UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons/UpgradeButton" to="UI/DraftUI" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons/ConfirmDraftButton" to="UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons/ConfirmDraftButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/GreenTilesButton" to="UI/EventUI" method="_on_green_tiles_button_pressed"]
 [connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/RedTilesButton" to="UI/EventUI" method="_on_red_tiles_button_pressed"]
 [connection signal="pressed" from="UI/EventUI/EventPanelContainer/VBoxContainer/EventOptions/BlueTilesButton" to="UI/EventUI" method="_on_blue_tiles_button_pressed"]

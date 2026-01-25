@@ -496,11 +496,15 @@ var structures : Dictionary = {
 		"structure_stars": 1,
 		"flavor": "not many have attempted to scale the wall of mediocrity",
 		"effects": {
-			"gain_max_curiosity": {
+			"catffeinate": {
 				"conditions": {
-					"discovery": 1,
+					"visit": -1,
+					"level": {
+						"type": "Constr.",
+						"value": 5
+					}
 				},
-				"num_max_curiosity": 20
+				"value": 20,
 			},
 		},
 	},
@@ -644,7 +648,7 @@ var structures : Dictionary = {
 			},
 		},
 	},
-	"Tsubaki Bush" : {	# invasion
+	"Strawberry Bush" : {	# invasion
 		"rarity": "common",
 		"path": "res://Structures/BerryBush.tscn",
 		"icon": "res://UI/StructureIcons/BerryBush.tres",
@@ -657,14 +661,14 @@ var structures : Dictionary = {
 		],
 		"entrance_coordinate": Vector2(0, 0),
 		"activity_duration": 3,
-		"structure_stars": 1,
+		"structure_stars": 0,
 		"flavor": "a flowery bush",
 		"effects": {
-			"catffeinate": { 
+			"gain_ingredients": {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 2,
+				"num_ingredients": 1,
 			},
 		},
 	},
@@ -878,7 +882,7 @@ var structures : Dictionary = {
 		},
 	},
 	"Troutmouth Statue" : {	# invasion, kingdom
-		"rarity": "rare",
+		"rarity": "epic",
 		"path": "res://Structures/TroutmouthStatue.tscn",
 		"icon": "res://UI/StructureIcons/TroutmouthStatue.tres",
 		"sprite": "res://Assets/Structures/TroutmouthStatue.png",
@@ -889,18 +893,16 @@ var structures : Dictionary = {
 		],
 		"entrance_coordinate": Vector2(0, 0),
 		"activity_duration": 3,
-		"structure_stars": 0,
+		"structure_stars": 1,
 		"flavor": "A statue of the legendary explorer, Captain Troutmouth",
 		"effects": {
-			"catffeinate": { 
-				"conditions": {
-					"visit": -1,
-				},
-				"value": 5,
-			},
 			"gain_aura": {
 				"conditions": {
 					"visit": -1,
+					"level": {
+						"type": "Constr.",
+						"value": 5
+					}
 				},
 				"type": "nosy",
 				"duration": 2,
@@ -969,7 +971,7 @@ var structures : Dictionary = {
 			}
 		},
 	},
-	"Ice Cream Trees" : {	# kingdom
+	"Cedar Hillside" : {
 		"rarity": "common",
 		"path": "res://Structures/IceCreamTrees.tscn",
 		"icon": "res://UI/StructureIcons/IceCreamTrees.tres",
@@ -982,17 +984,31 @@ var structures : Dictionary = {
 			Vector2(2,0),
 		],
 		"entrance_coordinate": Vector2(1, 0),
-		"activity_duration": 3,
-		"structure_stars": 2,
-		"flavor": "Cedar trees",
+		"activity_duration": 5,
+		"structure_stars": 0,
+		"flavor": "",
 		"effects": {
-			"gain_aura": {
+			#"gain_levels": {
+				#"conditions": {
+					#"build": -1,
+				#},
+				#"type": "Nature",
+				#"value": 1,
+			#},
+			"terraform": {
 				"conditions": {
-					"discovery": 1,
+					"build": -1,
 				},
-				"type": "generous",
-				"duration": 1,
-			},
+				"coordinates": [	# with respect to 0,0
+					Vector2(0,1),
+					Vector2(1,1),
+					Vector2(2,1),
+					Vector2(0,2),
+					Vector2(1,2),
+					Vector2(2,2),
+				],
+				"color": "green",
+			}
 		},
 	},
 	"Maple Grove" : {	# kingdom
@@ -1008,16 +1024,45 @@ var structures : Dictionary = {
 			Vector2(0,2),
 		],
 		"entrance_coordinate": Vector2(0, 1),
-		"activity_duration": 3,
-		"structure_stars": 1,
+		"activity_duration": 5,
+		"structure_stars": 0,
 		"flavor": "Maple trees",
 		"effects": {
-			"gain_aura": {
+			"gain_levels": {
 				"conditions": {
-					"discovery": 2,
+					"build": -1,
 				},
-				"type": "generous",
-				"duration": 1,
+				"type": "Nature",
+				"value": 1,
+			},
+		},
+	},
+	"Camellia Trees" : {
+		"rarity": "epic",
+		"path": "res://Structures/CamelliaTrees.tscn",
+		"icon": "res://UI/StructureIcons/CamelliaTrees.tres",
+		"sprite": "res://Assets/Structures/CamelliaTrees.png",
+		"sprite_offset": Vector2(32, 32),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(0,1),
+			Vector2(1,1),
+		],
+		"entrance_coordinate": Vector2(0, 0),
+		"activity_duration": 5,
+		"structure_stars": 1,
+		"flavor": "",
+		"effects": {
+			"gain_stars": {
+				"conditions": {
+					"visit": -1,
+					"level": {
+						"type": "Nature",
+						"value": 5
+					}
+				},
+				"num_stars": 2,
 			},
 		},
 	},
@@ -1141,8 +1186,12 @@ var structures : Dictionary = {
 			"catffeinate": {
 				"conditions": {
 					"visit": -1,
+					"level": {
+						"type": "Constr.",
+						"value": 2,
+					},
 				},
-				"value": 3
+				"value": 5
 			}
 		},
 	},
@@ -1166,13 +1215,17 @@ var structures : Dictionary = {
 			"catffeinate": {
 				"conditions": {
 					"visit": -1,
+					"level": {
+						"type": "Constr.",
+						"value": 2,
+					}
 				},
-				"value": 3
+				"value": 5
 			}
 		},
 	},
 	"Tall Riverside" : {
-		"rarity": "rare",
+		"rarity": "common",
 		"path": "res://Structures/TallRiverside.tscn",
 		"icon": "res://UI/StructureIcons/TallRiverside.tres",
 		"sprite": "res://Assets/Structures/TallRiverside.png",
@@ -1199,25 +1252,127 @@ var structures : Dictionary = {
 			}
 		},
 	},
-	"Folk House" : {	# invasion
+	"Silt Bed" : {
 		"rarity": "common",
-		"path": "res://Structures/FolkHouse.tscn",
-		"icon": "res://UI/StructureIcons/FolkHouse.tres",
-		"sprite": "res://Assets/Structures/FolkHouse.png",
+		"path": "res://Structures/SiltBed.tscn",
+		"icon": "res://UI/StructureIcons/SiltBed.tres",
+		"sprite": "res://Assets/Structures/SiltBed.png",
+		"sprite_offset": Vector2(0, 32),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(0,1),
+		],
+		"entrance_coordinate": Vector2(0,1),
+		"activity_duration": 5,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"terraform": {
+				"conditions": {
+					"build": -1,
+				},
+				"coordinates": [	# with respect to 0,0
+					Vector2(-1,-1),
+					Vector2(0,-1),
+					Vector2(1,-1),
+				],
+				"color": "blue",
+			}
+		},
+	},
+	"River Landing" : {
+		"rarity": "common",
+		"path": "res://Structures/RiverLanding.tscn",
+		"icon": "res://UI/StructureIcons/RiverLanding.tres",
+		"sprite": "res://Assets/Structures/RiverLanding.png",
 		"sprite_offset": Vector2(32, 0),
 		"color": "green",
 		"occupied_coordinates": [
 			Vector2(0,0),
 			Vector2(1,0),
 		],
-		"entrance_coordinate": Vector2(0, 0),
+		"entrance_coordinate": Vector2(0,0),
+		"activity_duration": 5,
+		"structure_stars": 0,
+		"flavor": "Running water is a great resource",
+		"effects": {
+			"terraform": {
+				"conditions": {
+					"build": -1,
+				},
+				"coordinates": [	# with respect to 0,0
+					Vector2(2,-1),
+					Vector2(2,0),
+					Vector2(2,1),
+				],
+				"color": "blue",
+			}
+		},
+	},
+	"Fishing Stump" : {
+		"rarity": "rare",
+		"path": "res://Structures/FishingStump.tscn",
+		"icon": "res://UI/StructureIcons/FishingStump.tres",
+		"sprite": "res://Assets/Structures/FishingStump.png",
+		"sprite_offset": Vector2(0, 0),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+		],
+		"entrance_coordinate": Vector2(0,0),
 		"activity_duration": 1,
-		"structure_stars": 1,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"terraform": {
+				"conditions": {
+					"build": -1,
+				},
+				"coordinates": [	# with respect to 0,0
+					Vector2(1,0),
+					Vector2(0,1),
+					Vector2(1,1),
+				],
+				"color": "blue",
+			},
+			"gain_ingredients": {
+				"conditions": {
+					"visit": -1,
+					"level": {
+						"type": "Nature",
+						"value": 3
+					}
+				},
+				"num_ingredients": 2,
+			},
+		},
+	},
+	"Folk House" : {	# invasion
+		"rarity": "common",
+		"path": "res://Structures/FolkHouse.tscn",
+		"icon": "res://UI/StructureIcons/FolkHouse.tres",
+		"sprite": "res://Assets/Structures/FolkHouse.png",
+		"sprite_offset": Vector2(32, 32),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+			Vector2(0,1),
+			Vector2(1,1),
+		],
+		"entrance_coordinate": Vector2(0, 1),
+		"activity_duration": 1,
+		"structure_stars": 0,
 		"flavor": "",
 		"effects": {
 			"home": {
 				"conditions": {
-					"build": -1,
+					"thirsty": 5,
+					"level": {
+						"type": "Constr.",
+						"value": 3,
+					}
 				},
 				"num_cats": 1,
 			},
@@ -1236,13 +1391,13 @@ var structures : Dictionary = {
 		"entrance_coordinate": Vector2(0, 0),
 		"activity_duration": 1,
 		"structure_stars": 0,
-		"flavor": "Where to next?",
+		"flavor": "",
 		"effects": {
 			"catffeinate": {
 				"conditions": {
 					"visit": -1,
 				},
-				"value": 2
+				"value": 3
 			},
 		},
 	},
@@ -1259,24 +1414,190 @@ var structures : Dictionary = {
 			Vector2(1,1),
 		],
 		"entrance_coordinate": Vector2(1, 0),
-		"activity_duration": 5,
+		"activity_duration": 10,
+		"structure_stars": 0,
+		"flavor": "Improves your town's Constr. level",
+		"effects": {
+			#"home": {
+				#"conditions": {
+					#"thirsty": 4,
+				#},
+				#"num_cats": 1,
+			#},
+			"gain_levels": {
+				"conditions": {
+					"thirsty": 3,
+				},
+				"type": "Constr.",
+				"value": 1,
+			},
+		}
+	},
+	"Fisherman's Storehouse" : {	# merchant
+		"rarity": "epic",
+		"path": "res://Structures/FishermansStorehouse.tscn",
+		"icon": "res://UI/StructureIcons/FishermansStorehouse.tres",
+		"sprite": "res://Assets/Structures/FishermansStorehouse.png",
+		"sprite_offset": Vector2(96, 64),
+		"color": "blue",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+			Vector2(2,0),
+			Vector2(3,0),
+			Vector2(0,1),
+			Vector2(1,1),
+			Vector2(2,1),
+			Vector2(3,1),
+			Vector2(0,2),
+			Vector2(1,2),
+			Vector2(2,2),
+			Vector2(3,2),
+		],
+		"entrance_coordinate": Vector2(1, 0),
+		"activity_duration": 10,
 		"structure_stars": 1,
-		"flavor": "Improves your town's ARCHI level",
+		"flavor": "A home and a storehouse for fishermen and their family",
 		"effects": {
 			"home": {
 				"conditions": {
 					"build": -1,
+					"level": {
+						"type": "Constr.",
+						"value": 4
+					},
+				},
+				"num_cats": 2,
+			},
+			"gain_ingredients": {
+				"conditions": {
+					"visit": -1,
+					"level": {
+						"type": "Nature",
+						"value": 3
+					}
+				},
+				"num_ingredients": 2,
+			},
+		},
+	},
+	"Drifter's Hut" : {
+		"rarity": "common",
+		"path": "res://Structures/DriftersHut.tscn",
+		"icon": "res://UI/StructureIcons/DriftersHut.tres",
+		"sprite": "res://Assets/Structures/DriftersHut.png",
+		"sprite_offset": Vector2(0, 32),
+		"color": "red",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(0,1),
+		],
+		"entrance_coordinate": Vector2(0,1),
+		"activity_duration": 3,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"home": {
+				"conditions": {
+					"thirsty": 1,
+					"level": {
+						"type": "Constr.",
+						"value": 1
+					},
 				},
 				"num_cats": 1,
 			},
-			"gain_levels": {
+		}
+	},
+	"Floating Huts" : {
+		"rarity": "rare",
+		"path": "res://Structures/FloatingHuts.tscn",
+		"icon": "res://UI/StructureIcons/FloatingHuts.tres",
+		"sprite": "res://Assets/Structures/FloatingHuts.png",
+		"sprite_offset": Vector2(64, 0),
+		"color": "blue",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+			Vector2(2,0),
+		],
+		"entrance_coordinate": Vector2(1, 0),
+		"activity_duration": 5,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"home": {
 				"conditions": {
 					"build": -1,
+					"level": {
+						"type": "Constr.",
+						"value": 4
+					},
 				},
-				"type": "ARCHI",
-				"quantity": 1,
+				"num_cats": 1,
 			},
-		}
+		},
+	},
+	"Inn Good Neet" : {
+		"rarity": "epic",
+		"path": "res://Structures/HostelGoodNeet.tscn",
+		"icon": "res://UI/StructureIcons/HostelGoodNeet.tres",
+		"sprite": "res://Assets/Structures/HostelGoodNeet.png",
+		"sprite_offset": Vector2(32, 32),
+		"color": "green",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+			Vector2(0,1),
+			Vector2(1,1),
+		],
+		"entrance_coordinate": Vector2(1, 1),
+		"activity_duration": 10,
+		"structure_stars": 1,
+		"flavor": "",
+		"effects": {
+			"home": {
+				"conditions": {
+					"thirsty": 5,
+					"level": {
+						"type": "Constr.",
+						"value": 5
+					},
+				},
+				"num_cats": 2,
+			},
+			"rehome": {
+				"conditions": {
+					"discovery": 1,
+				},
+			},
+		},
+	},
+	"Curing Racks" : {
+		"rarity": "epic",
+		"path": "res://Structures/FishDryingRacks.tscn",
+		"icon": "res://UI/StructureIcons/FishDryingRacks.tres",
+		"sprite": "res://Assets/Structures/FishDryingRacks.png",
+		"sprite_offset": Vector2(32, 0),
+		"color": "blue",
+		"occupied_coordinates": [
+			Vector2(0,0),
+			Vector2(1,0),
+		],
+		"entrance_coordinate": Vector2(0,0),
+		"activity_duration": 10,
+		"structure_stars": 0,
+		"flavor": "",
+		"effects": {
+			"cook_ingredients": {
+				"conditions": {
+					"visit": -1,
+					"has_ingredients": 1,
+				},
+				"num_cooked_ingredients_per_ingredient": 1,
+				"num_stars_per_ingredient": 1,
+			},
+		},
 	},
 }
 
@@ -1418,29 +1739,28 @@ var removed_structures = {
 
 var region_structures = {
 	'Five Island Village': [
-		"Fishing Hut",
-		"Rock",
 		"Flowerbed",
-		"Floating Planks",
-		"Oak Treehouse",
-		"Round Fountain",
-		"The Catto",
-		"Hostel Good Neet",
 		"Tall Sea Wall",
-		"Shabby Shrine",
-		"Tsubaki Bush",
-		"Benches",
-		"Ice Cream Trees",
+		#"Shabby Shrine",
+		"Strawberry Bush",
+		"Cedar Hillside",
 		"Maple Grove",
-		"Big Puddle",
 		"Tall Lily Shrub Path",
 		"Wide Lily Shrub Path",
 		"Tall Riverside",
 		"Folk House",
 		"Crossroads",
 		"Troutmouth Statue",
-		"Quiet Farmhouse",
+		#"Quiet Farmhouse",
 		"Bobcat Hut",
+		"Fisherman's Storehouse",
+		"Drifter's Hut",
+		"Floating Huts",
+		"Fishing Stump",
+		"Cedar Hillside",
+		"Camellia Trees",
+		"Silt Bed",
+		"River Landing",
 		#Fish Market
 	],
 	'Grand Whiskertown': [
@@ -1465,7 +1785,7 @@ var region_structures = {
 		"Hydrant",
 		"Trashcan",
 		"Bobcat Guild",
-		"Tsubaki Bush",
+		"Strawberry Bush",
 		"Fish Gutter",
 		"Benches",
 		"Pawson",
@@ -1476,7 +1796,7 @@ var region_structures = {
 		"Troutmouth Statue",
 		"Pirate Library",
 		"Family House",
-		"Ice Cream Trees",
+		"Cedar Hillside",
 		"Maple Grove",
 		"Big Puddle",
 		"Onigiri Inn",

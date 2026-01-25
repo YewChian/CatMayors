@@ -226,9 +226,8 @@ var pages = {
 		"title": "Browsing Shops",
 		"image": "res://Assets/Cats/MissileWhiteCat/MissileWhiteCat1.png",
 		"body": "
-			1. When you click on 'Browse X's shop', you will be unable to browse the previous
-				shop for a turn. You will always start browsing Rei's shop and you can
-				access Yoshi's or Tanaka's shop each turn.
+			1. When you click on 'Browse X', you will be unable to browse the previous
+				shop for a turn. You will always start browsing Simple Sketches.
 		"
 	},
 }

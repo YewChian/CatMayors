@@ -3,18 +3,18 @@ extends Node2D
 
 func get_browsed_shop():
 	var available_shops = {
-		"rei": 0.7,
-		"yoshi": 0.2,
-		"tanaka": 0.1
+		"Simple Sketches": 0.7,
+		"Novice Diagrams": 0.2,
+		"Journeyman Schematics": 0.1
 	}
 	randomize()
 	var diceroll = randf_range(0,1)
-	if diceroll < available_shops["tanaka"]:
-		return "tanaka"
-	elif diceroll < (available_shops["yoshi"] + available_shops["tanaka"]):
-		return "yoshi"
+	if diceroll < available_shops["Journeyman Schematics"]:
+		return "Journeyman Schematics"
+	elif diceroll < (available_shops["Novice Diagrams"] + available_shops["Journeyman Schematics"]):
+		return "Novice Diagrams"
 	else:
-		return "rei"
+		return "Simple Sketches"
 	return ""
 
 func get_draft_pick_from_buttons(buttons: Array):

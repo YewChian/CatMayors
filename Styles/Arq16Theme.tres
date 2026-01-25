@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=31 format=3 uid="uid://cr46aguri5yqg"]
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://cr46aguri5yqg"]
 
 [ext_resource type="FontFile" uid="uid://bhogr2ro37bp0" path="res://Styles/CoffeeSodaHeader.ttf" id="1_37ltj"]
 [ext_resource type="Texture2D" uid="uid://cldys4v8j1rut" path="res://Assets/UI/BlueButtonNormal.png" id="2_g16el"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bw6ro8do4ryvw" path="res://Assets/UI/BlueLabelBox.png" id="4_qmwii"]
 [ext_resource type="Texture2D" uid="uid://b53mmjebrlsqj" path="res://Assets/UI/BlueButtonUnselectedEmpty.png" id="6_ns5gj"]
 [ext_resource type="Texture2D" uid="uid://dajxkacaexws5" path="res://Assets/UI/BlueButtonSelectedHover.png" id="6_xi2y4"]
+[ext_resource type="Texture2D" uid="uid://dnyjm8oschx1u" path="res://Assets/GoldTile.png" id="8_mr3xu"]
 [ext_resource type="Texture2D" uid="uid://dr767i3lmg0e8" path="res://Assets/UI/TextEdit.png" id="9_p63kd"]
 [ext_resource type="Texture2D" uid="uid://ci0u3wnswqnaj" path="res://Assets/UI/BrownButton.png" id="10_ombn4"]
 [ext_resource type="StyleBox" uid="uid://cdqwju8feehg7" path="res://UI/StyleBoxes/TopBarButtonStyleBox.tres" id="10_yyrss"]
@@ -32,6 +33,7 @@ texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
+modulate_color = Color(1, 1, 1, 0.70000005)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtxkj"]
 texture = ExtResource("2_g16el")
@@ -39,6 +41,7 @@ texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
+modulate_color = Color(1, 1, 1, 0.70000005)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ombn4"]
 
@@ -67,11 +70,12 @@ texture_margin_bottom = 8.0
 modulate_color = Color(1, 1, 1, 0.3)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lytyg"]
-texture = ExtResource("4_qmwii")
+texture = ExtResource("4_mi3k3")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p63kd"]
 texture = ExtResource("6_xi2y4")
@@ -87,13 +91,7 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfaqw"]
-texture = ExtResource("4_mi3k3")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
-modulate_color = Color(1, 1, 1, 0.8)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mr3xu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mr3xu"]
 texture = ExtResource("4_qmwii")
@@ -108,6 +106,14 @@ texture_margin_left = 12.0
 texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oo7jj"]
+texture = ExtResource("8_mr3xu")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.5)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyrss"]
 texture = ExtResource("9_p63kd")
@@ -158,18 +164,19 @@ FoldableContainer/styles/title_collapsed_panel = SubResource("StyleBoxTexture_pu
 FoldableContainer/styles/title_panel = SubResource("StyleBoxTexture_4vwl2")
 HorizontalTransparentPanel/base_type = &"PanelContainer"
 HorizontalTransparentPanel/styles/panel = SubResource("StyleBoxTexture_uknut")
-Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("4_6nswu")
 Label/styles/normal = SubResource("StyleBoxTexture_lytyg")
 LineEdit/styles/focus = SubResource("StyleBoxTexture_p63kd")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_xi2y4")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_vfaqw")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_mr3xu")
 RichTextLabel/colors/default_color = Color(0, 0.80885214, 0.8091067, 1)
 RichTextLabel/fonts/mono_font = ExtResource("4_6nswu")
 RichTextLabel/fonts/normal_font = ExtResource("4_6nswu")
 RichTextLabel/styles/focus = SubResource("StyleBoxTexture_mr3xu")
 RichTextLabel/styles/normal = SubResource("StyleBoxTexture_0pmo4")
+StructureInfoPanelContainer/base_type = &"PanelContainer"
+StructureInfoPanelContainer/styles/panel = SubResource("StyleBoxTexture_oo7jj")
 TextEdit/colors/font_color = Color(0, 0, 0, 1)
 TextEdit/fonts/font = ExtResource("4_6nswu")
 TextEdit/styles/focus = SubResource("StyleBoxTexture_yyrss")

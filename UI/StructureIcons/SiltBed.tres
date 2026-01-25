@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://1tt4cu5gjvbd"]
+
+[ext_resource type="Texture2D" uid="uid://d14isdji70j78" path="res://Assets/Structures/SiltBed.png" id="1_vleng"]
+
+[resource]
+atlas = ExtResource("1_vleng")
+region = Rect2(0, 0, 64, 128)

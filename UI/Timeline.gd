@@ -19,7 +19,6 @@ func update_timeline():
 					new_icon.texture = load("res://Assets/UI/TimelineIcons/Build.png")
 				"ObserveUI":
 					new_icon.texture = load("res://Assets/UI/TimelineIcons/Observe.png")
-			print($VBoxContainer/TimelineHBox.get_children())
 			if i == (PlayerMan.phase_index * 2) + PlayerMan.turn_index:
 				new_icon.modulate = Color("eb6c82")
 			i = (i+1)%(len(PlayerMan.phases)*2)

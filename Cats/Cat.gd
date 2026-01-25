@@ -371,6 +371,8 @@ func enter_state(new_state : String):
 			$AnimationPlayer.speed_scale = Settings.game_speed
 			$AnimationPlayer.play("enter_structure")
 			await $AnimationPlayer.animation_finished
+			await consume_ingredients()
+			await consume_cooked_ingredients()
 			%FX.visible = true
 			$AnimationPlayer.play("start_rest")
 			await get_tree().create_timer(rest_duration_stat / Settings.game_speed).timeout

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bsi5im50v0w3l"]
+
+[ext_resource type="Texture2D" uid="uid://qyg81mnfqpmq" path="res://Assets/Structures/BobcatHut.png" id="1_ac70d"]
+
+[resource]
+atlas = ExtResource("1_ac70d")
+region = Rect2(0, 0, 128, 128)

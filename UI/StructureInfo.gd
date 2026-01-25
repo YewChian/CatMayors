@@ -82,19 +82,24 @@ func update_structure_effects(effects: Dictionary):
 			await print_conditions(effects[effect]["conditions"])
 			%Effects.text += "Gain +" + str(effects["gain_stars"]["num_stars"]) + " stars"
 			%Effects.text += "\n"
+		
+		if effect == "gain_levels":
+			await print_conditions(effects[effect]["conditions"])
+			%Effects.text += "Gain +" + str(effects["gain_levels"]["value"]) + " " +  str(effects["gain_levels"]["type"]) +" levels."
+			%Effects.text += "\n"
 
 		if effect == "gain_ingredients":
 			await print_conditions(effects[effect]["conditions"])
-			%Effects.text += "Gain " + str(effects["gain_ingredients"]["num_ingredients"]) + " ingredients"
+			%Effects.text += "Gain " + str(effects["gain_ingredients"]["num_ingredients"]) + " ingredients."
 			%Effects.text += "\n"
-			%Effects.text += "Ingredients can be cooked for stars. Ingredients expire in one visit."
+			%Effects.text += "Cats holding ingredients gain double stars."
 			%Effects.text += "\n"
 
 		if effect == "cook_ingredients":
 			await print_conditions(effects[effect]["conditions"])
-			%Effects.text += "Gain " + str(effects["cook_ingredients"]["num_cooked_ingredients_per_ingredient"]) + " cooked ingredients and " + str(effects["cook_ingredients"]["num_stars_per_ingredient"]) + " stars per ingredient held by visiting cat"
+			%Effects.text += "Lose all ingredients. Then, gain " + str(effects["cook_ingredients"]["num_cooked_ingredients_per_ingredient"]) + " cooked ingredients and " + str(effects["cook_ingredients"]["num_stars_per_ingredient"]) + " stars per ingredient lost this way."
 			%Effects.text += "\n"
-			%Effects.text += "Cooked ingredients can be served for stars. Cooked ingredients expire in one visit."
+			%Effects.text += "Cats holding cooked ingredients gain double stars."
 			%Effects.text += "\n"
 
 		if effect == "serve_ingredients":
@@ -138,6 +143,11 @@ func print_conditions(all_conditions: Dictionary):
 			%Effects.text += "\n"
 			%Effects.text += "When built,"
 			%Effects.text += "\n"
+		
+		if condition == "thirsty":
+			%Effects.text += "\n"
+			%Effects.text += "When built next to at least " + str(value) + " connected blue tiles,"
+			%Effects.text += "\n"
 
 		if condition == "visit":
 			%Effects.text += "\n"
@@ -147,6 +157,10 @@ func print_conditions(all_conditions: Dictionary):
 		if condition == "discovery":
 			%Effects.text += "\n"
 			%Effects.text += "When visited by the first " + str(value) + " cats,"
+			%Effects.text += "\n"
+		
+		if condition == "level":
+			%Effects.text += "if " + str(value["type"]) + " level >= " + str(value["value"]) + ","
 			%Effects.text += "\n"
 				
 		if condition == "wise":

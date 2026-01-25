@@ -9,12 +9,12 @@ var rarity: String
 func initialize():
 	print("initializing draft at turn: ", PlayerMan.total_turns)
 	await %Timeline.update_timeline()
-	%DraftTipBox/TurnLabel.text = "Rei's Blueprint Shop"
-	%DraftTipBox/DraftInfoBox/Tip.text = "Buy a structure. The other will go to your opponent."
+	#%DraftTipBox/DraftInfoBox/TurnLabel.text = "Simple Schematics"
+	%DraftTipBox/DraftInfoBox/Tip.text = "Buy a blueprint from Simple Schematics. The other will go to your opponent."
 	$Hand.update_hand_structure_buttons()
 	$Hand.disable_buttons()
 	rarity = "common"
-	%UpgradeButton.text = "Browse Yoshi's Shop"
+	%UpgradeButton.text = "Browse Novice Diagrams instead"
 	
 	%CommonStructureButtons.visible = true
 	%RareStructureButtons.visible = false
@@ -34,12 +34,12 @@ func initialize():
 		assert(browsed_shop != "")
 		var available_buttons: Array = []
 		match browsed_shop:
-			"rei":
+			"Simple Sketches":
 				available_buttons = %CommonStructureButtons.get_children()
-			"yoshi":
+			"Novice Diagrams":
 				await _on_upgrade_button_pressed()
 				available_buttons = %RareStructureButtons.get_children()
-			"tanaka":
+			"Journeyman Schematics":
 				await _on_upgrade_button_pressed()
 				await _on_upgrade_button_pressed()
 				available_buttons = %EpicStructureButtons.get_children()
@@ -51,19 +51,19 @@ func initialize():
 		await get_tree().current_scene.add_to_log(new_log)
 		await target_button._on_button_pressed()
 		await KittenBot.show_thinking(1)
-		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton")._on_pressed()
+		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons/ConfirmDraftButton")._on_pressed()
 		return
 
 	if PlayerMan.turn_color == "white" and PlayerMan.mode == "DuelingBot":
 		await MouseketeerBot.pick_from_buttons(%CommonStructureButtons.get_children())
 		await MouseketeerBot.show_thinking(1)
-		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton")._on_pressed()
+		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons/ConfirmDraftButton")._on_pressed()
 		return
 
 	if PlayerMan.turn_color == "black" and PlayerMan.mode == "DuelingBot":
 		await GreywhiskersBot.pick_from_buttons(%CommonStructureButtons.get_children())
 		await GreywhiskersBot.show_thinking(1)
-		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/ConfirmDraftButton")._on_pressed()
+		await get_tree().current_scene.get_node("UI/DraftUI/CatBuildingInfo/VBoxContainer/DraftButtons/ConfirmDraftButton")._on_pressed()
 		return
 
 	
@@ -177,14 +177,14 @@ func _on_upgrade_button_pressed() -> void:
 		%CommonStructureButtons.visible = false
 		%RareStructureButtons.visible = true
 		await set_target_structure_name(rare_draftable_structures[0])
-		%DraftTipBox/TurnLabel.text = "Yoshi's shop"
-		%UpgradeButton.text = "Browse Tanaka's shop"
+		%DraftTipBox/DraftInfoBox/Tip.text = "Buy a blueprint from Novice Diagrams. The other will go to your opponent."
+		%UpgradeButton.text = "Browse Journeyman Schematics instead"
 		
 	elif rarity == "rare":
 		rarity = "epic"
 		%RareStructureButtons.visible = false
 		%EpicStructureButtons.visible = true
 		await set_target_structure_name(epic_draftable_structures[0])
-		%DraftTipBox/TurnLabel.text = "Tanaka's shop"
+		%DraftTipBox/DraftInfoBox/Tip.text = "Buy a blueprint from Journeyman Schematics. The other will go to your opponent."
 		%UpgradeButton.text = "No more shops to browse"
 	

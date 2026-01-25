@@ -30,9 +30,9 @@ var pages = {
 		"body": "
 			You need to buy blueprints before you can build structures.
 			
-			Buy a blueprint at Rei's shop. The leftover blueprint will go to your opponent.
+			Buy a blueprint at Simple Sketches. The leftover blueprint will go to your opponent.
 			
-			If you don't like the current options, you can browse Yoshi's shop or even Tanaka's shop.
+			If you don't like the current options, you can browse Novice Diagrams or even Journeyman Schematics.
 		"
 		},
 	"4": {

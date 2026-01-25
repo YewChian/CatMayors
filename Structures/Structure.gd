@@ -63,23 +63,78 @@ func get_can_enter():
 		return false
 	else:
 		return true
-
+		
+		
+func get_flow():
+	# flow = number of connected blue tiles directly adjacent to structure
+	var direction_coords = [
+		Vector2(1,0), 
+		Vector2(0,-1), 
+		Vector2(-1,0), 
+		Vector2(0,1), 
+	]
+	
+	# 1. initialise the queue with directly adjacent tiles
+	var origins = []	# origin_coords contains directly adjacent blue tiles
+	for coord in get_global_occupied_coords():
+		for direction in direction_coords:
+			var adj_coord = coord + direction
+			if TileMan.get_tile(adj_coord).color != "blue":
+				continue
+			if adj_coord in origins:
+				continue
+			origins.append([adj_coord, 1])
+	#print("getting flow from: ", get_global_occupied_coords())
+	#print("queue: ", queue)
+	if len(origins) == 0:
+		return 0
+	
+	const MAX_FLOW_LIMIT = 10
+	var cur_max_flow = 1
+	
+	for origin in origins:
+		var visited = []
+		var stack = [origin]	# new stack for each origin
+		
+		while true:
+			if len(stack) == 0:
+				return cur_max_flow
+			if cur_max_flow >= MAX_FLOW_LIMIT:
+				return cur_max_flow
+			
+			var cur = stack.pop_back()
+			var cur_coord = cur[0]
+			var cur_flow = cur[1]
+			visited.append(cur_coord)
+			
+			for direction in direction_coords:
+				var adj_coord = cur_coord + direction
+				if TileMan.get_tile(adj_coord).color != "blue":
+					continue
+				if adj_coord in visited:
+					continue
+				if cur_flow+1 > cur_max_flow:
+					cur_max_flow = cur_flow+1
+				visited.append(adj_coord)
+				stack.append([adj_coord, cur_flow+1])
+	
+	return cur_max_flow
 
 func start_activity(cat : Object):
 	cats_doing_activity.push_back(cat)
 
-	if (
-			cat.num_ingredients > 0
-			and effects.has("gain_ingredients") == false
-			and effects.has("cook_ingredients") == false
-		):
-		await cat.consume_ingredients()
-	if (
-			cat.num_cooked_ingredients > 0
-			and effects.has("cook_ingredients") == false
-			and effects.has("serve_ingredients") == false
-		):
-		await cat.consume_cooked_ingredients()
+	#if (
+			#cat.num_ingredients > 0
+			#and effects.has("gain_ingredients") == false
+			#and effects.has("cook_ingredients") == false
+		#):
+		#await cat.consume_ingredients()
+	#if (
+			#cat.num_cooked_ingredients > 0
+			#and effects.has("cook_ingredients") == false
+			#and effects.has("serve_ingredients") == false
+		#):
+		#await cat.consume_cooked_ingredients()
 
 	var is_cat_spooked: bool = false
 	if cat.aura == "spooked":
@@ -105,6 +160,7 @@ func finish_activity():
 		var dutiful_stars_multiplier = 1
 		var satisfied_stars_multiplier = 1
 		var bonus_stars = 0
+		var ingredient_multiplier = 1
 
 		if active_cat.aura == "lazy":
 			lazy_stars_multiplier = 0
@@ -237,8 +293,10 @@ func finish_activity():
 			print(new_log)
 			await get_tree().current_scene.add_to_log(new_log)
 		
+		if active_cat.num_ingredients > 0 or active_cat.num_cooked_ingredients > 0:
+			ingredient_multiplier = 2
 
-		var earned_stars = (structure_stars * lazy_stars_multiplier * dutiful_stars_multiplier * satisfied_stars_multiplier) + bonus_stars
+		var earned_stars = ((structure_stars * lazy_stars_multiplier * dutiful_stars_multiplier * satisfied_stars_multiplier) + bonus_stars) * ingredient_multiplier
 
 		await active_cat.gain_stars(earned_stars)
 		earned_stars_here += earned_stars
@@ -336,14 +394,11 @@ func rehome(new_cat: Object):
 func get_global_entrance_coordinate():
 	return coordinate + entrance_coordinate
 
-
-#func _on_mouse_entered() -> void:
-	#structure_instance_info.visible = true
-	#await structure_instance_info.update_info(self)
-	#
-#
-#func _on_mouse_exited() -> void:
-	#structure_instance_info.visible = false
+func get_global_occupied_coords():
+	var global_occupied_coords = []
+	for coord in occupied_coordinates:
+		global_occupied_coords.append(coordinate + coord)
+	return global_occupied_coords
 	
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
